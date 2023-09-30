@@ -77,10 +77,10 @@
     #=-=-=-=-=-=-=-=-=-=-=#
     # System repositories #
     #-=-=-=-=-=-=-=-=-=-=-#
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-${nixosVersion}";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-${nixosVersion}";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
