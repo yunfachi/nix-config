@@ -11,7 +11,7 @@ in
   nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
     modules =
-      nixos-modules
+      modules
       ++ [
         {
           nix.registry.nixpkgs.flake = nixpkgs;
@@ -26,7 +26,7 @@ in
           home-manager.useUserPackages = true;
 
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = home-module;
+          home-manager.users."${username}" = home;
         }
       ];
   }

@@ -4,32 +4,31 @@
   ...
 } @ args: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
 
     ../../modules/desktop.nix
     ../../modules/user.nix
 
-    ../../secrets
+    #    ../../secrets
   ];
 
-  nixpkgs.overlays = import ../../overlays args;
+  #  nixpkgs.overlays = import ../../overlays args;
 
   boot = {
-    binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
-    supportedFilesystems = [
-      "ext4"
-      "btrfs"
-      "xfs"
-      "ntfs"
-      "fat"
-      "vfat"
-      "exfat"
-    ];
+    #    supportedFilesystems = [
+    #      "ext4"
+    #      "btrfs"
+    #      "xfs"
+    #      "ntfs"
+    #      "fat"
+    #      "vfat"
+    #      "exfat"
+    #    ];
 
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        #        efiSysMountPoint = "/boot/efi";
       };
       systemd-boot.enable = true;
     };
@@ -48,7 +47,7 @@
 
     enableIPv6 = false;
     defaultGateway = "192.168.110.201";
-    interfaces.enp5s0 = {
+    interfaces.enp8s0 = {
       useDHCP = false;
       ipv4.addresses = [
         {

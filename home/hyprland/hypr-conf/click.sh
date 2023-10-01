@@ -1,11 +1,11 @@
-enabled=$(<~/.click.temp)
+enabled=$(<~/tmp.test)
 if [[ "${enabled}" == true ]] ; then
-  echo "false" >| ~/.click.temp
+  echo "false" >| ~/tmp.test
 else
-  echo "true" >| ~/.click.temp
+  echo "true" >| ~/tmp.test
   while true; do
     xdotool click --repeat 4 --delay 62 1
-    enabled=$(<~/.click.temp)
+    enabled=$(<~/tmp.test)
     if [[ $enabled == false ]]; then
       break
     fi

@@ -9,14 +9,14 @@
     ...
   } @ inputs: let
     #=-=-=-=-=-=-=-=-=-=-#
-    # Personal variables #
+    # Personal Variables #
     #-=-=-=-=-=-=-=-=-=-=#
     username = "yunfachi";
     userfullname = "yunfachi";
     useremail = "yunfachi@gmail.com";
 
     #=-=-=-=-=-=-=-=-=-#
-    # System variables #
+    # System Variables #
     #-=-=-=-=-=-=-=-=-=#
     nixosVersion = "23.05";
     x64_system = "x86_64-linux";
@@ -24,7 +24,7 @@
     nixosSystem = import ./lib/nixosSystem.nix;
 
     #=-=-=-=-=-=-=-=-=-=#
-    # Special arguments #
+    # Special Arguments #
     #-=-=-=-=-=-=-=-=-=-#
     x64_specialArgs =
       {
@@ -38,7 +38,7 @@
       // inputs;
 
     #=-=-=-=-=-=-=-=#
-    # Hosts modules #
+    # Hosts Modules #
     #-=-=-=-=-=-=-=-#
     mitama_modules = {
       modules = [
@@ -48,9 +48,9 @@
       home = import ./home/desktop.nix;
     };
   in {
-    nixosConfiguration = let
+    nixosConfigurations = let
       #=-=-=-=-=-=-=-=-=#
-      # NixOS arguments #
+      # NixOS Arguments #
       #-=-=-=-=-=-=-=-=-#
       nixosArgs = {
         inherit home-manager;
@@ -60,13 +60,20 @@
       };
     in {
       #=-=-=-=-=-=-=-=#
-      # Hosts systems #
+      # Hosts Systems #
       #-=-=-=-=-=-=-=-#
       mitama = nixosSystem (mitama_modules // nixosArgs);
     };
 
+    #=-=-=-=-=-=-=-=-=#
+    # Custom Packages #
+    #-=-=-=-=-=-=-=-=-#
+    packages = nixpkgs.lib.genAttrs allSystems (
+      system: import ./pkgs nixpkgs.legacyPackages.${system}
+    );
+
     #=-=-=-=-=-=-=-=-=-=-=#
-    # Alejandra formatter #
+    # Alejandra Formatter #
     #-=-=-=-=-=-=-=-=-=-=-#
     formatter = nixpkgs.lib.genAttrs allSystems (
       system: nixpkgs.legacyPackages.${system}.alejandra
@@ -75,7 +82,7 @@
 
   inputs = {
     #=-=-=-=-=-=-=-=-=-=-=#
-    # System repositories #
+    # System Repositories #
     #-=-=-=-=-=-=-=-=-=-=-#
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -85,23 +92,34 @@
     };
 
     #=-=-=-=-=-=-=-=-=-=-=-=#
-    # Hyprland repositories #
+    # Hyprland Repositories #
     #-=-=-=-=-=-=-=-=-=-=-=-#
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprsome.url = "github:sopa0/hyprsome";
 
     #=-=-=-=-=-=-=-=-=-=-#
-    # Other repositories #
+    # Other Repositories #
     #-=-=-=-=-=-=-=-=-=-=#
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     #=-=-=-=-=-=-=-=-=-#
-    # Own repositories #
+    # Own Repositories #
     #-=-=-=-=-=-=-=-=-=#
-    secrets = {
-      url = "git+ssh://git@github.com/yunfachi/nix-secrets.git?shallow=1";
-      flake = false;
-    };
+    #secrets = {
+    #  url = "git+ssh://git@github.com/yunfachi/nix-secrets.git?shallow=1";
+    #  flake = false;
+    #};
     wallpapers = {
       url = "github:yunfachi/wallpapers";
       flake = false;
@@ -114,6 +132,7 @@
     substituters = [
       "https://cache.nixos.org"
       "https://hyprland.cachix.org"
+      "https://anyrun.cachix.org"
     ];
 
     extra-substituters = [
@@ -124,6 +143,7 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
   };
 }

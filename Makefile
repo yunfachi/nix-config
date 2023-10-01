@@ -1,5 +1,5 @@
-hyprland:
-	nixos-rebuils --switch --flake .#mitama_hyprland
+mitama:
+	sudo nixos-rebuild switch --flake .#mitama
 
 format:
 	alejandra ~/nix-config
