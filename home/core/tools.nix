@@ -17,6 +17,7 @@
     gawk
 
     # misc
+    wireguard-tools
     file
     which
     tree

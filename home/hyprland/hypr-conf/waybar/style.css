@@ -1,0 +1,32 @@
+* {
+  font-family: NotoSans, FontAwesome6Free, SymbolsNerdFont;
+  font-size: 100%;
+}
+
+window#waybar {
+  background-color: rgba(0,0,0,0.15);
+  color: #ffffff;
+}
+
+#clock {
+  margin: 0px 0px 0px 0px;
+}
+
+#tray {
+  margin: 0px 15px 0px 0px;
+}
+
+#temperature {
+  margin: 0px 8px 0px 0px;
+}
+
+#workspaces button {
+  color: #f7fdff;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  color: #A6D0DD;
+}

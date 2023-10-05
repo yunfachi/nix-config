@@ -16,6 +16,9 @@
       withVencord = true;
     })
     telegram-desktop
+
+    spotify
+    spicetify-cli
   ];
 
   programs.gh = {

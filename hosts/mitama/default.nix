@@ -38,7 +38,7 @@
     hostName = "mitama";
 
     proxy = {
-      #default = "";
+      #default = "http://1.1.1.1:443";
       #noProxy = "127.0.0.1,localhost,internal.domain";
     };
 

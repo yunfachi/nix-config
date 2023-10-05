@@ -42,6 +42,45 @@
     ];
   };
 
+  #=-=-=-=#
+  # Fonts #
+  #-=-=-=-#
+  # https://github.com/ryan4yin/nix-config/blob/a378fa3d60536f21fae9c58a834ca1f634aca020/modules/nixos/core-desktop.nix#L153C3-L153C3
+  fonts = {
+    enableDefaultPackages = false;
+    fontDir.enable = true;
+
+    packages = with pkgs; [
+      material-design-icons
+      font-awesome
+
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      noto-fonts-extra
+
+      source-sans
+      source-serif
+      source-han-sans
+      source-han-serif
+
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "Iosevka"
+        ];
+      })
+    ];
+
+    fontconfig.defaultFonts = {
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
+    };
+  };
+
   #=-=-=-=-#
   # Shells #
   #-=-=-=-=#

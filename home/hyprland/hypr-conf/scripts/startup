@@ -1,0 +1,4 @@
+~/.config/hypr/scripts/statusbar &
+
+swww init &
+~/.config/wallpapers/random.sh &
