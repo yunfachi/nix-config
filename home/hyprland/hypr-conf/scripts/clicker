@@ -1,11 +1,13 @@
-enabled=$(<~/tmp.test)
+#!/usr/bin/env bash
+
+enabled=$(<~/.clicker.bool)
 if [[ "${enabled}" == true ]] ; then
-  echo "false" >| ~/tmp.test
+  echo "false" >| ~/.clicker.bool
 else
-  echo "true" >| ~/tmp.test
+  echo "true" >| ~/.clicker.bool
   while true; do
     xdotool click --repeat 4 --delay 62 1
-    enabled=$(<~/tmp.test)
+    enabled=$(<~/.clicker.bool)
     if [[ $enabled == false ]]; then
       break
     fi

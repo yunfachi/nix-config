@@ -1,7 +1,4 @@
-{
-  pkgs-unstable,
-  ...
-}: {
+{pkgs-unstable, ...}: {
   imports = [
     ./settings.nix
     ./extensions.nix

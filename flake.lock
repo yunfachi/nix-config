@@ -493,11 +493,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1696601256,
-        "narHash": "sha256-7EFtnayKmUv94bDkPf75KYIetb+1QsQPFkfOA1KBN4s=",
+        "lastModified": 1696607708,
+        "narHash": "sha256-LY1SBwb4hUCbmjMYcYVDoCYr9pf/6N7UTwQgIVpVDXU=",
         "owner": "yunfachi",
         "repo": "wallpapers",
-        "rev": "1767b3a818532da7fa5db0f1139c49df9b3d9385",
+        "rev": "20b2a35d65d1b066f27586d7aa79dde909121cca",
         "type": "github"
       },
       "original": {

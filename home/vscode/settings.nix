@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   programs.vscode = {
     keybindings = [];
 
