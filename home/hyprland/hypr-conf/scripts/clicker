@@ -6,7 +6,7 @@ if [[ "${enabled}" == true ]] ; then
 else
   echo "true" >| ~/.clicker.bool
   while true; do
-    xdotool click --repeat 4 --delay 62 1
+    xdotool click --repeat 4 --delay 62 $1
     enabled=$(<~/.clicker.bool)
     if [[ $enabled == false ]]; then
       break
