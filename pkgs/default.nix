@@ -1,3 +1,3 @@
 pkgs: {
-  #  hyprload = pkgs.callPackage ./hyprload.nix { };
+  yunfaavatar = pkgs.callPackage ./yunfaavatar.nix {};
 }

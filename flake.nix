@@ -34,6 +34,7 @@
           # TODO: remove
           config.allowUnfree = true;
         };
+        pkgs-local = import ./pkgs nixpkgs.legacyPackages.${x64_system};
       }
       // inputs;
 
@@ -64,13 +65,6 @@
       #-=-=-=-=-=-=-=-#
       mitama = nixosSystem (mitama_modules // nixosArgs);
     };
-
-    #=-=-=-=-=-=-=-=-=#
-    # Custom Packages #
-    #-=-=-=-=-=-=-=-=-#
-    packages = nixpkgs.lib.genAttrs allSystems (
-      system: import ./pkgs nixpkgs.legacyPackages.${system}
-    );
 
     #=-=-=-=-=-=-=-=-=-=-=#
     # Alejandra Formatter #
@@ -116,10 +110,10 @@
     #=-=-=-=-=-=-=-=-=-#
     # Own Repositories #
     #-=-=-=-=-=-=-=-=-=#
-    #secrets = {
-    #  url = "git+ssh://git@github.com/yunfachi/nix-secrets.git?shallow=1";
-    #  flake = false;
-    #};
+    nix-secrets = {
+      url = "git+ssh://git@github.com/yunfachi/nix-secrets.git";
+      flake = false;
+    };
     wallpapers = {
       url = "github:yunfachi/wallpapers";
       flake = false;

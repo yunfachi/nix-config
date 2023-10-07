@@ -4,6 +4,29 @@
   hyprland,
   ...
 }: {
+  #=-=-=-=-=-=-=-=#
+  # Login Manager #
+  #-=-=-=-=-=-=-=-#
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
+        user = "yunfachi";
+      };
+      default_session = initial_session;
+    };
+  };
+
+  #=-=-=-=-=-#
+  # Hyprland #
+  #-=-=-=-=-=#
+  programs.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
+    xwayland.enable = true;
+  };
+
   #=-=-=-=-=-=-#
   # XDG Portal #
   #-=-=-=-=-=-=#
@@ -62,13 +85,4 @@
 
     pkgs-unstable.xfce.thunar # File Manager
   ];
-
-  #=-=-=-=-=-#
-  # Hyprland #
-  #-=-=-=-=-=#
-  programs.hyprland = {
-    enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
-    xwayland.enable = true;
-  };
 }

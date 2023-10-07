@@ -4,3 +4,5 @@
 
 swww init &
 ~/.config/wallpapers/random.sh &
+
+~/.config/hypr/scripts/lockscreen &

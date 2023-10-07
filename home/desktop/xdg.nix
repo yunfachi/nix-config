@@ -56,13 +56,14 @@
       enable = true;
       createDirectories = true;
       extraConfig = {
-        XDG_DESKTOP_DIR = "${config.home.homeDirectory}/.misc";
-        XDG_DOCUMENTS_DIR = "${config.home.homeDirectory}/.misc";
-        XDG_DOWNLOAD_DIR = "${config.home.homeDirectory}/.misc";
-        XDG_MUSIC_DIR = "${config.home.homeDirectory}/.misc";
+        XDG_DESKTOP_DIR = "${config.home.homeDirectory}/misc/desktop";
+        XDG_DOCUMENTS_DIR = "${config.home.homeDirectory}/misc/documents";
+        XDG_DOWNLOAD_DIR = "${config.home.homeDirectory}/misc/download";
+        XDG_MUSIC_DIR = "${config.home.homeDirectory}/misc/music";
+        XDG_PUBLICSHARE_DIR = "${config.home.homeDirectory}/misc/publicshare";
+        XDG_TEMPLATES_DIR = "${config.home.homeDirectory}/misc/templates";
+
         XDG_PICTURES_DIR = "${config.home.homeDirectory}/media/pictures";
-        XDG_PUBLICSHARE_DIR = "${config.home.homeDirectory}/.misc";
-        XDG_TEMPLATES_DIR = "${config.home.homeDirectory}/.misc";
         XDG_VIDEOS_DIR = "${config.home.homeDirectory}/media/videos";
         XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/media/screenshots";
       };

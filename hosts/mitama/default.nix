@@ -9,7 +9,7 @@
     ../../modules/desktop.nix
     ../../modules/user.nix
 
-    #    ../../secrets
+    ../../secrets
   ];
 
   #  nixpkgs.overlays = import ../../overlays args;
@@ -46,16 +46,16 @@
     networkmanager.enable = true;
 
     enableIPv6 = false;
-    defaultGateway = "192.168.110.201";
-    interfaces.enp8s0 = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.110.100";
-          prefixLength = 24;
-        }
-      ];
-    };
+    #defaultGateway = "192.168.110.201";
+    #interfaces.enp8s0 = {
+    #  useDHCP = false;
+    #  ipv4.addresses = [
+    #    {
+    #      address = "192.168.110.100";
+    #      prefixLength = 24;
+    #    }
+    #  ];
+    #};
   };
 
   hardware.opengl = {

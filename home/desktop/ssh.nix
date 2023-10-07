@@ -6,6 +6,10 @@
     extraConfig = ''
       AddKeysToAgent yes
 
+      Host github.com
+        IdentityFile ~/.ssh/mitama
+        IdentitiesOnly yes
+
       Host changelog yakudza asf jndi
         HostName 127.0.0.1
         Port 22

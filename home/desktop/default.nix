@@ -8,6 +8,7 @@
     ./wallpaper.nix
     ./gaming.nix
     ./xdg.nix
+    ./yunfaavatar.nix
   ];
 
   home.packages = with pkgs; [
