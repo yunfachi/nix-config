@@ -8,13 +8,13 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "yunfaavatar";
-  version = "0.1.0";
+  version = "0.2.0";
 
   src = fetchFromGitHub {
     owner = "yunfachi";
     repo = "yunfaAvatar";
     rev = version;
-    hash = "sha256-s381fD+Zr4CdeHCz8glvC+0wnDiFzn32/iFSrc5p05U=";
+    hash = "sha256-54CYX15ScQjlEqUIBy8D2kW5RRsdH6lRZaIDv4SU4Ns=";
   };
 
   strictDeps = true;
@@ -25,12 +25,12 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   postInstall = ''
-    wrapProgram "$out/bin/yunfaavatar" \
+    wrapProgram "$out/opt/yunfaavatar" \
       --prefix PATH : "${lib.makeBinPath [imagemagick]}"
   '';
 
   meta = with lib; {
-    description = "Utility for automatic centralized changing of avatar in Github, Discord, Steam, Hypixel, and many more";
+    description = "Utility for automatic centralized changing of avatar in Github, Discord, Steam, Shikimori, and many more";
     homepage = "https://github.com/yunfachi/yunfaAvatar";
     license = licenses.mit;
     platforms = platforms.all;

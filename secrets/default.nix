@@ -20,7 +20,7 @@
     "yunfaavatar" = {
       file = "${nix-secrets}/yunfaavatar.age";
       path = "/home/${username}/.config/yunfaAvatar/config.conf";
-      mode = "600";
+      mode = "644";
       owner = username;
     };
   };
