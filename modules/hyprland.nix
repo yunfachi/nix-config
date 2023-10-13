@@ -74,6 +74,7 @@
     pkgs-unstable.swww # Wallpaper Daemon
 
     pkgs-unstable.wl-screenrec # Screen Recording
+    pkgs-unstable.grimblast # Screenshots
     pkgs-unstable.yad # Dialogs
 
     pkgs-unstable.wlogout # Logout Menu

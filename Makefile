@@ -1,4 +1,6 @@
 HOST=$(shell hostname)
+.MAIN: switch
+.DEFAULT_GOAL: switch
 
 #=-=-=-=#
 # Hosts #
