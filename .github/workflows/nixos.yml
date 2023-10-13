@@ -1,14 +1,14 @@
-name: "Nix"
+name: "NixOS"
 on:
   pull_request:
   push:
 jobs:
-  tests:
+  build-mitama:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v22
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    - run: nix build --accept-flake-config
+    - run: nix build .#nixosConfigurations.mitama.config.system.build.toplevel --accept-flake-config --override-input secrets nixpkgs
     - run: nix flake check
