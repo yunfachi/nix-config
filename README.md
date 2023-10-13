@@ -3,8 +3,9 @@
 |----------------------|----------|
 | Window Manager       | Hyprland |
 | Terminal Emulator    | Kitty    |
+| Shell                | ZSH      |
 | Bar                  | Waybar   |
-| Application Launcher | Tofi     |
+| Application Launcher | Anyrun   |
 | Notification Daemon  | Mako     |
 | Display Manager      | -        |
 
