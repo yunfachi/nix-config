@@ -39,33 +39,38 @@
   },
 
   "cpu": {
-    "format": " {usage}%",
+    "format": "",
+    "format-alt": " {usage}%",
     "tooltip": false,
     "interval": 1,
   },
 
   "custom/gpu": {
     "exec": "cat /sys/class/hwmon/hwmon4/device/gpu_busy_percent",
-    "format": " {}%",
+    "format": "",
+    "format-alt": " {}%",
     "tooltip": false,
     "return-type": "",
     "interval": 1,
   },
 
   "memory": {
-    "format": " {percentage}%",
+    "format": "",
+    "format-alt": " {percentage}%",
     "tooltip": false,
     "interval": 1,
   },
 
   "network": {
-    "format": " {bandwidthTotalBits}",
+    "format": "",
+    "format-alt": " {bandwidthTotalBits}",
     "tooltip": false,
     "interval": 1,
   },
 
   "temperature": {
-    "format": " {temperatureC}°C",
+    "format": "",
+    "format-alt": " {temperatureC}°C",
     "tooltip": false,
   },
 }

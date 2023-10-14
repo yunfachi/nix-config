@@ -1,4 +1,5 @@
 * {
+  border-radius: 0px;
   font-family: NotoSans, FontAwesome6Free, SymbolsNerdFont;
   font-size: 100%;
 }
@@ -6,6 +7,7 @@
 window#waybar {
   background-color: rgba(0,0,0,0.15);
   color: #ffffff;
+  border-radius: 0px;
 }
 
 #clock {
