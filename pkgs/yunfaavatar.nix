@@ -14,7 +14,7 @@ stdenvNoCC.mkDerivation rec {
     owner = "yunfachi";
     repo = "yunfaAvatar";
     rev = version;
-    hash = "sha256-54CYX15ScQjlEqUIBy8D2kW5RRsdH6lRZaIDv4SU4Ns=";
+    hash = "sha256-4hjGwldpqkAPAy8IEbnP2zfVOugr+s+dslGktxMoV6A=";
   };
 
   strictDeps = true;
@@ -25,7 +25,7 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   postInstall = ''
-    wrapProgram "$out/opt/yunfaavatar" \
+    wrapProgram "$out/lib/yunfaavatar" \
       --prefix PATH : "${lib.makeBinPath [imagemagick]}"
   '';
 
