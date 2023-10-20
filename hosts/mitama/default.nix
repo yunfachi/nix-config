@@ -12,8 +12,6 @@
     ../../secrets
   ];
 
-  #  nixpkgs.overlays = import ../../overlays args;
-
   boot = {
     #    supportedFilesystems = [
     #      "ext4"
@@ -28,11 +26,14 @@
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        #        efiSysMountPoint = "/boot/efi";
+        #efiSysMountPoint = "/boot/efi";
       };
       systemd-boot.enable = true;
     };
   };
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
 
   networking = {
     hostName = "mitama";
@@ -46,16 +47,6 @@
     networkmanager.enable = true;
 
     enableIPv6 = false;
-    #defaultGateway = "192.168.110.201";
-    #interfaces.enp8s0 = {
-    #  useDHCP = false;
-    #  ipv4.addresses = [
-    #    {
-    #      address = "192.168.110.100";
-    #      prefixLength = 24;
-    #    }
-    #  ];
-    #};
   };
 
   hardware.opengl = {
