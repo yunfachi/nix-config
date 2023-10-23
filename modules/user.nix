@@ -15,7 +15,10 @@
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOnc2cJelOlkRTL7pDs9ycFluDNv+IVFg42DHVQGv/Di yunfachi@mitama"
+      # github
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINin10cad4eDG5u2W4ozQyZTINbjRLLnrFKo/WihL45r yunfachi@mitama"
+      # servers
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIELCGMGAQ6cGOLs1wsKFRYg5ECtvvAAmY1jasJdlRtHT yunfachi@mitama"
     ];
   };
 
