@@ -14,7 +14,7 @@
     agenix.packages."${pkgs.system}".default
   ];
 
-  age.identityPaths = ["/home/${username}/.ssh/mitama"];
+  age.identityPaths = ["/home/${username}/.ssh/meido"];
 
   age.secrets = {
     "yunfaavatar" = {

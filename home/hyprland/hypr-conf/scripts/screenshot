@@ -2,7 +2,7 @@
 
 if [[ ! $(pidof slurp) ]]; then
   grimblast \
-    --notify --cursor --scale 2 \
+    --freeze --notify --cursor --scale 2 \
     copysave $1 \
     "${XDG_SCREENSHOTS_DIR}/$(date +"%d-%m-%y_%H:%M:%S.png")"
 else
