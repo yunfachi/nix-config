@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     ranger # terminal file manager
+    thefuck # the fuck
+    wakatime # wakatime
 
     # archives
     zip

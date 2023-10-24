@@ -2,13 +2,15 @@
   imports = [
     ../core
 
-    ./kitty.nix
+    ./tools/bat.nix
+    ./tools/kitty.nix
+    ./tools/yunfaavatar.nix
+    ./tools/fish.nix
+    ./gaming.nix
     ./media.nix
     ./ssh.nix
     ./wallpaper.nix
-    ./gaming.nix
     ./xdg.nix
-    ./yunfaavatar.nix
   ];
 
   home.packages = with pkgs; [

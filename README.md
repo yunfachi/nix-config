@@ -3,7 +3,7 @@
 |----------------------|----------|
 | Window Manager       | Hyprland |
 | Terminal Emulator    | Kitty    |
-| Shell                | ZSH      |
+| Shell                | Fish     |
 | Bar                  | Waybar   |
 | Application Launcher | Anyrun   |
 | Notification Daemon  | Mako     |
