@@ -28,6 +28,8 @@
     lsof
     dmidecode
     glow # markdown preview in terminal
+
+    jetbrains.idea-ultimate
   ];
 
   programs = {
