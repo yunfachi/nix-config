@@ -5,6 +5,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixpkgs-yunfachi,
     home-manager,
     ...
   } @ inputs: let
@@ -34,7 +35,14 @@
           # TODO: remove
           config.allowUnfree = true;
         };
-        pkgs-local = import ./pkgs nixpkgs.legacyPackages.${x64_system};
+        pkgs-yunfachi = import nixpkgs-unstable {
+          system = x64_system;
+          # TODO: remove
+          config.allowUnfree = true;
+          overlays = [
+            inputs.nixpkgs-yunfachi.overlays.default
+          ];
+        };
       }
       // inputs;
 
@@ -55,7 +63,8 @@
       #-=-=-=-=-=-=-=-=-#
       nixosArgs = {
         inherit home-manager;
-        nixpkgs = nixpkgs-unstable; # pkgs branch [nixpkgs|nixpkgs-unstable]
+        # nixpkgs branch [nixpkgs|nixpkgs-unstable]
+        nixpkgs = nixpkgs-unstable;
         system = x64_system;
         specialArgs = x64_specialArgs;
       };
@@ -75,11 +84,17 @@
   };
 
   inputs = {
-    #=-=-=-=-=-=-=-=-=-=-=#
-    # System Repositories #
-    #-=-=-=-=-=-=-=-=-=-=-#
+    #=-=-=-=-=-#
+    # Packages #
+    #-=-=-=-=-=#
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-yunfachi.url = "git+ssh://git@github.com/yunfachi/nixpkgs-yunfachi.git";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    nixpkgs-yunfachi.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,10 +115,6 @@
     };
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
