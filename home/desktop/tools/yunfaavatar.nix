@@ -1,14 +1,13 @@
 {
   config,
-  pkgs-local,
+  pkgs-yunfachi,
   ...
 }: {
   #home.file.".config/yunfaAvatar/config.conf" = {
   #  source = config.age.secrets.yunfaavatar.path;
   #  recursive = true;
   #};
-
-  home.packages = with pkgs-local; [
+  home.packages = with pkgs-yunfachi; [
     yunfaavatar
   ];
 }

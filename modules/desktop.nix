@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgs-unstable,
+  pkgs-yunfachi,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
   # Stuff #
   #-=-=-=-#
   nixpkgs.config.allowUnfree = lib.mkForce true;
+  nixpkgs.config.allowUnfreePredicate = lib.mkForce (pkg: true);
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;

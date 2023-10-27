@@ -32,8 +32,4 @@
 
   programs = {
   };
-
-  services = {
-    udiskie.enable = true;
-  };
 }
