@@ -381,11 +381,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698396091,
-        "narHash": "sha256-r0tCVX9Y07LESiJnqtBsG6Q32rEJICJvwZizqrszU8g=",
+        "lastModified": 1698489368,
+        "narHash": "sha256-xtCOTfxyt+6+ChpcmVsvXDrP3UtcHIouYrL9chHmyew=",
         "ref": "refs/heads/master",
-        "rev": "e61748fab6e2990d3c3abc2a0ba2e6addcce0eea",
-        "revCount": 14,
+        "rev": "5c3163e7f1f05e235d7a05536c61cc3abb607caf",
+        "revCount": 3,
         "type": "git",
         "url": "ssh://git@github.com/yunfachi/nixpkgs-yunfachi.git"
       },
