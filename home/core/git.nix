@@ -10,6 +10,10 @@
     rm -f ~/.gitconfig
   '';
 
+  home.packages = with pkgs; [
+    gitkraken
+  ];
+
   programs.git = {
     enable = true;
     lfs.enable = true;
