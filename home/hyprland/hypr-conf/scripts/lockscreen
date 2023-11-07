@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-CONFIG="$HOME/.config/hypr/swaylock.conf"
-
-swayidle \
-    timeout 30 'hyprctl dispatch dpms off' \
-    resume 'hyprctl dispatch dpms on' &
-swaylock --config ${CONFIG} --image "$(swww query | grep -o -m 1 -P '(?<=image: ).*')"
-kill %%

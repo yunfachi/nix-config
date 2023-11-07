@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-~/.config/hypr/scripts/statusbar &
-
-swww init &
-~/.config/wallpapers/random.sh &
-
-~/.config/hypr/scripts/lockscreen &
