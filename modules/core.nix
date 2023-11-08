@@ -1,6 +1,7 @@
 {
   lib,
   nixosVersion,
+  config,
   ...
 }: {
   imports = [
@@ -13,6 +14,7 @@
   };
 
   time.timeZone = "Europe/Madagascar";
+  environment.variables.TZ = config.time.timeZone;
   i18n = let
     locale = "en_US.UTF-8";
     extraLocale = "ja_JP.UTF-8";
