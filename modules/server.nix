@@ -1,7 +1,16 @@
-{lib, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   imports = [
     ./core.nix
+  ];
+
+  # Sometimes we need to run Python as root.
+  environment.systemPackages = with pkgs; [
+    python310
   ];
 
   # We don't need any of the X11 libraries on a server.
