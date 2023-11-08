@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./core.nix
-    ./server
+    ./pm2.nix
   ];
 }
