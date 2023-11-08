@@ -8,6 +8,9 @@
     ./user.nix
   ];
 
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
+  nixpkgs.config.allowUnfreePredicate = lib.mkDefault (pkg: true);
+
   boot = {
     loader.grub.enable = false;
     tmp.cleanOnBoot = true;
