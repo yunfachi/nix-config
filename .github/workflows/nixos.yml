@@ -15,7 +15,7 @@ jobs:
   build-mitama:
     runs-on: ubuntu-latest
     steps:
-      - name: "Create Dir for Mounting moar Disk Space ❄"
+      - name: "Create Dir for Mounting moar Disk Space"
         run: |
           sudo mkdir /nix
 
@@ -45,13 +45,13 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - name: "Install Nix ❄️"
+      - name: "Install Nix"
         uses: cachix/install-nix-action@v20
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Install Cachix ❄️"
+      - name: "Install Cachix"
         uses: cachix/cachix-action@v12
         with:
           name: workflow-nixos-config
@@ -59,16 +59,16 @@ jobs:
 
       - name: "Build NixOS config ❄️"
         run: |
-          nix build .#nixosConfigurations.mitama.config.system.build.toplevel
+          nix build .#nixosConfigurations.mitama.config.system.build.toplevel --accept-flake-config
 
       - name: "Check NixOS flake ❄️"
         run: |
-          nix flake check
+          nix flake check --accept-flake-config
 
   build-dekomori:
     runs-on: ubuntu-latest
     steps:
-      - name: "Create Dir for Mounting moar Disk Space ❄"
+      - name: "Create Dir for Mounting moar Disk Space"
         run: |
           sudo mkdir /nix
 
@@ -98,13 +98,13 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - name: "Install Nix ❄️"
+      - name: "Install Nix"
         uses: cachix/install-nix-action@v20
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Install Cachix ❄️"
+      - name: "Install Cachix"
         uses: cachix/cachix-action@v12
         with:
           name: workflow-nixos-config
@@ -112,8 +112,8 @@ jobs:
 
       - name: "Build NixOS config ❄️"
         run: |
-          nix build .#nixosConfigurations.dekomori.config.system.build.toplevel
+          nix build .#nixosConfigurations.dekomori.config.system.build.toplevel --accept-flake-config
 
       - name: "Check NixOS flake ❄️"
         run: |
-          nix flake check
+          nix flake check --accept-flake-config
