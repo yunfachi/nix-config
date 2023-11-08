@@ -11,6 +11,14 @@
   nixpkgs.config.allowUnfree = lib.mkDefault true;
   nixpkgs.config.allowUnfreePredicate = lib.mkDefault (pkg: true);
 
+  # Automatically optimize older generations of systems
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    dates = lib.mkDefault "daily";
+    options = lib.mkDefault "--delete-older-than 1d";
+  };
+
   boot = {
     loader.grub.enable = false;
     tmp.cleanOnBoot = true;
