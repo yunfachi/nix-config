@@ -4,6 +4,7 @@ with lib; {
     ./core.nix
   ];
 
+  # We don't need any of the X11 libraries on a server.
   environment.noXlibs = mkDefault true;
 
   # Because Perl is a default package, we need to remove it.
@@ -16,8 +17,27 @@ with lib; {
   services.logrotate.enable = mkDefault false;
   services.udisks2.enable = mkDefault false;
 
+  # No need for xdg on a server.
   xdg.autostart.enable = mkDefault false;
   xdg.icons.enable = mkDefault false;
   xdg.mime.enable = mkDefault false;
   xdg.sounds.enable = mkDefault false;
+
+  # No need for fonts on a server.
+  fonts.fontconfig.enable = lib.mkDefault false;
+
+  # Print the URL instead of opening it in a browser.
+  environment.variables.BROWSER = "echo";
+
+  systemd = {
+    enableEmergencyMode = lib.mkDefault false;
+
+    sleep.extraConfig = ''
+      # Disable sleep mode.
+      AllowSuspend=no
+      AllowHibernation=no
+      AllowSuspendThenHibernate=no
+      AllowHybridSleep=no
+    '';
+  };
 }
