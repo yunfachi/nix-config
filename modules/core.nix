@@ -20,7 +20,11 @@
   };
 
   boot = {
+    # Disable boot menu
+    loader.systemd-boot.configurationLimit = lib.mkDefault 1;
+    loader.timeout = 0;
     loader.grub.enable = false;
+    # Optimisations
     tmp.cleanOnBoot = true;
   };
 
