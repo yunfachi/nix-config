@@ -2,6 +2,7 @@
   lib,
   nixosVersion,
   config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -21,12 +22,19 @@
 
   boot = {
     # Disable boot menu
+    loader.systemd-boot.enable = true;
     loader.systemd-boot.configurationLimit = lib.mkDefault 1;
     loader.timeout = 0;
     loader.grub.enable = false;
     # Optimisations
     tmp.cleanOnBoot = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    git
+  ];
 
   time.timeZone = "Europe/Madagascar";
   environment.variables.TZ = config.time.timeZone;
