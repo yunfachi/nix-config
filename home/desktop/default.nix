@@ -1,7 +1,8 @@
 {...}: {
   imports = [
-    ./tools
     ./editors
+    ./gaming
+    ./tools
     ./xmonad
   ];
 }
