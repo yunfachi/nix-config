@@ -26,4 +26,7 @@
   security.rtkit.enable = true;
   sound.enable = false;
   hardware.pulseaudio.enable = false;
+
+  # Enables support for 32bit libs that steam uses
+  hardware.opengl.driSupport32Bit = true;
 }
