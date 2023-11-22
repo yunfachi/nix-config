@@ -11,7 +11,7 @@
         hp.xmonad-contrib
       ];
 
-      config = ./config.hs;
+      config = ./xmonad.hs;
     };
   };
 }
