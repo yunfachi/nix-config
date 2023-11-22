@@ -4,6 +4,10 @@
   nixosVersion,
   ...
 }: {
+  imports = [
+    ./core
+  ];
+
   home = {
     username = username;
     homeDirectory = lib.mkForce "/home/${username}";
