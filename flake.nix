@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-yunfachi = {
+      url = "github:yunfachi/nixpkgs-yunfachi/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -18,6 +22,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-yunfachi,
     home-manager,
     ...
   } @ inputs: let
@@ -32,6 +37,13 @@
       {
         inherit username userfullname useremail;
         inherit nixosVersion;
+        pkgs-yunfachi = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [
+            inputs.nixpkgs-yunfachi.overlays.default
+          ];
+        };
       }
       // inputs;
 
