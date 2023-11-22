@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./tools
+    ./editors
     ./xmonad
   ];
 }
