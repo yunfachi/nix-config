@@ -71,10 +71,32 @@
         "type": "github"
       }
     },
+    "nixpkgs-yunfachi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698489368,
+        "narHash": "sha256-xtCOTfxyt+6+ChpcmVsvXDrP3UtcHIouYrL9chHmyew=",
+        "owner": "yunfachi",
+        "repo": "nixpkgs-yunfachi",
+        "rev": "5c3163e7f1f05e235d7a05536c61cc3abb607caf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yunfachi",
+        "ref": "master",
+        "repo": "nixpkgs-yunfachi",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-yunfachi": "nixpkgs-yunfachi",
         "vscode-extensions": "vscode-extensions"
       }
     },
