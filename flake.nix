@@ -17,6 +17,11 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -73,6 +78,7 @@
 
     substituters = [
       "https://cache.nixos.org"
+      "https://ezkea.cachix.org" # https://github.com/ezKEa/aagl-gtk-on-nix
     ];
 
     extra-substituters = [
@@ -80,6 +86,7 @@
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" # https://github.com/ezKEa/aagl-gtk-on-nix
     ];
   };
 }
