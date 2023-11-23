@@ -1,7 +1,9 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    tree
-    
     ranger
+
+    tree
+
+    gnumake
   ];
 }
