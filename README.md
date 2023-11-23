@@ -4,8 +4,11 @@
   * [server](./home/server) - server for my user
   * [desktop](./home/desktop) - desktop for my user
     * [xmonad](./home/desktop/xmonad) - xmonad configuration
+    * [eww](./home/desktop/eww) - eww configuration
     * [tools](./home/desktop/tools) - programs such as kitty or firefox
+    * [gaming](./home/desktop/tools) - steam, minecraft, genshin impact and other games
     * [editors](./home/desktop/editors) - text editors, IDEs
+      * [idea](./home/desktop/editors/idea) - intellij idea
       * [vscodium](./home/desktop/editors/vscodium) - vscodium with configuration and extensions
 * [hosts](./hosts)
   * [dekomori](./hosts/dekomori) - my main computer
