@@ -1,6 +1,7 @@
 {...}: {
   imports = [
-    ./kitty.nix
+    ./discord.nix
     ./firefox.nix
+    ./kitty.nix
   ];
 }
