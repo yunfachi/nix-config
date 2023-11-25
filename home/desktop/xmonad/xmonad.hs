@@ -3,6 +3,7 @@
 -------------
 import XMonad
 import XMonad.Actions.UpdateFocus
+import XMonad.Hooks.DynamicProperty
 
 {-- layouts --}
 import XMonad.Layout.Gaps (gaps, Direction2D(D, L, R, U))
@@ -16,6 +17,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 {-- for keybinds --}
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import XMonad.Actions.CopyWindow
 
 ---------------
 -- variables --
@@ -53,6 +55,16 @@ myKeys conf@(XConfig {XMonad.modMask = super}) = M.fromList $
 
 
 
+        {-- show window on all workspaces --}
+        ((super, xK_f),
+        windows copyToAll),
+
+        {-- show window on all workspaces --}
+        ((super .|. shiftMask, xK_f),
+        killAllOtherCopies),
+
+
+
         {-- swap the focused window and master window --}
         ((super, xK_z),
         windows W.swapMaster),
@@ -86,9 +98,12 @@ myKeys conf@(XConfig {XMonad.modMask = super}) = M.fromList $
 ------------------
 -- window rules --
 ------------------
+myManageHook :: ManageHook
 myManageHook = composeAll
     [ 
-        className =? "Bar"       --> doIgnore
+        className =? "Bar"            --> doIgnore,
+
+        title =? "Picture-in-Picture" --> doFloat
     ]
 
 ------------
@@ -127,8 +142,7 @@ defaults = def
         focusedBorderColor  = myFocusedBorderColor,
         workspaces          = myWorkspaces, 
         keys                = myKeys,
-        manageHook          = myManageHook, 
         layoutHook          = myLayoutHook,
         startupHook         = myStartupHook,
-        handleEventHook     = focusOnMouseMove
+        handleEventHook     = dynamicPropertyChange "WM_NAME" myManageHook <+> focusOnMouseMove
     } 
