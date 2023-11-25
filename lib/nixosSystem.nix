@@ -1,6 +1,7 @@
 {
   nixpkgs,
   home-manager,
+  flatpak,
   system,
   specialArgs,
   host,
@@ -22,6 +23,8 @@ in
 
       home-manager.nixosModules.home-manager
       {
+        home-manager.sharedModules = [flatpak.homeManagerModules.default];
+
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
 

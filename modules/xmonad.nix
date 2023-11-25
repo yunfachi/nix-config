@@ -5,6 +5,8 @@
   ...
 }: {
   services = {
+    flatpak.enable = true;
+
     xserver = {
       enable = true;
 
@@ -19,5 +21,13 @@
       xkbOptions = "grp:win_space_toggle";
       layout = "us,ru";
     };
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+    ];
   };
 }

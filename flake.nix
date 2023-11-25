@@ -13,6 +13,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flatpak.url = "github:GermanBread/declarative-flatpak/stable";
+
     vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +31,7 @@
     nixpkgs,
     nixpkgs-yunfachi,
     home-manager,
+    flatpak,
     ...
   } @ inputs: let
     username = "yunfachi";
@@ -63,7 +66,7 @@
   in {
     nixosConfigurations = let
       args = {
-        inherit nixpkgs home-manager;
+        inherit nixpkgs home-manager flatpak;
         system = "x86_64-linux";
         specialArgs = specialArgs;
       };
@@ -71,6 +74,13 @@
       dekomori = nixosSystem (dekomori_modules // args);
       mitama = nixosSystem (mitama_modules // args);
     };
+    /*
+      homeConfigurations.yunfachi = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        flatpak.homeManagerModules.default
+      ];
+    };
+    */
   };
 
   nixConfig = {
