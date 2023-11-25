@@ -2,19 +2,28 @@ HOST=$(shell hostname)
 .MAIN: switch
 .DEFAULT_GOAL: switch
 
+define rebuild
+	@if [ "$(HOST)" == "$(1)" ] || [ "$(force)" == "1" ]; then \
+		nixos-rebuild switch --flake .#$(1) --use-remote-sudo;\
+	else\
+		printf "You are trying to switch to a host different from the current one, which can lead to system failure.\n";\
+		printf "If you are confident in your actions, then specify \e[32;1mforce=1\e[0m in the options.";\
+	fi
+endef
+
 #=-=-=-=-#
 # Switch #
 #-=-=-=-=#
 switch:
-	nixos-rebuild switch --flake .#$(HOST) --use-remote-sudo
+	@$(call rebuild,$(HOST))
 
 #=-=-=-=#
 # Hosts #
 #-=-=-=-#
 dekomori:
-	nixos-rebuild switch --flake .#dekomori --use-remote-sudo
+	@$(call rebuild,dekomori)
 mitama:
-	nixos-rebuild switch --flake .#mitama --use-remote-sudo
+	@$(call rebuild,mitama)
 
 #=-=-=-=-#
 # Update #
