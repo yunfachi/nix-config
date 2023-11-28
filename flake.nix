@@ -24,21 +24,12 @@
       inherit username system;
     };
   in {
-    nixosConfigurations.dekomori = nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
-      modules = [
-        ./hosts/dekomori
-        ./modules/desktop
+    nixosConfigurations = import ./hosts (
+      {inherit specialArgs;} // {isNixOS = true;}
+    );
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = ./home/desktop;
-        }
-      ];
-    };
+    homeConfigurations = import ./hosts (
+      {inherit specialArgs;} // {isNixOS = false;}
+    );
   };
 }
