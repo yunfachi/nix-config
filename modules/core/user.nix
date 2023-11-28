@@ -3,7 +3,7 @@
   users.groups."${username}" = {};
   users.users."${username}" = {
     # TODO: probably not needed
-    #home = "/home/yunfachi";
+    #home = "/home/${username}";
     isNormalUser = true;
     description = "${username}";
     extraGroups = [
