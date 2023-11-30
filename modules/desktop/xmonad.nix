@@ -5,11 +5,6 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-
-      extraPackages = hp: [
-        hp.dbus
-        hp.monad-logger
-      ];
     };
 
     displayManager.defaultSession = "none+xmonad";

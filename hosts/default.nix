@@ -20,8 +20,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              # Because we use Home-Manager as a pure configuration manager.
-              useUserPackages = lib.mkForce false;
+              useUserPackages = lib.mkForce true;
               useGlobalPkgs = lib.mkForce true;
 
               extraSpecialArgs = specialArgs;
