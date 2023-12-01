@@ -57,24 +57,44 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701068326,
-        "narHash": "sha256-vmMceA+q6hG1yrjb+MP8T0YFDQIrW3bl45e7z24IEts=",
+        "lastModified": 1701445595,
+        "narHash": "sha256-TnweUF/DxQw7x01oJCR7Z842PmOXrst99K4RLTQ035Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8cfef6986adfb599ba379ae53c9f5631ecd2fd9c",
+        "rev": "cae1e33e8c0a36e50d67f1b604b74825f6b35ad5",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs-yunfachi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dirtyRev": "f0d30575b7e3c251f396a59aaa6f22505c88bc3f-dirty",
+        "dirtyShortRev": "f0d3057-dirty",
+        "lastModified": 1701446434,
+        "narHash": "sha256-GmbirEYVHXfB44FYqeLOB5apY2QvKQpLHIHT+IxENMQ=",
+        "type": "git",
+        "url": "file:///home/yunfachi/nixpkgs-yunfachi"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/yunfachi/nixpkgs-yunfachi"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-yunfachi": "nixpkgs-yunfachi",
         "vscode-extensions": "vscode-extensions"
       }
     },
