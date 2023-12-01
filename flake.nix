@@ -2,7 +2,11 @@
   description = "yunfachi's NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-yunfachi = {
+      url = "github:yunfachi/nixpkgs-yunfachi/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -18,6 +22,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-yunfachi,
     home-manager,
     ...
   } @ inputs: let
@@ -27,6 +32,7 @@
     specialArgs = {
       inherit inputs outputs;
       inherit username system;
+      pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
     };
   in {
     nixosConfigurations = import ./hosts (
