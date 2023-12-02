@@ -78,16 +78,18 @@
         ]
       },
       "locked": {
-        "dirtyRev": "f0d30575b7e3c251f396a59aaa6f22505c88bc3f-dirty",
-        "dirtyShortRev": "f0d3057-dirty",
-        "lastModified": 1701446434,
+        "lastModified": 1701452622,
         "narHash": "sha256-GmbirEYVHXfB44FYqeLOB5apY2QvKQpLHIHT+IxENMQ=",
-        "type": "git",
-        "url": "file:///home/yunfachi/nixpkgs-yunfachi"
+        "owner": "yunfachi",
+        "repo": "nixpkgs-yunfachi",
+        "rev": "17fdc923842f8cbe6bdb5d3144c5a02059dba7a4",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/yunfachi/nixpkgs-yunfachi"
+        "owner": "yunfachi",
+        "ref": "master",
+        "repo": "nixpkgs-yunfachi",
+        "type": "github"
       }
     },
     "root": {
