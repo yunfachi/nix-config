@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions/master";
@@ -33,6 +37,7 @@
       inherit inputs outputs;
       inherit username system;
       pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
+      sops = inputs.sops-nix.nixosModules;
     };
   in {
     nixosConfigurations = import ./hosts (
