@@ -71,6 +71,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1701568804,
+        "narHash": "sha256-iwr1fjOCvlirVL/xNvOTwY9kg3L/F3TC/7yh/QszaPI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dc01248a9c946953ad4d438b0a626f5c987a93e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-yunfachi": {
       "inputs": {
         "nixpkgs": [
@@ -97,7 +113,29 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-yunfachi": "nixpkgs-yunfachi",
+        "sops-nix": "sops-nix",
         "vscode-extensions": "vscode-extensions"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1701572436,
+        "narHash": "sha256-0anfOQqDend6kSuF8CmOSAZsiAS1nwOsin5VQukh6Q4=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "8bca48cb9a12bbd8766f359ad00336924e91b7f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "systems": {

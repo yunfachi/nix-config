@@ -17,6 +17,7 @@
           ./${host}
           ../modules/${type}
           ../options/${type}
+          ../secrets
           home-manager.nixosModules.home-manager
           {
             home-manager = {
