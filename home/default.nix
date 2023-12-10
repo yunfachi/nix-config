@@ -7,8 +7,9 @@
   imports =
     umport {
       path = ./.;
-      exclude = [./programs];
+      exclude = [./editors ./programs];
     }
+    ++ umport {path = ./editors;}
     ++ umport {path = ./programs;};
 
   home = {
