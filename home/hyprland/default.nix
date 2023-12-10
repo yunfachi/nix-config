@@ -3,10 +3,13 @@
   host,
   lib,
   pkgs,
+  umport,
   ...
 }: let
   cfg = config.wayland.windowManager.hyprland;
 in {
+  imports = umport {path = ./.;};
+
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
