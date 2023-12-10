@@ -1,11 +1,3 @@
-{
-  lib,
-  umport,
-  ...
-}: {
+{umport, ...}: {
   imports = umport {path = ./.;};
-
-  networking = {
-    hostName = "kyouko";
-  };
 }
