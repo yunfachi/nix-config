@@ -10,17 +10,21 @@
   nixpkgs = specialArgs.inputs.nixpkgs;
   mkHost = host: let
     nixosModules = [
-      ./${host}
+      ./${host}/hardware.nix
+
+      ./${host}/nixos.nix
       ../options/nixos
       ../nixos
     ];
     homeModules = [
+      ./${host}/home.nix
       ../options/home
       ../home
     ];
+    type = import ./${host}/type.nix;
     extraSpecialArgs =
       {
-        inherit host isNixOS;
+        inherit type host isNixOS;
       }
       // specialArgs;
   in
