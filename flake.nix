@@ -31,7 +31,6 @@
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-yunfachi,
-    home-manager,
     ...
   }: let
     username = "yunfachi";
