@@ -8,6 +8,7 @@
   lib = specialArgs.inputs.nixpkgs.lib;
   home-manager = specialArgs.inputs.home-manager;
   nixpkgs = specialArgs.inputs.nixpkgs;
+
   mkHost = host: let
     nixosModules = [
       ./${host}/hardware.nix
@@ -21,6 +22,7 @@
       ../options/home
       ../home
     ];
+
     type = import ./${host}/type.nix;
     extraSpecialArgs =
       {
@@ -55,9 +57,6 @@
       home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
 
-        pkgs = import nixpkgs {
-          config.allowUnfree = lib.mkForce true;
-        };
         modules = homeModules;
       };
 in
