@@ -44,7 +44,12 @@
       inherit username userfullname useremail;
       inherit system;
 
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
+
       umport = pkgs-yunfachi.umport;
     };
   in {
