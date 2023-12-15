@@ -7,6 +7,7 @@
   cfg = config.yunfachi;
 in {
   options.yunfachi = {
+    discord.enable = lib.mkEnableOption "discord" // {default = type == "desktop";};
     firefox.enable = lib.mkEnableOption "firefox" // {default = type == "desktop";};
     kitty.enable = lib.mkEnableOption "kitty" // {default = type == "desktop";};
     shikimori.enable = lib.mkEnableOption "shikimori" // {default = type == "desktop";};
