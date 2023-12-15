@@ -34,11 +34,15 @@
     ...
   }: let
     username = "yunfachi";
+    userfullname = "yunfachi";
+    useremail = "yunfachi@gmail.com";
+
     system = "x86_64-linux";
 
     specialArgs = rec {
       inherit inputs;
-      inherit username system;
+      inherit username userfullname useremail;
+      inherit system;
 
       pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
       umport = pkgs-yunfachi.umport;
