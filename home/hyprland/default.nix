@@ -27,7 +27,11 @@ in {
         ) (config.yunfachi.monitors);
 
         input = {
-          kb_layout = "us,ru";
+          kb_layout = "${
+            if config.yunfachi.canary.enable
+            then "canary"
+            else "us"
+          },ru";
           kb_options = "grp:win_space_toggle";
           follow_mouse = 1;
         };

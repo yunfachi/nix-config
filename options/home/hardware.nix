@@ -8,6 +8,7 @@
   cfg = config.yunfachi;
 in {
   options.yunfachi = {
+    canary.enable = lib.mkEnableOption "canary" // {default = type == "desktop";};
     monitors = mkOption {
       type = types.listOf (types.submodule {
         options = {
