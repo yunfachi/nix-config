@@ -1,5 +1,6 @@
 {...}: {
   yunfachi = {
+    canary.enable = false;
     monitors = [
       {
         name = "DP-3";
