@@ -1,13 +1,13 @@
-{...}: {
+{lib, ...}: {
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
     grub = {
-      enable = true;
+      enable = lib.mkForce true;
       efiSupport = true;
-      devices = ["nodev"];
+      device = "nodev";
     };
   };
 }
