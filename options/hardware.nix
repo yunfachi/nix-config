@@ -8,6 +8,13 @@
   cfg = config.yunfachi;
 in {
   options.yunfachi = {
+    type = mkOption {
+      type = types.enum ["server" "desktop"];
+      default = null;
+      example = "desktop";
+      description = "Type of host. The default values depend on it.";
+    };
+
     canary.enable = lib.mkEnableOption "canary" // {default = type == "desktop";};
     monitors = mkOption {
       type = types.listOf (types.submodule {

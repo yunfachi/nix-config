@@ -10,23 +10,23 @@
   nixpkgs = specialArgs.inputs.nixpkgs;
 
   mkHost = host: let
+    config = specialArgs.self.nixosConfigurations."${host}".config;
+
     nixosModules = [
       ./${host}/hardware.nix
 
-      ./${host}/nixos.nix
-      ../options/nixos
       ../nixos
     ];
     homeModules = [
-      ./${host}/home.nix
-      ../options/home
+      ./${host}/config.nix
+      ../options
       ../home
     ];
 
-    type = import ./${host}/type.nix;
     extraSpecialArgs =
       {
-        inherit type host isNixOS;
+        inherit host isNixOS;
+        type = config.yunfachi.type;
       }
       // specialArgs;
   in
@@ -38,6 +38,7 @@
           nixosModules
           ++ [
             (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" username])
+            (lib.mkAliasOptionModule ["yunfachi"] ["hm" "yunfachi"])
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -56,6 +57,7 @@
     else
       home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
+        inherit (extraSpecialArgs.pkgs) pkgs;
 
         modules = homeModules;
       };
