@@ -6,6 +6,7 @@
     #home = "/home/${username}";
     isNormalUser = true;
     description = "${username}";
+    initialPassword = "${username}";
     extraGroups = [
       "${username}"
       "users"
