@@ -3,9 +3,11 @@
   lib,
   pkgs,
   umport,
+  inputs,
+  system,
   ...
 }: let
-  cfg = config.wayland.windowManager.hyprland;
+  cfg = config.yunfachi.hyprland;
 in {
   imports = umport {path = ./.;};
 
@@ -17,44 +19,49 @@ in {
       ];
     };
 
-    wayland.windowManager.hyprland.settings = lib.mkMerge [
-      {
-        monitor = map (
-          m: let
-            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-            position = "${toString m.x}x${toString m.y}";
-          in "${m.name},${resolution},${position},${toString m.scale}"
-        ) (config.yunfachi.monitors);
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${system}.hyprland;
 
-        input = {
-          kb_layout = "${
-            if config.yunfachi.canary.enable
-            then "canary"
-            else "us"
-          },ru";
-          kb_options = "grp:win_space_toggle";
-          follow_mouse = 1;
-        };
+      settings = lib.mkMerge [
+        {
+          monitor = map (
+            m: let
+              resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+              position = "${toString m.x}x${toString m.y}";
+            in "${m.name},${resolution},${position},${toString m.scale}"
+          ) (config.yunfachi.monitors);
 
-        "$mod" = "SUPER";
-        "$term" = "${pkgs.kitty}/bin/kitty";
+          input = {
+            kb_layout = "${
+              if config.yunfachi.canary.enable
+              then "canary"
+              else "us"
+            },ru";
+            kb_options = "grp:win_space_toggle";
+            follow_mouse = 1;
+          };
 
-        general = let
-          gap = 8;
-        in {
-          gaps_in = gap;
-          gaps_out = gap;
-          layout = "dwindle";
-        };
+          "$mod" = "SUPER";
+          "$term" = "${pkgs.kitty}/bin/kitty";
 
-        misc = {
-          disable_hyprland_logo = true;
-        };
+          general = let
+            gap = 8;
+          in {
+            gaps_in = gap;
+            gaps_out = gap;
+            layout = "dwindle";
+          };
 
-        exec-once = [
-          "wl-paste --watch cliphist store"
-        ];
-      }
-    ];
+          misc = {
+            disable_hyprland_logo = true;
+          };
+
+          exec-once = [
+            "wl-paste --watch cliphist store"
+          ];
+        }
+      ];
+    };
   };
 }
