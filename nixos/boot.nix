@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.yunfachi-nixos.grub;
+  cfg = config.yunfachi.grub;
 in {
   config = {
     boot.loader = {

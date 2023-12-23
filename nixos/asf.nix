@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.yunfachi-nixos.archisteamfarm;
+  cfg = config.yunfachi.archisteamfarm;
 in {
   config = lib.mkIf cfg.enable {
     systemd.user.services.archisteamfarm = {

@@ -1,5 +1,6 @@
 {...}: {
   yunfachi = {
+    type = "desktop";
     canary.enable = false;
     monitors = [
       {

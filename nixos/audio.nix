@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.yunfachi-nixos.audio;
+  cfg = config.yunfachi.audio;
 in {
   config = lib.mkIf cfg.enable {
     security.rtkit.enable = true;

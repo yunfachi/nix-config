@@ -31,6 +31,7 @@
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-yunfachi,
+    self,
     ...
   }: let
     username = "yunfachi";
@@ -40,7 +41,7 @@
     system = "x86_64-linux";
 
     specialArgs = rec {
-      inherit inputs;
+      inherit inputs self;
       inherit username userfullname useremail;
       inherit system;
 
