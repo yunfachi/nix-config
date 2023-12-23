@@ -1,13 +1,21 @@
-{lib, ...}: {
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
-    grub = {
-      enable = lib.mkForce true;
-      efiSupport = true;
-      device = "nodev";
+{
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.yunfachi-nixos.grub;
+in {
+  config = {
+    boot.loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        enable = lib.mkForce cfg.enable;
+        efiSupport = true;
+        devices = ["nodev"];
+      };
     };
   };
 }
