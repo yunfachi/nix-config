@@ -14,5 +14,6 @@
         primary = true;
       }
     ];
+    wireguard.enable = false;
   };
 }
