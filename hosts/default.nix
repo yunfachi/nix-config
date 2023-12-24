@@ -25,7 +25,7 @@
         ../options
         ../home
       ]
-      ++ builtins.map (host: ./${host}/shared.nix) hosts;
+      ++ builtins.map (host: (import ./${host}/shared.nix {host = host;})) hosts;
 
     extraSpecialArgs =
       {
