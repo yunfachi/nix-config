@@ -9,6 +9,8 @@
   home-manager = specialArgs.inputs.home-manager;
   nixpkgs = specialArgs.inputs.nixpkgs;
 
+  hosts = builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
+
   mkHost = host: let
     config = specialArgs.self.nixosConfigurations."${host}".config;
 
@@ -17,11 +19,13 @@
 
       ../nixos
     ];
-    homeModules = [
-      ./${host}/config.nix
-      ../options
-      ../home
-    ];
+    homeModules =
+      [
+        ./${host}/config.nix
+        ../options
+        ../home
+      ]
+      ++ builtins.map (host: ./${host}/shared.nix) hosts;
 
     extraSpecialArgs =
       {
@@ -62,10 +66,13 @@
         modules = homeModules;
       };
 in
-  builtins.listToAttrs (builtins.attrValues (builtins.mapAttrs (host: value: {
-    name =
-      if isNixOS
-      then host
-      else "${username}@${host}";
-    value = mkHost host;
-  }) (builtins.removeAttrs (builtins.readDir ./.) ["default.nix"])))
+  builtins.listToAttrs (
+    builtins.map (host: {
+      name =
+        if isNixOS
+        then host
+        else "${username}@${host}";
+      value = mkHost host;
+    })
+    hosts
+  )
