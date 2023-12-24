@@ -15,7 +15,18 @@ in {
       description = "Type of host. The default values depend on it.";
     };
 
+    boot.mode = mkOption {
+      type = types.enum ["uefi" "legacy"];
+      default =
+        if builtins.pathExists /sys/firmware/efi/efivars
+        then "uefi"
+        else "legacy";
+      example = "legacy";
+      description = "The boot mode of the system can be UEFI or Legacy (BIOS).";
+    };
+
     canary.enable = lib.mkEnableOption "canary" // {default = type == "desktop";};
+
     monitors = mkOption {
       type = types.listOf (types.submodule {
         options = {
