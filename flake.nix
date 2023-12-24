@@ -26,12 +26,18 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     nixpkgs-yunfachi,
-    self,
+    pre-commit-hooks,
     ...
   }: let
     username = "yunfachi";
@@ -53,6 +59,8 @@
 
       umport = pkgs-yunfachi.umport;
     };
+
+    eachSystem = object: (nixpkgs.lib.genAttrs [system] object);
   in {
     nixosConfigurations = import ./hosts (
       {inherit specialArgs;} // {isNixOS = true;}
@@ -61,5 +69,22 @@
     homeConfigurations = import ./hosts (
       {inherit specialArgs;} // {isNixOS = false;}
     );
+
+    checks = eachSystem (system: {
+      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+          statix = {
+            enable = true;
+            excludes = [".lock"];
+          };
+          prettier = {
+            enable = false;
+            excludes = [".md"];
+          };
+        };
+      };
+    });
   };
 }
