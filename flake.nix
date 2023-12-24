@@ -40,25 +40,24 @@
     pre-commit-hooks,
     ...
   }: let
-    username = "yunfachi";
-    userfullname = "yunfachi";
-    useremail = "yunfachi@gmail.com";
+    constants = import ./constants.nix;
 
     system = "x86_64-linux";
 
-    specialArgs = rec {
-      inherit inputs self;
-      inherit username userfullname useremail;
-      inherit system;
-
-      pkgs = import nixpkgs {
+    specialArgs =
+      rec {
+        inherit inputs self;
         inherit system;
-        config.allowUnfree = true;
-      };
-      pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
 
-      umport = pkgs-yunfachi.umport;
-    };
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
+
+        umport = pkgs-yunfachi.umport;
+      }
+      // constants;
 
     eachSystem = object: (nixpkgs.lib.genAttrs [system] object);
   in {
