@@ -3,17 +3,16 @@
   lib,
   ...
 }: let
-  cfg = config.yunfachi.grub;
+  cfg = config.yunfachi.boot;
 in {
   config = {
     boot.loader = {
       efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+        canTouchEfiVariables = cfg.mode == "uefi";
       };
       grub = {
-        enable = lib.mkForce cfg.enable;
-        efiSupport = true;
+        enable = lib.mkForce true;
+        efiSupport = lib.mkForce (cfg.mode == "uefi");
         devices = ["nodev"];
       };
     };

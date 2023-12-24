@@ -10,7 +10,6 @@ in {
   options.yunfachi = {
     audio.enable = lib.mkEnableOption "audio (pipewire)" // {default = type == "desktop";};
 
-    grub.enable = lib.mkEnableOption "grub" // {default = true;};
     wireguard = {
       enable = mkEnableOption "wireguard" // {default = type == "desktop";};
       type = mkOption {
