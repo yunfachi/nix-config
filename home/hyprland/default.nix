@@ -25,12 +25,14 @@ in {
 
       settings = lib.mkMerge [
         {
-          monitor = map (
-            m: let
-              resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-              position = "${toString m.x}x${toString m.y}";
-            in "${m.name},${resolution},${position},${toString m.scale}"
-          ) (config.yunfachi.monitors);
+          monitor =
+            map (
+              m: let
+                resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+                position = "${toString m.x}x${toString m.y}";
+              in "${m.name},${resolution},${position},${toString m.scale}"
+            )
+            config.yunfachi.monitors;
 
           input = {
             kb_layout = "${

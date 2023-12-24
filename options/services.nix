@@ -28,7 +28,7 @@ in {
         description = "The private key of the current host.";
       };
       routedIPs = mkOption {
-        type = types.listOf (types.str);
+        type = types.listOf types.str;
         default = ["0.0.0.0/0" "::/0"];
         example = [];
         description = "A list of IP addresses or CIDR blocks that will be routed through the VPN. Only needed for the client.";

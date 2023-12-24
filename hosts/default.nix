@@ -12,7 +12,7 @@
   hosts = builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
 
   mkHost = host: let
-    config = specialArgs.self.nixosConfigurations."${host}".config;
+    inherit (specialArgs.self.nixosConfigurations."${host}") config;
 
     nixosModules = [
       ./${host}/hardware.nix
@@ -25,12 +25,12 @@
         ../options
         ../home
       ]
-      ++ builtins.map (host: (import ./${host}/shared.nix {host = host;})) hosts;
+      ++ builtins.map (host: (import ./${host}/shared.nix {inherit host;})) hosts;
 
     extraSpecialArgs =
       {
         inherit host isNixOS;
-        type = config.yunfachi.type;
+        inherit (config.yunfachi) type;
       }
       // specialArgs;
   in
