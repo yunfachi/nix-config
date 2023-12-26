@@ -13,7 +13,5 @@
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKeys.keys = [
-    ];
   };
 }

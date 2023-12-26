@@ -8,7 +8,19 @@ with lib; let
   cfg = config.yunfachi;
 in {
   options.yunfachi = {
-    audio.enable = lib.mkEnableOption "audio (pipewire)" // {default = type == "desktop";};
+    audio.enable = mkEnableOption "audio (pipewire)" // {default = type == "desktop";};
+    ssh = {
+      enable = mkEnableOption "ssh" // {default = true;};
+      type = mkOption {
+        type = types.enum ["server" "client"];
+        default =
+          if type == "desktop"
+          then "client"
+          else "server";
+        example = "client";
+        description = "";
+      };
+    };
 
     wireguard = {
       enable = mkEnableOption "wireguard" // {default = type == "desktop";};
