@@ -56,6 +56,12 @@
         pkgs-yunfachi = import nixpkgs-yunfachi {inherit nixpkgs system;};
 
         umport = pkgs-yunfachi.umport;
+        sops-decrypt = path:
+          pkgs-yunfachi.sops-decrypt {
+            inherit path;
+            publicAge = "age1xutl7n8q49w37gs52wukudnc0xltg6ynd6edgm05w8dngjm3u45q6gkm2d";
+            privateAgeFile = /home/${constants.username}/.config/sops/age/keys.txt;
+          };
       }
       // constants;
 
