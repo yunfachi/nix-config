@@ -221,17 +221,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1702744308,
-        "narHash": "sha256-DtWTbLOVclB1vNTtPrdZH+CFllh97VnVvFzi7KnZ6JA=",
-        "owner": "yunfachi",
-        "repo": "nixpkgs-yunfachi",
-        "rev": "f7c12de5d033b1810bf2eba784038de313052578",
-        "type": "github"
+        "dirtyRev": "bbe78e8cb9c30fb4e93edf1dfef70b9bbc9646c1-dirty",
+        "dirtyShortRev": "bbe78e8-dirty",
+        "lastModified": 1703792201,
+        "narHash": "sha256-pX09IgaUW7VYGzB6IzQHR42ieBEN+mb/qbtDoT4/KE4=",
+        "type": "git",
+        "url": "file:///home/yunfachi/git/nixpkgs-yunfachi"
       },
       "original": {
-        "owner": "yunfachi",
-        "repo": "nixpkgs-yunfachi",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/yunfachi/git/nixpkgs-yunfachi"
       }
     },
     "pre-commit-hooks": {

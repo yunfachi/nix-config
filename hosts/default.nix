@@ -25,7 +25,13 @@
         ../options
         ../home
       ]
-      ++ builtins.map (host: (import ./${host}/shared.nix {inherit host;})) hosts;
+      ++ builtins.map (host: (
+        import ./${host}/shared.nix {
+          inherit host;
+          secrets = import (specialArgs.sops-decrypt ./${host}/secrets.nix);
+        }
+      ))
+      hosts;
 
     extraSpecialArgs =
       {
