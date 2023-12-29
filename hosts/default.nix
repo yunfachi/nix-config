@@ -8,17 +8,19 @@
   lib = specialArgs.inputs.nixpkgs.lib;
   home-manager = specialArgs.inputs.home-manager;
   nixpkgs = specialArgs.inputs.nixpkgs;
+  umport = specialArgs.umport;
 
   hosts = builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
 
   mkHost = host: let
     inherit (specialArgs.self.nixosConfigurations."${host}") config;
 
-    nixosModules = [
-      ./${host}/hardware.nix
-
-      ../nixos
-    ];
+    nixosModules =
+      [./${host}/hardware.nix]
+      ++ umport {path = ../nixos/misc;}
+      ++ umport {path = ../nixos/programs;}
+      ++ umport {path = ../nixos/services;}
+      ++ umport {path = ../nixos/system;};
     homeModules =
       [
         ./${host}/config.nix
