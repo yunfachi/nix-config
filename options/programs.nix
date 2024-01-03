@@ -14,5 +14,6 @@ in {
     hyprland.enable = lib.mkEnableOption "hyprland" // {default = type == "desktop";};
     kitty.enable = lib.mkEnableOption "kitty" // {default = type == "desktop";};
     shikimori.enable = lib.mkEnableOption "shikimori" // {default = type == "desktop";};
+    telegram.enable = lib.mkEnableOption "telegram" // {default = type == "desktop";};
   };
 }
