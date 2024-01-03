@@ -11,7 +11,7 @@ in {
 
       userSettings = let
         icon = "https://user-images.githubusercontent.com/36299870/105232957-165bc380-5b61-11eb-8da4-37870387857f.png";
-        work = "{workspace}/{file_name}{file_extension}";
+        work = "{git_owner}/{workspace} ~ {file_name}{file_extension}";
         idle = "( ´ ▿ ` )";
       in {
         "window.titleBarStyle" = "custom";
