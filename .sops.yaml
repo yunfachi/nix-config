@@ -1,7 +1,0 @@
-keys:
-  - &primary age1xutl7n8q49w37gs52wukudnc0xltg6ynd6edgm05w8dngjm3u45q6gkm2d
-creation_rules:
-  - path_regex: secrets.nix$
-    key_groups:
-    - age:
-      - *primary
