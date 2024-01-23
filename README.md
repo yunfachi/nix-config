@@ -48,7 +48,7 @@ module-functions.moduleIfElse "programs" "deshiro" {
 {module-functions, ...}:
 module-functions.moduleIfElse "programs" "deshiro" (cfg: {
   programs.deshiro.enable = true;
-} {
+}) (cfg: {
   programs.deshiro.enable = false;
 })
 </pre></td></tr></table>
@@ -66,11 +66,12 @@ module-functions.moduleIfElseFinally "programs" "deshiro-gui" {
 }
 </pre></td><td><pre lang="nix">
 {module-functions, ...}:
-module-functions.moduleIfElseFinally "programs" "deshiro-gui" (cfg: {
+module-functions.moduleIfElseFinally "programs" "deshiro-gui"
+(cfg: {
   programs.deshiro-gui.enable = true;
-} {
+}) (cfg: {
   programs.deshiro-gui.enable = false;
-} {
+}) (cfg: {
   programs.deshiro-server.enable = true;
 })
 </pre></td></tr></table>
