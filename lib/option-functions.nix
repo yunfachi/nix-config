@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   username,
   ...
 }: let
@@ -11,10 +12,36 @@
     else if builtins.length values > 1
     then builtins.elemAt values 1
     else value;
+
+  wrapContent = type: name: content: root:
+    if builtins.typeOf content == "lambda"
+    then
+      content (
+        if type != null
+        then
+          (
+            if root
+            then config."${type}"."${name}"
+            else config."${username}"."${type}"."${name}"
+          )
+        else
+          (
+            if root
+            then config."${name}"
+            else config."${username}"."${name}"
+          )
+      )
+    else content;
 in {
-  option = type: name: content: {
-    options."${username}"."${type}"."${name}" = content;
-  };
+  option = type: name: content:
+    if (type != null)
+    then {options."${username}"."${type}"."${name}" = wrapContent type name content false;}
+    else {options."${username}"."${name}" = wrapContent type name content false;};
+
+  rootOption = type: name: content:
+    if (type != null)
+    then {options."${type}"."${name}" = wrapContent type name content true;}
+    else {options."${name}" = wrapContent type name content true;};
 
   enableOption = name: default:
     lib.mkOption {
