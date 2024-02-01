@@ -51,6 +51,14 @@ in {
       type = lib.types.bool;
     };
 
+  textOption = name: default:
+    lib.mkOption {
+      inherit default;
+      example = "Hoge";
+      description = "Whether to specify ${name}.";
+      type = lib.types.str;
+    };
+
   enumOption = name: default: values:
     lib.mkOption {
       inherit default;
