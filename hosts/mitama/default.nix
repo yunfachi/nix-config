@@ -1,2 +1,3 @@
 {...}: {
+  host.type = "desktop";
 }

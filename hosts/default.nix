@@ -29,6 +29,9 @@
               useGlobalPkgs = true;
             };
           }
+          {
+            host.name = name;
+          }
         ]
         ++ builtins.concatLists (builtins.map (path: ylib.umport {inherit path;}) (ylib.umport {path = ../modules;}))
         ++ builtins.concatLists (builtins.map (path: ylib.umport {inherit path;}) (ylib.umport {path = ../options;}));
