@@ -21,26 +21,28 @@
       if type != null
       then config1.${type}.${name}
       else config1.${name};
-    config3 =
-      if config2 ? enable
-      then config.enable
-      else true;
 
     wrapContent = content:
       if builtins.typeOf content == "lambda"
       then content config2
       else content;
+
     condition =
       if !negate
-      then true #config3
-      else !true; #config3;
+      then config2.enable or true
+      else !config2.enable or true;
   in
     lib.mkMerge [
-      (
-        if condition
-        then wrapContent contentIfEnabled
-        else wrapContent contentIfDisabled
-      )
+      {
+        inherit condition;
+        _type = "if";
+        content = wrapContent contentIfEnabled;
+      }
+      {
+        inherit condition;
+        _type = "if";
+        content = wrapContent contentIfDisabled;
+      }
       (wrapContent contentFinally)
     ];
 
