@@ -5,7 +5,7 @@
   ...
 }: {
   networking = {
-    hostName = host;
+    hostName = host.name;
 
     networkmanager.enable = true;
   };
