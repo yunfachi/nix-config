@@ -6,4 +6,10 @@ with option-functions;
 
     isServer = enableOption "isServer" (cfg.type == "server");
     isDesktop = enableOption "isDesktop" (cfg.type == "desktop");
+
+    window-manager = enumOption "window-manager" (
+      if cfg.isDesktop
+      then "xmonad"
+      else null
+    ) [null "xmonad"];
   })
