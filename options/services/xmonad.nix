@@ -1,5 +1,9 @@
-{option-functions, ...}:
+{
+  option-functions,
+  host,
+  ...
+}:
 with option-functions;
   option "services" "xmonad" {
-    enable = enableOption "xmonad" true;
+    enable = enableOption "xmonad" (host.window-manager == "xmonad");
   }
