@@ -1,6 +1,7 @@
 {
   lib,
   ylib,
+  nixosConfigurations,
   home-manager,
   specialArgs,
 }: let
@@ -10,7 +11,9 @@
     extraSpecialArgs =
       specialArgs
       // {
-        host = name;
+        host = nixosConfigurations.${name}.config.host;
+        module-functions = specialArgs.module-functions nixosConfigurations.${name}.config;
+        option-functions = specialArgs.option-functions nixosConfigurations.${name}.config;
       };
   in
     lib.nixosSystem {

@@ -34,15 +34,18 @@
     };
 
     lib = {
-      module-functions = import ./lib/module-functions.nix {
-        inherit (packages) lib;
-        inherit (constants) username;
-        inherit (self.nixosConfigurations.mitama) config;
-      };
-      option-functions = import ./lib/option-functions.nix {
-        inherit (packages) lib;
-        inherit (constants) username;
-      };
+      module-functions = config:
+        import ./lib/module-functions.nix {
+          inherit (packages) lib;
+          inherit (constants) username;
+          inherit config;
+        };
+      option-functions = config:
+        import ./lib/option-functions.nix {
+          inherit (packages) lib;
+          inherit (constants) username;
+          inherit config;
+        };
     };
 
     specialArgs =
@@ -55,6 +58,7 @@
   in {
     nixosConfigurations = import ./hosts {
       inherit (packages) lib ylib;
+      inherit (self) nixosConfigurations;
       inherit home-manager;
       inherit specialArgs;
     };
