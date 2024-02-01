@@ -9,6 +9,11 @@
       url = "github:yunfachi/nixpkgs-yunfachi/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -16,6 +21,7 @@
     nixpkgs,
     home-manager,
     nypkgs,
+    nix-vscode-extensions,
   }: let
     constants = import ./constants.nix;
     system = "x86_64-linux";
@@ -31,6 +37,8 @@
         inherit system;
       };
       ylib = ypkgs.lib;
+
+      vscode-extensions = nix-vscode-extensions.extensions.${system}.vscode-marketplace;
     };
 
     lib = {
