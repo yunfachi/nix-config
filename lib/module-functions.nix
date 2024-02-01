@@ -1,39 +1,89 @@
 {
   lib,
-  username,
   config,
+  username,
   ...
-}: let
-  wrapContent = type: name: content: (
-    if builtins.typeOf content == "lambda"
-    then content config."${username}"."${type}"."${name}"
-    else content
-  );
-in rec {
-  # "type = if" is used here because "if then else" will cause infinite recursion
-  moduleIfEnabled = type: name: content: {
-    _type = "if";
-    condition = config."${username}"."${type}"."${name}".enable;
-    content = wrapContent type name content;
-  };
+}: rec {
+  moduleRaw = {
+    type ? null,
+    name,
+    contentIfEnabled ? {},
+    contentIfDisabled ? {},
+    contentFinally ? {},
+    negate ? false,
+    root ? false,
+  }: let
+    config1 =
+      if !root
+      then config.${username}
+      else config;
+    config2 =
+      if type != null
+      then config1.${type}.${name}
+      else config1.${name};
+    config3 =
+      if config2 ? enable
+      then config.enable
+      else true;
 
-  moduleIfDisabled = type: name: content: {
-    _type = "if";
-    condition = !config."${username}"."${type}"."${name}".enable;
-    content = wrapContent type name content;
-  };
+    wrapContent = content:
+      if builtins.typeOf content == "lambda"
+      then content config2
+      else content;
+    condition =
+      if !negate
+      then true #config3
+      else !true; #config3;
+  in
+    lib.mkMerge [
+      (
+        if condition
+        then wrapContent contentIfEnabled
+        else wrapContent contentIfDisabled
+      )
+      (wrapContent contentFinally)
+    ];
 
+  moduleIfEnabled = type: name: contentIfEnabled:
+    moduleRaw {
+      inherit type name contentIfEnabled;
+    };
+  moduleIfDisabled = type: name: contentIfEnabled:
+    moduleRaw {
+      inherit type name contentIfEnabled;
+      negate = true;
+    };
   moduleIfElse = type: name: contentIfEnabled: contentIfDisabled:
-    lib.mkMerge [
-      (moduleIfEnabled type name contentIfEnabled)
-      (moduleIfDisabled type name contentIfDisabled)
-    ];
-
+    moduleRaw {
+      inherit type name contentIfEnabled contentIfDisabled;
+    };
   moduleIfElseFinally = type: name: contentIfEnabled: contentIfDisabled: contentFinally:
-    lib.mkMerge [
-      (moduleIfElse type name contentIfEnabled contentIfDisabled)
-      contentFinally
-    ];
+    moduleRaw {
+      inherit type name contentIfEnabled contentIfDisabled contentFinally;
+    };
+
+  rootModuleIfEnabled = type: name: contentIfEnabled:
+    moduleRaw {
+      inherit type name contentIfEnabled;
+      root = true;
+    };
+  rootModuleIfDisabled = type: name: contentIfEnabled:
+    moduleRaw {
+      inherit type name contentIfEnabled;
+      negate = true;
+      root = true;
+    };
+  rootModuleIfElse = type: name: contentIfEnabled: contentIfDisabled:
+    moduleRaw {
+      inherit type name contentIfEnabled contentIfDisabled;
+      root = true;
+    };
+  rootModuleIfElseFinally = type: name: contentIfEnabled: contentIfDisabled: contentFinally:
+    moduleRaw {
+      inherit type name contentIfEnabled contentIfDisabled contentFinally;
+      root = true;
+    };
 
   module = moduleIfEnabled;
+  rootModule = rootModuleIfEnabled;
 }
