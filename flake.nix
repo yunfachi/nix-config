@@ -33,9 +33,7 @@
       };
       lib = nixpkgs.lib;
 
-      ypkgs = import nypkgs {
-        inherit system;
-      };
+      ypkgs = nypkgs.legacyPackages.${system};
       ylib = ypkgs.lib;
 
       vscode-extensions = nix-vscode-extensions.extensions.${system}.vscode-marketplace;
