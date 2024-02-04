@@ -10,9 +10,3 @@ module-functions.module "programs" "codium" {
     package = pkgs.vscodium;
   };
 }
-// {
-  imports = [
-    ./extensions.nix
-    ./settings.nix
-  ];
-}
