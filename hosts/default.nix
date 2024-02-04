@@ -33,8 +33,10 @@
             host.name = name;
           }
         ]
-        ++ builtins.concatLists (builtins.map (path: ylib.umport {inherit path;}) (ylib.umport {path = ../modules;}))
-        ++ builtins.concatLists (builtins.map (path: ylib.umport {inherit path;}) (ylib.umport {path = ../options;}));
+        ++ ylib.umport {
+          paths = [../modules ../options];
+          recursive = true;
+        };
     };
 in
   builtins.listToAttrs (builtins.map (name: {
