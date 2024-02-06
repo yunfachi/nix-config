@@ -1,5 +1,4 @@
 {
-  module-functions,
   user,
   host,
   ...

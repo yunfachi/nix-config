@@ -1,9 +1,4 @@
-{
-  module-functions,
-  hm,
-  host,
-  ...
-}:
+{module-functions, ...}:
 module-functions.module "services" "wayland" {
   programs.xwayland.enable = true;
 }
