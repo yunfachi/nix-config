@@ -68,5 +68,14 @@
       inherit home-manager;
       inherit specialArgs;
     };
+
+    devShells.${system}.default = with packages.pkgs;
+      mkShell {
+        packages = [
+          git
+          statix
+          deadnix
+        ];
+    };
   };
 }
