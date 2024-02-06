@@ -1,9 +1,6 @@
 {
   module-functions,
-  hm,
   host,
-  username,
-  lib,
   ...
 }:
 module-functions.module "services" "xserver" (cfg: {

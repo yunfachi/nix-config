@@ -1,9 +1,4 @@
-{
-  module-functions,
-  hm,
-  pkgs,
-  ...
-}:
+{module-functions, ...}:
 module-functions.module "services" "sound" {
   services.pipewire = {
     enable = true;

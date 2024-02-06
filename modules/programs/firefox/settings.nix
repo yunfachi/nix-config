@@ -1,8 +1,6 @@
 {
   module-functions,
   hm,
-  pkgs,
-  ypkgs,
   username,
   ...
 }:
