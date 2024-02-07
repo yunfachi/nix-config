@@ -33,6 +33,8 @@
       )
     else content;
 in {
+  inherit (lib) types;
+
   option = type: name: content:
     if (type != null)
     then {options."${username}"."${type}"."${name}" = wrapContent type name content false;}
