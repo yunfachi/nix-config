@@ -35,6 +35,17 @@ module-functions.module "services" "hyprland" {
       kb_options = config.services.xserver.xkbOptions;
     };
 
+    monitor =
+      map (m: let
+        resolution = "${builtins.toString m.width}x${builtins.toString m.height}@${builtins.toString m.refreshRate}";
+        position = "${builtins.toString m.x}x${builtins.toString m.y}";
+      in "${m.id},${
+        if m.enabled
+        then "${resolution},${position},1"
+        else "disable"
+      }")
+      config.yunfachi.hardware.displays;
+
     dwindle = {
       preserve_split = true;
     };
