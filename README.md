@@ -1,5 +1,30 @@
 # yunfachi's NixOS configuration
 
+## Tree
+<big><pre>
+.
+├── [hosts](./hosts/)
+│   ├── [mitama](./hosts/mitama/)
+│   │   ├── [default.nix](./hosts/mitama/default.nix)
+│   │   └── [hardware.nix](./hosts/mitama/hardware.nix)
+│   └── [default.nix](./hosts/default.nix)
+├── [lib](./lib/)
+│   ├── [module-functions.nix](./lib/module-functions.nix)
+│   └── [option-functions.nix](./lib/option-functions.nix)
+├── [modules](./modules/)
+│   ├── [config](./modules/config/)
+│   ├── [programs](./modules/programs/)
+│   ├── [services](./modules/services/)
+│   └── [system](./modules/system/)
+├── [options](./options/)
+│    ├── [config](./options/config/)
+│    ├── [programs](./options/programs/)
+│    ├── [services](./options/services/)
+│    └── [system](./options/system/)
+├── [constants.nix](./constants.nix)
+└── [flake.nix](./flake.nix)
+</pre></big>
+
 ## Examples
 <details>
 <summary>Module</summary>
