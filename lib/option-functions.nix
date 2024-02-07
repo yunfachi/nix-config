@@ -59,6 +59,14 @@ in {
       type = lib.types.str;
     };
 
+  numberOption = name: default:
+    lib.mkOption {
+      inherit default;
+      example = 110;
+      description = "Whether to specify ${name}.";
+      type = lib.types.number;
+    };
+
   enumOption = name: default: values:
     lib.mkOption {
       inherit default;
@@ -66,4 +74,15 @@ in {
       description = "Whether to choose ${name}.";
       type = lib.types.enum values;
     };
+
+  listOption = name: default: type:
+    lib.mkOption {
+      inherit default;
+      example = [];
+      description = "Whether to specify ${name}.";
+      type = lib.types.listOf type;
+    };
+
+  submoduleOption = content:
+    lib.types.submodule {options = content;};
 }
