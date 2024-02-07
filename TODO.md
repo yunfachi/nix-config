@@ -23,5 +23,5 @@
 ## Misc
 
 - [ ] Create a GitHub Workflow for flake check
-- [ ] Rename this branch to master and rename other branches with suitable names
+- [x] Rename this branch to master and rename other branches with suitable names
 - [ ] Write in README a lot of fluff :D
