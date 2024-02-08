@@ -2,7 +2,7 @@
 
 ## Features
 - Modular modules and options inspired by [nixpkgs](https://github.com/NixOS/nixpkgs)
-- Abandoning imports in favor of [umport](https://github.com/yunfachi/nixpkgs-yunfachi/blob/master/lib/umport.nix), which recursively import all modules by path
+- Abandoning imports in favor of [umport](https://github.com/yunfachi/nypkgs/blob/master/lib/umport.nix), which recursively import all modules by path
 - Own [lib](./lib/) for convenient generation of [modules](./lib/module-functions.nix) and [options](./lib/option-functions.nix)
 - Automatic [installation](./modules/programs/wpaperd.nix) of wallpapers from [attrset](./options/programs/wpaperd.nix) with URLs
 - Error handling after checking flake in [github workflow](https://github.com/yunfachi/nix-config/actions/workflows/check.yml) with quotes from Sun Tzu, The Art of War

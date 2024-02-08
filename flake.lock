@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707268437,
-        "narHash": "sha256-V2R7OyXn5E5A9YuAmpLTDGjHmxuFBRHFTyf9RoloYXw=",
+        "lastModified": 1707354865,
+        "narHash": "sha256-u3bzIeFvvJix2Shb0jVN5qP1OJzowUn+23GtiQL4Prw=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "bdb6e70f3dd307fdd9a20698a861d8f298883ea1",
+        "rev": "e3ad5def2bdaf7d0d012de6ddd6a5f5246e5f9e8",
         "type": "github"
       },
       "original": {
@@ -101,17 +101,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1707052083,
-        "narHash": "sha256-XMQoHsJc3T60cx4P6GyYzCKz5I6x/L2lGSm1OFaYsAk=",
+        "lastModified": 1707332394,
+        "narHash": "sha256-DNKsr/dk0b1I7Z8mZf7bs3LlQ1ymFMJ9STDLCXWgZJQ=",
         "owner": "yunfachi",
-        "repo": "nixpkgs-yunfachi",
-        "rev": "d41167499eca65981be9d530b9f5163e5abfdbd8",
+        "repo": "nypkgs",
+        "rev": "c38dcefe7b95d736884c8167f98b7f1a18531720",
         "type": "github"
       },
       "original": {
         "owner": "yunfachi",
         "ref": "master",
-        "repo": "nixpkgs-yunfachi",
+        "repo": "nypkgs",
         "type": "github"
       }
     },
