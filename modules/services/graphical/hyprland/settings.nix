@@ -3,9 +3,10 @@
   hm,
   config,
   pkgs,
+  ylib,
   ...
 }:
-module-functions.module "services" "hyprland" {
+module-functions.module "services" "hyprland" (cfg: {
   hm.wayland.windowManager.hyprland.settings = let
     #TODO: move this to the options something like rice.nix&terminal.nix
     mod = "SUPER";
@@ -50,10 +51,12 @@ module-functions.module "services" "hyprland" {
       preserve_split = true;
     };
 
-    exec-once =
+    exec-once = map (command: ylib.concatLinesWithSemicolon command) (
       [
         "$terminal"
       ]
-      ++ config.yunfachi.startup.commands.onGraphical;
+      ++ config.yunfachi.startup.commands.onGraphical
+      ++ cfg.startupCommands
+    );
   };
-}
+})
