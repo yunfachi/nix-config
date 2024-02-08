@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nypkgs = {
-      url = "github:yunfachi/nixpkgs-yunfachi/master";
+      url = "github:yunfachi/nypkgs/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
