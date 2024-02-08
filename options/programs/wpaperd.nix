@@ -28,6 +28,10 @@ with option-functions;
           url = "https://w.wallhaven.cc/full/1p/wallhaven-1pdwow.jpg";
           hash = "sha256-WvJYjml+47/ktEq7caXiKkQZKE29d+JwpWJFNkGa2HE=";
         }
+        {
+          url = "https://media.discordapp.net/attachments/1205075309842661427/1205075425378832454/WyhWIfT.jpeg";
+          hash = "sha256-BNo0rIpM7WwB15gfZW/lbt1Yq+FR279p9PNUU1NVD1Y=";
+        }
       ]
       (submoduleOption {
         url = textOption "wallpaper url" null;
