@@ -22,8 +22,8 @@ module-functions.module "services" "hyprland" {
       gaps_in = 4;
       gaps_out = 8;
       #TODO: move all colors to a separate module
-      "col.inactive_border" = "0xAE776B5D";
-      "col.active_border" = "0xFF776B5D";
+      "col.inactive_border" = "0x99776B5D";
+      "col.active_border" = "0xE6776B5D";
     };
 
     decoration = {
