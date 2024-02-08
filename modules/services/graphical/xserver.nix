@@ -8,8 +8,10 @@ module-functions.module "services" "xserver" (cfg: {
     xserver = {
       enable = true;
 
-      layout = "us,ru";
-      xkbOptions = "grp:win_space_toggle";
+      xkb = {
+        layout = "us,ru";
+        options = "grp:win_space_toggle";
+      };
 
       displayManager = {
         gdm = {
