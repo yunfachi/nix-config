@@ -3,6 +3,7 @@
   hm,
   pkgs,
   username,
+  config,
   ...
 }:
 module-functions.module "programs" "wpaperd" (cfg: {
@@ -30,4 +31,8 @@ module-functions.module "programs" "wpaperd" (cfg: {
       };
     };
   };
+
+  yunfachi.startup.commands.onGraphical = [
+    "${config.hm.programs.wpaperd.package}/bin/wpaperd"
+  ];
 })

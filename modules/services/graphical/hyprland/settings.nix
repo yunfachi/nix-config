@@ -50,8 +50,10 @@ module-functions.module "services" "hyprland" {
       preserve_split = true;
     };
 
-    exec-once = [
-      "$terminal"
-    ];
+    exec-once =
+      [
+        "$terminal"
+      ]
+      ++ config.yunfachi.startup.commands.onGraphical;
   };
 }
