@@ -31,8 +31,8 @@ module-functions.module "services" "hyprland" {
     };
 
     input = {
-      kb_layout = config.services.xserver.layout;
-      kb_options = config.services.xserver.xkbOptions;
+      kb_layout = config.services.xserver.xkb.layout;
+      kb_options = config.services.xserver.xkb.options;
     };
 
     monitor =
