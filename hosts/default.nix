@@ -8,12 +8,14 @@
   hosts = builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
 
   host = name: let
+    config = nixosConfigurations.${name}.config;
+
     extraSpecialArgs =
       specialArgs
       // {
-        host = nixosConfigurations.${name}.config.host;
-        module-functions = specialArgs.module-functions nixosConfigurations.${name}.config;
-        option-functions = specialArgs.option-functions nixosConfigurations.${name}.config;
+        host = config.host;
+        module-functions = specialArgs.module-functions config;
+        option-functions = specialArgs.option-functions config;
       };
   in
     lib.nixosSystem {
