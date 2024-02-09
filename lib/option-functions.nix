@@ -85,6 +85,14 @@ in {
       type = lib.types.listOf type;
     };
 
+  attrsOption = name: default: type:
+    lib.mkOption {
+      inherit default;
+      example = [];
+      description = "Whether to specify ${name}.";
+      type = lib.types.attrsOf type;
+    };
+
   submoduleOption = content:
     lib.types.submodule {options = content;};
 }
