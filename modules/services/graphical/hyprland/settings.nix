@@ -55,8 +55,14 @@ module-functions.module "services" "hyprland" (cfg: {
       [
         "$terminal"
       ]
-      ++ config.yunfachi.startup.commands.onGraphical
-      ++ cfg.startupCommands
+      ++ config.yunfachi.commands.onGraphical.startup
+      ++ cfg.commands.onStartup
+    );
+    exec = map (command: ylib.concatLinesWithSemicolon command) (
+      [
+      ]
+      ++ config.yunfachi.commands.onGraphical.reload
+      ++ cfg.commands.onReload
     );
   };
 })

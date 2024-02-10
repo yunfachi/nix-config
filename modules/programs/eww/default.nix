@@ -33,13 +33,14 @@ module-functions.module "programs" "eww" (cfg: {
   };
 
   yunfachi = {
-    startup.commands.onGraphical = [
+    commands.onGraphical.reload = [
       ''
+        ${config.hm.programs.eww.package}/bin/eww kill
         ${config.hm.programs.eww.package}/bin/eww daemon
         ${config.hm.programs.eww.package}/bin/eww open-many window_top_bar
       ''
     ];
-    services.hyprland.startupCommands = [
+    services.hyprland.commands.onStartup = [
       ''
         ${config.hm.wayland.windowManager.hyprland.package}/bin/hyprctl \
           --batch "keyword monitor ,addreserved,${toString (cfg.bar.y + cfg.bar.height)},0,0,0"

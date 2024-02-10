@@ -32,7 +32,7 @@ module-functions.module "programs" "wpaperd" (cfg: {
     };
   };
 
-  yunfachi.startup.commands.onGraphical = [
+  yunfachi.commands.onGraphical.startup = [
     "${config.hm.programs.wpaperd.package}/bin/wpaperd"
   ];
 })
