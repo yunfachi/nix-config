@@ -8,18 +8,17 @@
 }:
 module-functions.module "services" "hyprland" (cfg: {
   hm.wayland.windowManager.hyprland.settings = let
-    #TODO: move this to the options something like hyprland.nix&terminal.nix
-    mod = "SUPER";
+    #TODO: move this to the options something like terminal.nix
     terminal =
       if config.yunfachi.programs.kitty.enable
       then "${pkgs.kitty}/bin/kitty"
       else "${pkgs.xterm}/bin/xterm";
   in {
-    "$mod" = mod;
+    "$mod" = cfg.mod;
     "$terminal" = terminal;
 
     general = {
-      border_size = 2;
+      border_size = config.yunfachi.rice.border_size;
       gaps_in = config.yunfachi.rice.gaps.inner;
       gaps_out = config.yunfachi.rice.gaps.outer;
       #TODO: move all colors to a separate module
@@ -28,7 +27,7 @@ module-functions.module "services" "hyprland" (cfg: {
     };
 
     decoration = {
-      rounding = 8;
+      rounding = config.yunfachi.rice.rounding;
     };
 
     input = {
