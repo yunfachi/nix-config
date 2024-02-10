@@ -8,7 +8,7 @@
 }:
 module-functions.module "services" "hyprland" (cfg: {
   hm.wayland.windowManager.hyprland.settings = let
-    #TODO: move this to the options something like rice.nix&terminal.nix
+    #TODO: move this to the options something like hyprland.nix&terminal.nix
     mod = "SUPER";
     terminal =
       if config.yunfachi.programs.kitty.enable
@@ -20,8 +20,8 @@ module-functions.module "services" "hyprland" (cfg: {
 
     general = {
       border_size = 2;
-      gaps_in = 4;
-      gaps_out = 8;
+      gaps_in = config.yunfachi.rice.gaps.inner;
+      gaps_out = config.yunfachi.rice.gaps.outer;
       #TODO: move all colors to a separate module
       "col.inactive_border" = "0x99776B5D";
       "col.active_border" = "0xE6776B5D";
