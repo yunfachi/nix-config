@@ -5,10 +5,10 @@
   home-manager,
   specialArgs,
 }: let
-  hosts = builtins.attrNames (lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./.));
+  hosts = builtins.attrNames (lib.filterAttrs (_name: type: type == "directory") (builtins.readDir ./.));
 
   host = name: let
-    config = nixosConfigurations.${name}.config;
+    inherit (nixosConfigurations.${name}) config;
 
     extraSpecialArgs =
       specialArgs
