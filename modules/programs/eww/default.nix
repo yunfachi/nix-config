@@ -1,4 +1,4 @@
-patterns @ {
+{
   module-functions,
   config,
   hm,
@@ -27,7 +27,7 @@ module-functions.module "programs" "eww" (cfg: {
         ]
         ++ map (attrs: {
           name = "eww-config-${lib.nameFromURL attrs.name "."}";
-          outPath = (pkgs.writeTextDir attrs.name attrs.value).outPath;
+          inherit (pkgs.writeTextDir attrs.name attrs.value) outPath;
         }) (lib.attrsToList cfg.config);
     };
   };
