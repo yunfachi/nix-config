@@ -99,4 +99,9 @@ in {
       then content
       else {options = content;}
     );
+
+  customOption = default: type:
+    lib.mkOption {
+      inherit default type;
+    };
 }
