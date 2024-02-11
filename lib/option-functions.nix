@@ -94,5 +94,9 @@ in {
     };
 
   submoduleOption = content:
-    lib.types.submodule {options = content;};
+    lib.types.submodule (
+      if (builtins.typeOf content) == "lambda"
+      then content
+      else {options = content;}
+    );
 }
