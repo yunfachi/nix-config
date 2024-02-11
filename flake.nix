@@ -14,6 +14,7 @@
       url = "github:nix-community/nix-vscode-extensions/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -22,6 +23,7 @@
     home-manager,
     nypkgs,
     nix-vscode-extensions,
+    nix-colors,
   }: let
     constants = import ./constants.nix;
     system = "x86_64-linux";
@@ -37,6 +39,7 @@
       ylib = ypkgs.lib;
 
       vscode-extensions = nix-vscode-extensions.extensions.${system}.vscode-marketplace;
+      inherit nix-colors;
     };
 
     lib = {
