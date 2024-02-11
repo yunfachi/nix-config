@@ -20,7 +20,7 @@ with option-functions; let
   );
 in {
   options.yunfachi = {
-    rice = enumOption "rice" config.yunfachi.rices.default (builtins.attrValues config.yunfachi.rices);
+    rice = customOption config.yunfachi.rices.default (submoduleOption (rice config.yunfachi.rice));
     rices =
       attrsOption "rices" {
         default = {};
