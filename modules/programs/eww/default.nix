@@ -40,7 +40,7 @@ module-functions.module "programs" "eww" (cfg: {
         ${config.hm.programs.eww.package}/bin/eww open-many window_top_bar
       ''
     ];
-    services.hyprland.commands.onStartup = [
+    services.hyprland.commands.onReload = [
       ''
         ${config.hm.wayland.windowManager.hyprland.package}/bin/hyprctl \
           --batch "keyword monitor ,addreserved,${toString (cfg.bar.y + cfg.bar.height)},0,0,0"
