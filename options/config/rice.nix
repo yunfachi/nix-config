@@ -7,7 +7,7 @@
 }:
 with option-functions; let
   rice = cfg: {
-    colorscheme = customOption nix-colors.colorschemes.kanagawa.palette options.yunfachi.colorschemes.type.nestedTypes.elemType;
+    colorscheme = customOption config.yunfachi.colorschemes.coffee options.yunfachi.colorschemes.type.nestedTypes.elemType;
 
     border_size = numberOption "border size" 2;
     rounding = numberOption "rounding" 8;
