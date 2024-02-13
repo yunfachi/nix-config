@@ -1,6 +1,5 @@
 {
   module-functions,
-  lib,
   config,
   ...
 }:
