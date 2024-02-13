@@ -1,0 +1,23 @@
+(deflisten workspaces :initial "[]" "bash scripts/workspaces.sh")
+(deflisten current_workspace :initial "5" "bash scripts/active-workspace.sh")
+
+(defwidget widget_workspaces []
+    (box :space-evenly true
+        :class "workspaces"
+        :halign "start"
+        :space-evenly false
+        :spacing 7
+        (label :text "${workspaces}${current_workspace}" :visible false)
+        (for workspace in workspaces
+            (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+                (box
+                :class "workspace_button"
+                (label 
+                    :class "workspace_label"
+                    :text "${workspace.id == current_workspace ? "◉" : (workspace.windows == 0 ? "○" : "●")}"
+                    )
+                )
+            )
+        )
+    )
+)
