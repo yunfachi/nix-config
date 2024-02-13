@@ -8,6 +8,7 @@
 }:
 module-functions.module "services" "hyprland" (cfg: {
   hm.wayland.windowManager.hyprland.settings = let
+    inherit (config.yunfachi) rice;
     #TODO: move this to the options something like terminal.nix
     terminal =
       if config.yunfachi.programs.kitty.enable
@@ -18,16 +19,15 @@ module-functions.module "services" "hyprland" (cfg: {
     "$terminal" = terminal;
 
     general = {
-      border_size = config.yunfachi.rice.border_size;
-      gaps_in = config.yunfachi.rice.gaps.inner;
-      gaps_out = config.yunfachi.rice.gaps.outer;
-      #TODO: move all colors to a separate module
-      "col.inactive_border" = "0x99776B5D";
-      "col.active_border" = "0xE6776B5D";
+      border_size = rice.border_size;
+      gaps_in = rice.gaps.inner;
+      gaps_out = rice.gaps.outer;
+      "col.inactive_border" = "0x99${rice.colorscheme.base04}";
+      "col.active_border" = "0xE6${rice.colorscheme.base04}";
     };
 
     decoration = {
-      rounding = config.yunfachi.rice.rounding;
+      rounding = rice.rounding;
     };
 
     input = {
