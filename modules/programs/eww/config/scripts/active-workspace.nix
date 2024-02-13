@@ -1,8 +1,6 @@
 {
   module-functions,
-  lib,
   config,
-  hm,
   pkgs,
   host,
   ...
