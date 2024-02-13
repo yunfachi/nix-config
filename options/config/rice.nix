@@ -1,7 +1,6 @@
 {
   option-functions,
   config,
-  nix-colors,
   options,
   ...
 }:
