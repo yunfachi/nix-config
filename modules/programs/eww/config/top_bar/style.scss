@@ -18,6 +18,4 @@
 tooltip label {
     @include base.window;
     padding: 5px;
-    margin-top: 6px; // it will need to be changed if I change gaps_out
-    margin-right: 4px; // it is too
 }
