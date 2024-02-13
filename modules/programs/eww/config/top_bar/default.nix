@@ -18,7 +18,7 @@ module-functions.module "programs" "eww" {
                   :x "0px"
                   :y "${toString (config.yunfachi.rice.gaps.outer - extraSpace)}px"
                   :width "100%"
-                  :height "${toString (config.yunfachi.programs.eww.bar.height + extraSpace * 2)}px"
+                  :height "${toString (config.yunfachi.rice.bar_height + extraSpace * 2)}px"
                   :anchor "top center")
       :stacking "fg"
       :focusable false
