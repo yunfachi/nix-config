@@ -1,0 +1,23 @@
+(deflisten status :initial "Paused" "playerctl -F status")
+(deflisten name :initial "None" "playerctl -F metadata title")
+
+(defwidget widget_player []
+    (box
+        :class "player"
+        :halign "end"
+        :valign "center"
+        (revealer
+            :reveal {status == "Playing" || status == "Paused"}
+            :duration "300ms"
+            :transition "slideleft"
+            (eventbox :onclick "playerctl play-pause"
+                (label
+                    :class "player_label"
+                    :halign "end"
+                    :tooltip name
+                    :text {status == "Playing" ? "⏸ playing" : "⏵ paused"}
+                )
+            )
+        )
+    )
+)
