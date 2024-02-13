@@ -18,7 +18,7 @@ module-functions.module "services" "hyprland" {
         "$mod, Return, exec, $terminal"
 
         "$mod, v, togglefloating"
-        "$mod, p, pseudo"
+        "$mod, m, pseudo"
         "$mod, j, togglesplit"
 
         "$mod, TAB, cyclenext"
