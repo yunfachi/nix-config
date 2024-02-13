@@ -51,7 +51,7 @@ module-functions.module "programs" "eww" (cfg: {
     services.hyprland.commands.onReload = [
       ''
         ${config.hm.wayland.windowManager.hyprland.package}/bin/hyprctl \
-          --batch "keyword monitor ,addreserved,${toString (cfg.bar.y + cfg.bar.height)},0,0,0"
+          --batch "keyword monitor ,addreserved,${toString (config.yunfachi.rice.gaps.outer + config.yunfachi.rice.bar_height)},0,0,0"
       ''
     ];
   };

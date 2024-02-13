@@ -15,6 +15,7 @@ with option-functions; let
       inner = numberOption "gaps between windows (twice as large, since all windows have them)" 5;
       outer = numberOption "gaps between windows and monitor edges" (cfg.gaps.inner * 2);
     };
+    bar_height = numberOption "height" 30;
   };
 
   riceModule = {name, ...}: {
