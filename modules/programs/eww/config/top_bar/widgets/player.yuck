@@ -5,17 +5,26 @@
     (box
         :class "player"
         :halign "end"
-        :valign "center"
+        :valign "fill"
         (revealer
             :reveal {status == "Playing" || status == "Paused"}
             :duration "300ms"
             :transition "slideleft"
             (eventbox :onclick "playerctl play-pause"
-                (label
-                    :class "player_label"
-                    :halign "end"
+                :timeout "50ms"
+                (box
                     :tooltip name
-                    :text {status == "Playing" ? "⏸ playing" : "⏵ paused"}
+                    :class "player_button"
+                    :space-evenly false
+                    :spacing 4
+                    (label
+                        :class "player_icon"
+                        :text {status == "Playing" ? "" : ""}
+                    )
+                    (label
+                        :class "player_label"
+                        :text {status == "Playing" ? "playing" : "paused"}
+                    )
                 )
             )
         )

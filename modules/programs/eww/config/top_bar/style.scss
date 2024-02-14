@@ -7,15 +7,26 @@
     margin: 5px;
     margin-left: base.$gaps_outter;
     margin-right: base.$gaps_outter;
-    font-size: 1em;
-}
-
-.workspace_label {
-    // font features >:(
-    padding-bottom: 2px;
+    font-size: 14px;
 }
 
 tooltip label {
     @include base.window;
     padding: 5px;
+}
+
+.workspaces {
+    margin-left: -3.5px;
+};
+.workspace_button {
+    padding-left: 3.5px;
+    padding-right: 3.5px;
+}
+.workspace_label {
+    // font features >:(
+    padding-bottom: 2px;
+}
+
+.player_icon {
+    font-size: 13px;
 }
