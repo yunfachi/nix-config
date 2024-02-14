@@ -1,6 +1,8 @@
 {
   module-functions,
   hm,
+  lib,
+  config,
   ...
 }:
 module-functions.module "programs" "codium" {
@@ -17,6 +19,8 @@ module-functions.module "programs" "codium" {
       "workbench.colorTheme" = "Bearded Theme Coffee";
       "explorer.compactFolders" = false;
       "editor.stickyScroll.enabled" = true;
+      "editor.fontFamily" = "'Droid Sans Mono', 'monospace'${lib.optionalString config.yunfachi.fonts.enable ", 'CaskaydiaCove Nerd Font'"}";
+      "editor.minimap.enabled" = false;
       "vscord.app.id" = "1152314975466029187";
       "vscord.app.name" = "Custom";
       "vscord.status.image.small.editing.key" = "";
