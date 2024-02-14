@@ -5,7 +5,7 @@
     (box
         :class "time"
         :halign "center"
-        :valign "center"
+        :valign "fill"
         (label
             :text time
             :tooltip date
