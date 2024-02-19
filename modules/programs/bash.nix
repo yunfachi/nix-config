@@ -3,8 +3,8 @@
   hm,
   ...
 }:
-module-functions.module "programs" "bash" (cfg: {
+module-functions.module "programs" "bash" {
   hm.programs.bash = {
     enable = true;
   };
-})
+}
