@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-module-functions.module "programs" "starship" (cfg: {
+module-functions.module "programs" "starship" {
   hm.programs.starship = {
     enable = true;
 
@@ -41,4 +41,4 @@ module-functions.module "programs" "starship" (cfg: {
       };
     };
   };
-})
+}

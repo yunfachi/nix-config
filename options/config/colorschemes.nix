@@ -1,6 +1,5 @@
 {
   option-functions,
-  module-functions,
   lib,
   ylib,
   ...
