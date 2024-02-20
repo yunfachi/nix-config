@@ -11,6 +11,7 @@
 ## Options
 
 - [ ] Create terminal.nix with a universal terminal configuration and an execution command
+- [ ] Add archisteamfarm with configuration
 
 ## Modules
 
