@@ -18,6 +18,7 @@ module-functions.module "programs" "eza" (cfg: {
         "--no-permissions"
         "--no-user"
         "--no-time"
+        "--group-directories-first"
       ];
     };
     bash.shellAliases = lib.mkIf cfg.enableAliases {
