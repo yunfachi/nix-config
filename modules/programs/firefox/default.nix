@@ -2,13 +2,18 @@
   module-functions,
   hm,
   pkgs,
-  ypkgs,
-  username,
+  lib,
   ...
 }:
-module-functions.module "programs" "firefox" {
-  hm.programs.firefox = {
-    enable = true;
-    package = pkgs.firefox-devedition;
+module-functions.module "programs" "firefox" (cfg: {
+  hm.programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-devedition;
+    };
+    bash.shellAliases = lib.mkIf cfg.enableAliases {
+      firefox-devedition = "firefox-devedition -P yunfachi";
+      firefox = "firefox-devedition";
+    };
   };
-}
+})
