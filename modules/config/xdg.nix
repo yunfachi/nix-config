@@ -19,18 +19,22 @@ module-functions.module null "xdg" {
           xdg-desktop-portal-hyprland);
     };
 
-    userDirs = rec {
+    userDirs = let
+      download = "${config.hm.home.homeDirectory}/download";
+      media = category: "${config.hm.home.homeDirectory}/media/${category}";
+      files = category: "${config.hm.home.homeDirectory}/files/${category}";
+    in {
       enable = true;
       createDirectories = true;
 
-      download = "${config.hm.home.homeDirectory}/download";
-      pictures = "${config.hm.home.homeDirectory}/media";
-      documents = "${config.hm.home.homeDirectory}/files";
-      desktop = download;
-      videos = pictures;
-      music = documents;
-      publicShare = documents;
-      templates = documents;
+      download = download;
+      pictures = media "pictures";
+      documents = files "documents";
+      desktop = files "desktop";
+      videos = media "videos";
+      music = media "music";
+      publicShare = files "publicshare";
+      templates = files "templates";
     };
   };
 }
