@@ -10,11 +10,7 @@
 module-functions.module "programs" "eww" (cfg: {
   hm.programs.eww = {
     enable = true;
-    package = with pkgs; (
-      if host.isWayland
-      then eww-wayland
-      else eww
-    );
+    package = pkgs.eww;
 
     # we do not use symlinkJoin here, because eww does not work with symlink
     configDir = pkgs.stdenv.mkDerivation {
