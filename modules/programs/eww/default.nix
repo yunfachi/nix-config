@@ -4,7 +4,6 @@
   hm,
   pkgs,
   lib,
-  host,
   ...
 }:
 module-functions.module "programs" "eww" (cfg: {
@@ -12,7 +11,7 @@ module-functions.module "programs" "eww" (cfg: {
     enable = true;
     package = pkgs.eww;
 
-    # we do not use symlinkJoin here, because eww does not work with symlink
+    # do not use symlinkJoin here, because eww does not work with symlink
     configDir = pkgs.stdenv.mkDerivation {
       name = "yunfachi-eww-config";
       src = pkgs.symlinkJoin {
