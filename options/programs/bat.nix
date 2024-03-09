@@ -1,8 +1,4 @@
-{
-  option-functions,
-  host,
-  ...
-}:
+{option-functions, ...}:
 with option-functions;
   option "programs" "bat" {
     enable = enableOption "bat" true;
