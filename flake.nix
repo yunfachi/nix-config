@@ -65,7 +65,7 @@
     nixosConfigurations = import ./hosts {
       inherit (packages) lib ylib;
       inherit (self) nixosConfigurations;
-      inherit home-manager;
+      inherit home-manager nypkgs;
       inherit specialArgs;
     };
 
