@@ -2,6 +2,7 @@
   lib,
   ylib,
   nixosConfigurations,
+  nypkgs,
   home-manager,
   specialArgs,
 }: let
@@ -24,6 +25,7 @@
         [
           ./${name}
           ./${name}/hardware.nix
+          nypkgs.nixosModules.nypkgs
           home-manager.nixosModules.home-manager
           {
             home-manager = {
