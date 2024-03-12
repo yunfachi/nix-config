@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710255440,
-        "narHash": "sha256-fQhRhetlKuUiyMR3pRcBuD2GmkJRwynDZ1D3ENCdR4c=",
+        "lastModified": 1710260346,
+        "narHash": "sha256-A1pQ20qu7zA4SS/AjFI9CjFv0SY3KSihU2e8aTdVOYs=",
         "owner": "yunfachi",
         "repo": "nypkgs",
-        "rev": "f6511903df3158af7d56ab9555c8888bd27cceb8",
+        "rev": "b5ca1d4b5697699ae1ba00718b9f5994ff4ae08f",
         "type": "github"
       },
       "original": {
