@@ -1,7 +1,6 @@
 {
   option-functions,
   options,
-  lib,
   ...
 }:
 with option-functions;
