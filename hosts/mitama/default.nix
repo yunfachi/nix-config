@@ -16,7 +16,7 @@
           sync_rgb = true;
           channels =
             builtins.genList (
-              x: {
+              _: {
                 mode = "Manual";
                 speed = 70;
               }
