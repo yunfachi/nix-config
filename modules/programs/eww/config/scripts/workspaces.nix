@@ -13,7 +13,7 @@ module-functions.module "programs" "eww" {
 
       spaces (){
       	WORKSPACE_WINDOWS=$(hyprctl workspaces -j | ${pkgs.jq}/bin/jq 'map({key: .id | tostring, value: .windows}) | from_entries')
-      	seq 1 10 | ${pkgs.jq}/bin/jq --argjson windows "''${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
+      	seq 1 ${toString (10 * (builtins.length config.yunfachi.hardware.displays))} | ${pkgs.jq}/bin/jq --argjson windows "''${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
       }
 
       spaces

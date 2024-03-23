@@ -40,12 +40,17 @@ module-functions.module "programs" "eww" (cfg: {
       ''
         pkill -c eww
         ${config.hm.programs.eww.package}/bin/eww daemon
-        ${config.hm.programs.eww.package}/bin/eww open-many window_top_bar
+        ${config.hm.programs.eww.package}/bin/eww open-many \
+        ${
+          builtins.concatStringsSep " " (builtins.genList (
+            monitor_id: "window_top_bar_${toString monitor_id}"
+          ) (builtins.length config.yunfachi.hardware.displays))
+        }
       ''
     ];
     services.hyprland.commands.onReload = [
       ''
-        ${config.hm.wayland.windowManager.hyprland.package}/bin/hyprctl \
+        ${config.hm.wayland.windowManager.hyprland.package}/bin/hyprctl\
           --batch "keyword monitor ,addreserved,${toString (config.yunfachi.rice.gaps.outer + config.yunfachi.rice.bar_height)},0,0,0"
       ''
     ];

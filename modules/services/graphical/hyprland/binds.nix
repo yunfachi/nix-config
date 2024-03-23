@@ -28,8 +28,8 @@ module-functions.module "services" "hyprland" {
         key = builtins.toString (lib.mod _workspace 10);
         workspace = builtins.toString _workspace;
       in [
-        "$mod, ${key}, workspace, ${workspace}"
-        "$mod SHIFT, ${key}, movetoworkspacesilent, ${workspace}"
+        "$mod, ${key}, split-workspace, ${workspace}"
+        "$mod SHIFT, ${key}, split-movetoworkspacesilent, ${workspace}"
       ]) (lib.range 1 10);
   };
 }
