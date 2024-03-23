@@ -7,6 +7,13 @@
         primary = true;
         refreshRate = 144;
       }
+      {
+        id = "HDMI-A-1";
+        primary = false;
+        refreshRate = 60;
+        x = 1920;
+        y = 100;
+      }
     ];
     services.uni-sync = {
       enable = true;
