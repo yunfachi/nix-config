@@ -20,7 +20,7 @@ module-functions.module "infras" "deshiro" {
     ];
     initialScripts = [
       ''
-        CREATE ROLE deshiro_api WITH LOGIN PASSWORD '${config.sops.placeholder."infras/deshiro/passwords/deshiro_api"}';
+         CREATE ROLE deshiro_api WITH LOGIN PASSWORD '${config.sops.placeholder."infras/deshiro/passwords/deshiro_api"}';
         CREATE DATABASE deshiro;
 
         \connect deshiro;
