@@ -3,6 +3,7 @@
   lib,
   pkgs,
   config,
+  hm,
   ...
 }: let
   getIfExists = attrset: key:
@@ -16,9 +17,18 @@ in
       owner = "postgres";
     };
 
+    environment.sessionVariables.PSQL_HISTORY = "/dev/null";
+    hm.home.file.".psqlrc".text = ''
+      \set HISTCONTROL 'ignoreboth'
+      \set HISTFILE /dev/null
+      \set HISTSIZE 0;
+    '';
+
+    networking.firewall.allowedTCPPorts = lib.mkIf cfg.enableRemote [config.services.postgresql.port];
+
     services.postgresql = {
       enable = true;
-      enableTCPIP = cfg.enableTCPIP;
+      enableTCPIP = true;
       package = pkgs.postgresql_16;
 
       ensureDatabases = cfg.databases;

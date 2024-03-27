@@ -18,7 +18,7 @@ in
   with option-functions; {
     options.yunfachi.services.postgresql = {
       enable = enableOption "postgresql" false;
-      enableTCPIP = enableOption "enableTCPIP" true;
+      enableRemote = enableOption "remote" true;
 
       databases = listOption "databases" [] types.str;
       users = attrsOption "users" {} (submoduleOption usersType);
