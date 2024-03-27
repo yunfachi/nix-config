@@ -1,7 +1,7 @@
 {option-functions, ...}:
 with option-functions;
   option null "hardware" (cfg: {
-    displays = listOption "displays" {} (submoduleOption {
+    displays = listOption "displays" [] (submoduleOption {
       enabled = enableOption "enabled" true;
       touchscreen = enableOption "touchscreen" false;
 
