@@ -14,6 +14,10 @@
       url = "github:nix-community/nix-vscode-extensions/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -22,6 +26,7 @@
     home-manager,
     nypkgs,
     nix-vscode-extensions,
+    sops-nix,
   }: let
     constants = import ./constants.nix;
     system = "x86_64-linux";
@@ -65,7 +70,7 @@
     nixosConfigurations = import ./hosts {
       inherit (packages) lib ylib;
       inherit (self) nixosConfigurations;
-      inherit home-manager nypkgs;
+      inherit home-manager nypkgs sops-nix;
       inherit specialArgs;
     };
 
