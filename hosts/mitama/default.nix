@@ -21,7 +21,7 @@
     ];
 
     services = {
-      wireguard.privateKeyFile = config.sops.secrets."hosts/mitama/wireguard/privateKey".path;
+      wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/mitama/privateKey".path;
 
       uni-sync = {
         enable = true;

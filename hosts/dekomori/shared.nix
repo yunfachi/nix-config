@@ -9,17 +9,28 @@
 
   sops.secrets = {
     "hosts/dekomori/ip".owner = username;
-    "hosts/dekomori/wireguard/privateKey".owner = username;
+    "wireguard/servers/dekomori/privateKey".owner = username;
   };
 
   yunfachi = {
     services.wireguard = {
       server = {
         ip = decryptSecret "hosts/dekomori/ip";
-        port = lib.toInt (decryptSecret "hosts/dekomori/wireguard/server/port");
+        port = lib.toInt (decryptSecret "wireguard/servers/dekomori/port");
         interface = "ens3";
         tunnel = "10.0.0.1";
-        publicKey = decryptSecret "hosts/dekomori/wireguard/server/publicKey";
+        publicKey = decryptSecret "wireguard/servers/dekomori/publicKey";
+      };
+
+      clients = {
+        "a52" = {
+          ip = "10.0.0.201";
+          publicKey = decryptSecret "wireguard/clients/a52/publicKey";
+        };
+        "p11" = {
+          ip = "10.0.0.202";
+          publicKey = decryptSecret "wireguard/clients/p11/publicKey";
+        };
       };
     };
   };
