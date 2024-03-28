@@ -1,4 +1,4 @@
-{user, ...}: {
+{config, ...}: {
   host.type = "server";
 
   yunfachi = {
@@ -8,6 +8,10 @@
     };
     services = {
       archisteamfarm.enable = true;
+      wireguard = {
+        enable = true;
+        privateKeyFile = config.sops.secrets."hosts/dekomori/wireguard/privateKey".path;
+      };
     };
   };
 }
