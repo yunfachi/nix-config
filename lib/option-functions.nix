@@ -33,7 +33,7 @@
       )
     else content;
 in {
-  inherit (lib) types;
+  inherit (lib) types mkOption;
 
   option = type: name: content:
     if (type != null)
@@ -67,6 +67,13 @@ in {
       example = 110;
       description = "Whether to specify ${name}.";
       type = lib.types.number;
+    };
+
+  portOption = name: default:
+    lib.mkOption {
+      inherit default;
+      description = "Whether to specifiy ${name}.";
+      type = lib.types.port;
     };
 
   enumOption = name: default: values:
