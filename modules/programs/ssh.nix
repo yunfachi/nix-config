@@ -8,9 +8,6 @@
 }:
 module-functions.module "programs" "ssh" {
   sops = {
-    secrets = {
-      "hosts/dekomori/ip" = {};
-    };
     templates.".ssh/config" = {
       owner = "yunfachi";
       content = ''
