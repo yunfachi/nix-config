@@ -44,20 +44,25 @@
       vscode-extensions = nix-vscode-extensions.extensions.${system}.vscode-marketplace;
     };
 
-    lib = {
-      module-functions = config:
-        import ./lib/module-functions.nix {
-          inherit (packages) lib;
-          inherit (constants) username;
-          inherit config;
-        };
-      option-functions = config:
-        import ./lib/option-functions.nix {
-          inherit (packages) lib;
-          inherit (constants) username;
-          inherit config;
-        };
-    };
+    lib =
+      import ./lib/lib.nix {
+        inherit (packages) ylib;
+        inherit (constants) username;
+      }
+      // {
+        module-functions = config:
+          import ./lib/module-functions.nix {
+            inherit (packages) lib;
+            inherit (constants) username;
+            inherit config;
+          };
+        option-functions = config:
+          import ./lib/option-functions.nix {
+            inherit (packages) lib;
+            inherit (constants) username;
+            inherit config;
+          };
+      };
 
     specialArgs =
       {
