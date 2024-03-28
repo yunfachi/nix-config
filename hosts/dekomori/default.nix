@@ -10,7 +10,7 @@
       archisteamfarm.enable = true;
       wireguard = {
         enable = true;
-        privateKeyFile = config.sops.secrets."hosts/dekomori/wireguard/privateKey".path;
+        privateKeyFile = config.sops.secrets."wireguard/servers/dekomori/privateKey".path;
       };
     };
   };
