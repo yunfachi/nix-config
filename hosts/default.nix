@@ -42,7 +42,8 @@
         ++ ylib.umport {
           paths = [../modules ../options];
           recursive = true;
-        };
+        }
+        ++ builtins.map (host: ./${host}/shared.nix) hosts;
     };
 in
   builtins.listToAttrs (builtins.map (name: {
