@@ -1,7 +1,7 @@
 {
   module-functions,
   config,
-  ylib,
+  decryptSecret,
   ...
 }:
 module-functions.module "services" "archisteamfarm" {
@@ -27,7 +27,7 @@ module-functions.module "services" "archisteamfarm" {
     };
     bots = {
       yunfachi = {
-        username = ylib.readCanonicalFile config.sops.secrets."services/archisteamfarm/bots/yunfachi/username".path;
+        username = decryptSecret "services/archisteamfarm/bots/yunfachi/username";
         passwordFile = config.sops.secrets."services/archisteamfarm/bots/yunfachi/password".path;
         settings = {
           AcceptGifts = true;
