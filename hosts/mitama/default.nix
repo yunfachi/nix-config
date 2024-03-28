@@ -1,7 +1,10 @@
-{user, ...}: {
+{config, ...}: {
   host.type = "desktop";
 
   yunfachi = {
+    infras = {
+      deshiro.enable = true;
+    };
     hardware.displays = [
       {
         id = "DP-3";
@@ -16,22 +19,27 @@
         y = 100;
       }
     ];
-    services.uni-sync = {
-      enable = true;
-      devices = [
-        {
-          device_id = "VID:3314/PID:41219/SN:6243168001";
-          sync_rgb = true;
-          channels =
-            builtins.genList (
-              _: {
-                mode = "Manual";
-                speed = 70;
-              }
-            )
-            4;
-        }
-      ];
+
+    services = {
+      wireguard.privateKeyFile = config.sops.secrets."hosts/mitama/wireguard/privateKey".path;
+
+      uni-sync = {
+        enable = true;
+        devices = [
+          {
+            device_id = "VID:3314/PID:41219/SN:6243168001";
+            sync_rgb = true;
+            channels =
+              builtins.genList (
+                _: {
+                  mode = "Manual";
+                  speed = 70;
+                }
+              )
+              4;
+          }
+        ];
+      };
     };
   };
 }
