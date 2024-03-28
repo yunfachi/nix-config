@@ -3,7 +3,7 @@
 ## Hosts
 
 - [ ] Rework, or rather divide most of hardware.nix into modules
-- [ ] Create a shared.nix in each host that will always be imported
+- [x] Create a shared.nix in each host that will always be imported
 
 ## Lib
 
@@ -11,7 +11,7 @@
 ## Options
 
 - [ ] Create terminal.nix with a universal terminal configuration and an execution command
-- [ ] Add archisteamfarm with configuration
+- [x] Add archisteamfarm with configuration
 
 ## Modules
 
