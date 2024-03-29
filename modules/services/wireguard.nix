@@ -2,7 +2,6 @@
   module-functions,
   pkgs,
   lib,
-  host,
   ...
 }:
 module-functions.module "services" "wireguard" (cfg: {
@@ -42,7 +41,7 @@ module-functions.module "services" "wireguard" (cfg: {
           ) (builtins.attrValues cfg.clients);
         }
         else {
-          address = [cfg.clients."${host.name}".ip];
+          address = [cfg.clients."${cfg.client}".ip];
 
           peers = [
             {
