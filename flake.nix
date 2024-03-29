@@ -30,6 +30,7 @@
   }: let
     constants = import ./constants.nix;
     system = "x86_64-linux";
+    data = import ./data {inherit (nixpkgs) lib;};
 
     packages = rec {
       pkgs = import nixpkgs {
@@ -66,7 +67,7 @@
 
     specialArgs =
       {
-        inherit system;
+        inherit system data;
       }
       // constants
       // packages
