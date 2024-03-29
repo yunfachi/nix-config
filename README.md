@@ -10,7 +10,9 @@
 ## Tree
 <big><pre>
 .
-├── [hosts](./hosts/)
+├── [data](./data/) (big data, inappropriate in clean code)
+│   └── [ips.nix](./data/ips.nix) (IP ranges of services)
+├── [hosts](./hosts/) 
 │   ├── [mitama](./hosts/mitama/)
 │   │   ├── [default.nix](./hosts/mitama/default.nix)
 │   │   └── [hardware.nix](./hosts/mitama/hardware.nix)

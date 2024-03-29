@@ -1,6 +1,7 @@
 {
   option-functions,
   host,
+  data,
   ...
 }:
 with option-functions;
@@ -14,7 +15,7 @@ with option-functions;
 
     client = enumOption "client name. Defaults to the host name" host.name (builtins.attrNames cfg.clients);
     privateKeyFile = textOption "private key file" "/etc/wireguard/private.key";
-    routedIPs = listOption "routed IPs" ["0.0.0.0/0" "::/0"] types.str;
+    routedIPs = (listOption "routed IPs" data.ips types.str) // {example = ["0.0.0.0/0" "::/0"];};
 
     server = {
       ip = textOption "IP address of the server" null;
