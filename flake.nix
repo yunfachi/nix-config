@@ -33,12 +33,6 @@
     data = import ./data {inherit (nixpkgs) lib;};
 
     packages = rec {
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
-
       ypkgs = nypkgs.legacyPackages.${system};
       ylib = ypkgs.lib;
 
@@ -53,13 +47,13 @@
       // {
         module-functions = config:
           import ./lib/module-functions.nix {
-            inherit (packages) lib;
+            inherit (nixpkgs) lib;
             inherit (constants) username;
             inherit config;
           };
         option-functions = config:
           import ./lib/option-functions.nix {
-            inherit (packages) lib;
+            inherit (nixpkgs) lib;
             inherit (constants) username;
             inherit config;
           };
@@ -74,13 +68,14 @@
       // lib;
   in {
     nixosConfigurations = import ./hosts {
-      inherit (packages) lib ylib;
+      inherit (nixpkgs) lib;
+      inherit (packages) ylib;
       inherit (self) nixosConfigurations;
       inherit home-manager nypkgs sops-nix;
       inherit specialArgs;
     };
 
-    devShells.${system}.default = with packages.pkgs;
+    devShells.${system}.default = with nixpkgs.${system}.pkgs;
       mkShell {
         packages = [
           git
