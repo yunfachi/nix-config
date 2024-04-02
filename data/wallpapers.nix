@@ -31,4 +31,8 @@
     url = "https://w.wallhaven.cc/full/gj/wallhaven-gjooee.jpg";
     hash = "sha256-msx7Id2OD889lBeLEIkdYOYK3K77yDp88axCXBM+Fac=";
   }
+  {
+    url = "https://w.wallhaven.cc/full/96/wallhaven-96y9qk.jpg";
+    hash = "sha256-ZzjeWzpqjSrdi6sTRj+wfx2eBDO6EP37Y85Bkvth49w=";
+  }
 ]
