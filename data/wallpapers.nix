@@ -35,4 +35,24 @@
     url = "https://w.wallhaven.cc/full/96/wallhaven-96y9qk.jpg";
     hash = "sha256-ZzjeWzpqjSrdi6sTRj+wfx2eBDO6EP37Y85Bkvth49w=";
   }
+  {
+    url = "https://w.wallhaven.cc/full/ym/wallhaven-ym9zzg.jpg";
+    hash = "sha256-dNTkISHKFA2xEGilsw1YtwJuolPPD2RXaCSkb7U3W54=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/1k/wallhaven-1kpqw9.jpg";
+    hash = "sha256-D2vu/Fp0zsx+DoemxzpnvnwB01wNn+Jqwk3xsIgU/7I=";
+  }
+  {
+    url = "https://i.imgur.com/GN1EEOt.jpeg";
+    hash = "sha256-rOuuQ1nFjDFem+vrGfyhl+f5+rwPMJn78ABR//2jzUw=";
+  }
+  {
+    url = "https://i.imgur.com/2dcWLKO.jpeg";
+    hash = "sha256-hRx4MNo8s8xXFm5Lcw80KS2hNAxWHxUZroGoUtvpp9U=";
+  }
+  {
+    url = "https://i.imgur.com/4diRJnW.jpeg";
+    hash = "sha256-AR8HW8BhfNl/TwuCI10rf4Y9eR7hCgAm2H2ErotcvtY=";
+  }
 ]
