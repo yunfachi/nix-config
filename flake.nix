@@ -75,7 +75,7 @@
       inherit specialArgs;
     };
 
-    devShells.${system}.default = with nixpkgs.${system}.pkgs;
+    devShells.${system}.default = with nixpkgs.legacyPackages.${system};
       mkShell {
         packages = [
           git
@@ -83,5 +83,18 @@
           deadnix
         ];
       };
+
+    packages.${system} = with nixpkgs.legacyPackages.${system}; {
+      prefetch-wallpapers = let
+        script = writeShellScriptBin "prefetch-wallpapers" (builtins.readFile ./scripts/prefetch-wallpapers.sh);
+        buildInputs = [nix-prefetch];
+      in
+        symlinkJoin {
+          name = "prefetch-wallpapers";
+          paths = [script] ++ buildInputs;
+          buildInputs = [makeWrapper];
+          postBuild = "wrapProgram $out/bin/prefetch-wallpapers --prefix PATH : $out/bin";
+        };
+    };
   };
 }
