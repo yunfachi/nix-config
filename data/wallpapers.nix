@@ -1,58 +1,58 @@
 [
   {
     url = "https://w.wallhaven.cc/full/qd/wallhaven-qdxpjd.jpg";
-    hash = "sha256-BjtBgoSROvnwMAPd9tx7v4Cw/VaVtWxISvWZnIYjH/o=";
+    hash = "sha256-PWbguJ0jBmOvBxSwsVDjk6TKuPYml0eZ3COdtO4OWqg=";
   }
   {
     url = "https://w.wallhaven.cc/full/qd/wallhaven-qdqdzr.png";
-    hash = "sha256-MqftVWnDcSN78el1Ky3tbBXkMOMNEVk3k5fG1xSjU2g=";
+    hash = "sha256-cWh2i5JVQLwYfKSThVuqKoZhJPF8CVhMLDWiSQNz550=";
   }
   {
     url = "https://w.wallhaven.cc/full/pk/wallhaven-pkeg53.jpg";
-    hash = "sha256-I1FAUkDe3fswwm2VYICK4V6GoHI0fkLEbzwgcJXJWi8=";
+    hash = "sha256-/ncxH7tS5EXYxiIVC6s3kgLNhUazSJy5gM+fNLDP2mM=";
   }
   {
     url = "https://w.wallhaven.cc/full/1p/wallhaven-1pdwow.jpg";
-    hash = "sha256-WvJYjml+47/ktEq7caXiKkQZKE29d+JwpWJFNkGa2HE=";
+    hash = "sha256-6aFnjhtKChKspcPlBdaVTlQJbdHS+NfRYXjtGk2+uvc=";
   }
   {
     url = "https://w.wallhaven.cc/full/x6/wallhaven-x65x6d.jpg";
-    hash = "sha256-2/GgpniFTbUBsBC8sBqkeoYErwLagcgTA/NNvgqI1/c=";
+    hash = "sha256-HXbgqUBLLgeJky6l74rLlGlSEtNde/FIXCKOPFgV2vk=";
   }
   {
     url = "https://w.wallhaven.cc/full/x1/wallhaven-x1rkev.jpg";
-    hash = "sha256-hgXYheeDjWuDIvyF1DWYKiysd77NJyX8Qfn53/6tbbE=";
+    hash = "sha256-Wab2K8/7apBK87aspVyzq/WaWXsz4Dx+k15CWyOh1Xc=";
   }
   {
     url = "https://w.wallhaven.cc/full/ym/wallhaven-ymm6kl.png";
-    hash = "sha256-rVYSgxkTY2Nu36mb+Wgd0L0izyTNQ1RGcvpudHzgmAM=";
+    hash = "sha256-TXi/Edn9jzA/358W8uIj1+hZxEGH8gRJEdlpYtnZlyM=";
   }
   {
     url = "https://w.wallhaven.cc/full/gj/wallhaven-gjooee.jpg";
-    hash = "sha256-msx7Id2OD889lBeLEIkdYOYK3K77yDp88axCXBM+Fac=";
+    hash = "sha256-+RdsGW+fM+e5EaKsNy+tXyM/C3JR0vlGKMc99TsqhXw=";
   }
   {
     url = "https://w.wallhaven.cc/full/96/wallhaven-96y9qk.jpg";
-    hash = "sha256-ZzjeWzpqjSrdi6sTRj+wfx2eBDO6EP37Y85Bkvth49w=";
+    hash = "sha256-YD1OZgS914s0Q+cU/l2TUOWB3tdjlJ14CGE8GhkBH/c=";
   }
   {
     url = "https://w.wallhaven.cc/full/ym/wallhaven-ym9zzg.jpg";
-    hash = "sha256-dNTkISHKFA2xEGilsw1YtwJuolPPD2RXaCSkb7U3W54=";
+    hash = "sha256-dzRXvAQZQndgyt7U5f5Zu9hUVVdbMut7Goab0DNKLpE=";
   }
   {
     url = "https://w.wallhaven.cc/full/1k/wallhaven-1kpqw9.jpg";
-    hash = "sha256-D2vu/Fp0zsx+DoemxzpnvnwB01wNn+Jqwk3xsIgU/7I=";
+    hash = "sha256-0bLV2cViopNMNCAMFyaX5+wsyYWnYYe+KojgwqzvGFA=";
   }
   {
     url = "https://i.imgur.com/GN1EEOt.jpeg";
-    hash = "sha256-rOuuQ1nFjDFem+vrGfyhl+f5+rwPMJn78ABR//2jzUw=";
+    hash = "sha256-tw5ICopb6BfexmYJqmbokxdDs8cxBNEjJXCQ3DnCZpc=";
   }
   {
     url = "https://i.imgur.com/2dcWLKO.jpeg";
-    hash = "sha256-hRx4MNo8s8xXFm5Lcw80KS2hNAxWHxUZroGoUtvpp9U=";
+    hash = "sha256-lPwE2ZFr3ldU+g98Lj5zq4P500SCMmY3g8RjrqfRBvY=";
   }
   {
     url = "https://i.imgur.com/4diRJnW.jpeg";
-    hash = "sha256-AR8HW8BhfNl/TwuCI10rf4Y9eR7hCgAm2H2ErotcvtY=";
+    hash = "sha256-0t8TFtDpibXVWaD/BpSJLIYD6FoHpwWIBZlRQvWom1U=";
   }
 ]
