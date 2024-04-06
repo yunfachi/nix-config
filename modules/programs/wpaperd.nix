@@ -22,7 +22,7 @@ module-functions.module "programs" "wpaperd" (cfg: {
               postFetch = ''
                 mkdir -p $out;
                 filename=${builtins.baseNameOf wallpaper.url};
-                mv file $out/$(echo $RANDOM | md5sum | head -c 30).''${filename##*.};
+                mv file $out/$(printf `printf "${wallpaper.url}" | sha512sum`).''${filename##*.};
               '';
             })
           cfg.wallpapers;
