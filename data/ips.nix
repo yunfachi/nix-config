@@ -18,6 +18,10 @@ let
       "20.250.119.64/32"
     ];
 
+    fantia = [
+      "35.241.8.68/32"
+    ];
+
     /*
     curl -s "https://api.cloudflare.com/client/v4/ips" | jq '.result.ipv4_cidrs[], .result.ipv6_cidrs[]'
     */
