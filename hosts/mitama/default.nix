@@ -23,6 +23,8 @@
     services = {
       wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/mitama/privateKey".path;
 
+      mopidy.media_dirs = ["/media"];
+
       uni-sync = {
         enable = true;
         devices = [
