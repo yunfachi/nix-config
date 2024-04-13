@@ -2,6 +2,7 @@
   module-functions,
   hm,
   pkgs,
+  decryptSecret,
   ...
 }:
 module-functions.module "services" "mopidy" (cfg: {
@@ -29,9 +30,12 @@ module-functions.module "services" "mopidy" (cfg: {
 
       youtube = {
         enabled = true;
-        autoplay_enabled = true;
         allow_cache = true;
         youtube_dl_package = "yt_dlp";
+
+        api_enabled = true;
+        youtube_api_key = decryptSecret "services/mopidy/youtube/api_key";
+        channel_id = decryptSecret "services/mopidy/youtube/channel_id";
       };
 
       mpd = {
