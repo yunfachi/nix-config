@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-module-functions.module "services" "mopidy" {
+module-functions.module "services" "mopidy" (cfg: {
   hm.services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [
@@ -22,6 +22,11 @@ module-functions.module "services" "mopidy" {
         port = 6680;
       };
 
+      file = {
+        media_dirs = cfg.media_dirs;
+        follow_symlinks = true;
+      };
+
       youtube = {
         enabled = true;
         autoplay_enabled = true;
@@ -35,4 +40,4 @@ module-functions.module "services" "mopidy" {
       };
     };
   };
-}
+})
