@@ -2,9 +2,6 @@
   host.type = "desktop";
 
   yunfachi = {
-    infras = {
-      deshiro.enable = true;
-    };
     hardware.displays = [
       {
         id = "DP-3";
@@ -21,8 +18,6 @@
     ];
 
     services = {
-      wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/mitama/privateKey".path;
-
       mopidy.media_dirs = ["/media"];
 
       uni-sync = {
@@ -42,6 +37,8 @@
           }
         ];
       };
+
+      wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/mitama/privateKey".path;
     };
   };
 }
