@@ -3,6 +3,7 @@
   hm,
   pkgs,
   decryptSecret,
+  ypkgs,
   ...
 }:
 module-functions.module "services" "mopidy" (cfg: {
@@ -11,6 +12,8 @@ module-functions.module "services" "mopidy" (cfg: {
     extensionPackages = with pkgs; [
       mopidy-iris
       mopidy-mpd
+
+      ypkgs.mopidy-alsamixer
 
       mopidy-youtube
       yt-dlp-light
@@ -21,6 +24,11 @@ module-functions.module "services" "mopidy" (cfg: {
         enabled = true;
         hostname = "127.0.0.1";
         port = 6680;
+      };
+
+      core = {
+        max_tracklist_length = 10000;
+        restore_state = true;
       };
 
       file = {
@@ -41,6 +49,14 @@ module-functions.module "services" "mopidy" (cfg: {
       mpd = {
         enabled = true;
         hostname = "::";
+      };
+
+      audio = {
+        mixer = "alsamixer";
+      };
+
+      alsamixer = {
+        volume_scale = "cubic";
       };
     };
   };
