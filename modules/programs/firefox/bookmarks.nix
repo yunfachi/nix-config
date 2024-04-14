@@ -5,7 +5,7 @@
   ...
 }:
 module-functions.module "programs" "firefox" {
-  hm.programs.firefox.profiles."${username}".bookmarks = [
+  hm.programs.firefox.profiles.dev-edition-default.bookmarks = [
     {
       toolbar = true;
       bookmarks = [
