@@ -1,5 +1,6 @@
 {
   module-functions,
+  username,
   hm,
   pkgs,
   lib,
@@ -9,11 +10,11 @@ module-functions.module "programs" "firefox" (cfg: {
   hm.programs = {
     firefox = {
       enable = true;
-      package = pkgs.firefox-devedition;
+      package = pkgs.firefox-devedition-bin;
     };
+
     bash.shellAliases = lib.mkIf cfg.enableAliases {
-      firefox-devedition = "firefox-devedition -P yunfachi";
-      firefox = "firefox-devedition";
+      firefox = "firefox-developer-edition";
     };
   };
 })

@@ -5,7 +5,7 @@
   ...
 }:
 module-functions.module "programs" "firefox" {
-  hm.programs.firefox.profiles."${username}".settings = {
+  hm.programs.firefox.profiles.dev-edition-default.settings = {
     "browser.newtabpage.activity-stream.feeds.topsites" = false;
     "browser.shell.checkDefaultBrowser" = false;
     "browser.theme.toolbar-theme" = 0;
