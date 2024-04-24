@@ -10,6 +10,12 @@ module-functions.module "services" "hyprland" {
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
     ];
+
+    bindi = [
+      ", mouse:276, exec, ~/.config/hypr/scripts/clicker.sh 1"
+      ", mouse:275, exec, ~/.config/hypr/scripts/clicker.sh 3"
+    ];
+
     bind =
       [
         "$mod, q, killactive,"
@@ -23,6 +29,9 @@ module-functions.module "services" "hyprland" {
 
         "$mod, TAB, cyclenext"
         "$mod, TAB, bringactivetotop"
+
+        "$mod, s, exec, ~/.config/hypr/scripts/screenshot.sh screen"
+        "$mod SHIFT, s, exec, ~/.config/hypr/scripts/screenshot.sh area"
       ]
       ++ builtins.concatMap (_workspace: let
         key = builtins.toString (lib.mod _workspace 10);
