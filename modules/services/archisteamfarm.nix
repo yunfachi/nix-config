@@ -18,9 +18,6 @@ module-functions.module "services" "archisteamfarm" {
     enable = true;
     web-ui.enable = false;
 
-    #TODO: remove after https://github.com/NixOS/nixpkgs/pull/299656
-    ipcSettings.Kestrel = {};
-
     settings = {
       DefaultBot = "yunfachi";
       SteamOwnerID = "76561198967857357";
