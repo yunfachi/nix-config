@@ -9,7 +9,7 @@ module-functions.module "programs" "eza" (cfg: {
     eza = {
       enable = true;
 
-      enableAliases = cfg.enableAliases;
+      enableBashIntegration = cfg.enableAliases;
       git = true;
       icons = cfg.icons;
 
