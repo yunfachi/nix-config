@@ -95,6 +95,55 @@
           buildInputs = [makeWrapper];
           postBuild = "wrapProgram $out/bin/prefetch-wallpapers --prefix PATH : $out/bin";
         };
+      wireguard-configurations = let
+        generateConfiguration = {
+          client,
+          privateKey,
+          qr_code ? false,
+        }: let
+          cfg = self.nixosConfigurations.mitama.config.yunfachi.services.wireguard;
+        in
+          stdenv.mkDerivation {
+            name = "wg-conf";
+
+            src = writeTextDir "wg0.conf" ''
+              [Interface]
+              Address = ${cfg.clients.${client}.ip}
+              PrivateKey = ${privateKey}
+
+              [Peer]
+              PublicKey = ${cfg.server.publicKey}
+              Endpoint = ${cfg.server.ip}:${toString cfg.server.port}
+              PersistentKeepalive = 20
+              AllowedIPs = ${builtins.concatStringsSep "," cfg.routedIPs}
+            '';
+
+            buildInputs = [qrencode];
+            buildPhase =
+              if qr_code
+              then ''
+                qrencode -t ansiutf8 wg0.conf
+                qrencode -t png -o wg0.png -r wg0.conf
+              ''
+              else "";
+
+            installPhase = ''
+              mkdir -p $out
+              mv * $out
+            '';
+          };
+      in {
+        a52 = generateConfiguration {
+          client = "a52";
+          privateKey = lib.decryptSecret "wireguard/clients/a52/privateKey";
+          qr_code = true;
+        };
+        p11 = generateConfiguration {
+          client = "p11";
+          privateKey = lib.decryptSecret "wireguard/clients/p11/privateKey";
+          qr_code = true;
+        };
+      };
     };
   };
 }
