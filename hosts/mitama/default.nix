@@ -2,6 +2,10 @@
   host.type = "desktop";
 
   yunfachi = {
+    system = {
+      amd-gpu.enable = true;
+    };
+
     hardware.displays = [
       {
         id = "DP-3";
