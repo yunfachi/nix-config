@@ -23,6 +23,7 @@
 
     services = {
       mopidy.media_dirs = ["/media"];
+      jellyfin.enable = true;
 
       uni-sync = {
         enable = true;
