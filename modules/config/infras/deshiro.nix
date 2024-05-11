@@ -44,12 +44,19 @@ module-functions.module "infras" "deshiro" {
           CREATE TABLE constants (
             key TEXT NOT NULL UNIQUE,
             value TEXT
+          )
+          CREATE TABLE staff (
+            shikimori_id INTEGER NOT NULL UNIQUE,
+            telegram_id BIGINT NOT NULL UNIQUE,
+            rank INTEGER NOT NULL,
+            CONSTRAINT rank_nonnegative CHECK (rank >= 0)
           );
 
         GRANT CONNECT ON DATABASE deshiro TO deshiro_api, deshiro_bot;
         GRANT USAGE ON SCHEMA deshiro TO deshiro_api, deshiro_bot;
         GRANT SELECT ON ALL TABLES IN SCHEMA deshiro TO deshiro_api, deshiro_bot;
 
+        GRANT SELECT ON deshiro.staff TO deshiro_bot;
         GRANT INSERT, UPDATE, DELETE ON deshiro.animes TO deshiro_bot;
       ''
     ];
