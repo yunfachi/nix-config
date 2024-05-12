@@ -66,6 +66,9 @@ module-functions.module "infras" "deshiro" {
       deshiro_api = {
         ensureClauses.login = true;
       };
+      deshiro_bot = {
+        ensureClauses.login = true;
+      };
     };
   };
 }
