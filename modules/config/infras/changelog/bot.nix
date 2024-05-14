@@ -1,8 +1,5 @@
 {
   module-functions,
-  config,
-  lib,
-  hm,
   pkgs,
   username,
   ...
