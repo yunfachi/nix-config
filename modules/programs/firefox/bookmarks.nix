@@ -1,7 +1,6 @@
 {
   module-functions,
   hm,
-  username,
   ...
 }:
 module-functions.module "programs" "firefox" {

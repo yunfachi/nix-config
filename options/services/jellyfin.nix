@@ -1,8 +1,4 @@
-{
-  option-functions,
-  host,
-  ...
-}:
+{option-functions, ...}:
 with option-functions;
   option "services" "jellyfin" {
     enable = enableOption "jellyfin" false;
