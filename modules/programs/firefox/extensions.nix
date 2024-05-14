@@ -2,7 +2,6 @@
   module-functions,
   hm,
   ypkgs,
-  username,
   ...
 }:
 module-functions.module "programs" "firefox" {
