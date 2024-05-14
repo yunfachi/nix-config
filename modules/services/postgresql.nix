@@ -21,7 +21,7 @@ in
     hm.home.file.".psqlrc".text = ''
       \set HISTCONTROL 'ignoreboth'
       \set HISTFILE /dev/null
-      \set HISTSIZE 0;
+      \set HISTSIZE 0
     '';
 
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.enableRemote [config.services.postgresql.port];
