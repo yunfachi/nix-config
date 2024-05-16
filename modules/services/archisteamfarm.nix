@@ -20,7 +20,7 @@ module-functions.module "services" "archisteamfarm" {
 
     settings = {
       DefaultBot = "yunfachi";
-      SteamOwnerID = "76561198967857357";
+      SteamOwnerID = 76561198967857357;
     };
     bots = {
       yunfachi = {
