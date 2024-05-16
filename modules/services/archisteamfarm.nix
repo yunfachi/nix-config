@@ -16,7 +16,8 @@ module-functions.module "services" "archisteamfarm" {
 
   services.archisteamfarm = {
     enable = true;
-    web-ui.enable = false;
+    # change to false after FOO
+    web-ui.enable = true;
 
     settings = {
       DefaultBot = "yunfachi";
