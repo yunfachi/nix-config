@@ -43,7 +43,7 @@
           paths = [../modules ../options];
           recursive = true;
         }
-        ++ builtins.map (host: import ./${host}/shared.nix {hostName = name;}) hosts;
+        ++ builtins.map (host: import ./${host}/shared.nix {hostName = host;}) hosts;
     };
 in
   builtins.listToAttrs (builtins.map (name: {
