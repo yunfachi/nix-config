@@ -16,7 +16,6 @@ module-functions.module "services" "archisteamfarm" {
 
   services.archisteamfarm = {
     enable = true;
-    # change to false after FOO
     web-ui.enable = true;
 
     settings = {
