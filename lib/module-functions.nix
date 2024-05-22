@@ -31,8 +31,8 @@
       if !negate
       then config2.enable or true
       else !config2.enable or true;
-  in
-    lib.mkMerge [
+  in {
+    imports = [
       {
         inherit condition;
         _type = "if";
@@ -45,6 +45,7 @@
       }
       (wrapContent contentFinally)
     ];
+  };
 
   moduleIfEnabled = type: name: contentIfEnabled:
     moduleRaw {
@@ -53,6 +54,15 @@
   moduleIfDisabled = type: name: contentIfEnabled:
     moduleRaw {
       inherit type name contentIfEnabled;
+      negate = true;
+    };
+  moduleIfEnabledFinally = type: name: contentIfEnabled: contentFinally:
+    moduleRaw {
+      inherit type name contentIfEnabled contentFinally;
+    };
+  moduleIfDisabledFinally = type: name: contentIfEnabled: contentFinally:
+    moduleRaw {
+      inherit type name contentIfEnabled contentFinally;
       negate = true;
     };
   moduleIfElse = type: name: contentIfEnabled: contentIfDisabled:
@@ -72,6 +82,17 @@
   rootModuleIfDisabled = type: name: contentIfEnabled:
     moduleRaw {
       inherit type name contentIfEnabled;
+      negate = true;
+      root = true;
+    };
+  rootModuleIfEnabledFinally = type: name: contentIfEnabled: contentFinally:
+    moduleRaw {
+      inherit type name contentIfEnabled contentFinally;
+      root = true;
+    };
+  rootModuleIfDisabledFinally = type: name: contentIfEnabled: contentFinally:
+    moduleRaw {
+      inherit type name contentIfEnabled contentFinally;
       negate = true;
       root = true;
     };
