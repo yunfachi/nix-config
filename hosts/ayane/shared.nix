@@ -4,7 +4,7 @@
   decryptSecret,
   ...
 }: {
-  user.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINbky4toRn5dD27HPOsxFzJm4HbByfdi7WlxeatA9T/Y yunfachi@ayane"];
+  user.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHN/Gb1Q+5daqcOIEOTBxonnwV2DDrFvcfK6i3pDhdEo yunfachi@ayane"];
 
   sops.secrets."wireguard/clients/ayane/privateKey".owner = username;
 
