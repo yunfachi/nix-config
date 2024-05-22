@@ -10,7 +10,7 @@
 
   yunfachi = {
     services.wireguard.clients.${hostName} = {
-      ip = "10.0.0.101";
+      ip = "10.0.0.102";
       publicKey = decryptSecret "wireguard/clients/ayane/publicKey";
     };
   };
