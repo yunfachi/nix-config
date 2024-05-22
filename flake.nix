@@ -18,6 +18,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    anime-launcher = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -27,7 +31,8 @@
     nypkgs,
     nix-vscode-extensions,
     sops-nix,
-  }: let
+    ...
+  } @ inputs: let
     constants = import ./constants.nix;
     system = "x86_64-linux";
     data = import ./data {inherit (nixpkgs) lib;};
@@ -61,7 +66,7 @@
 
     specialArgs =
       {
-        inherit system data;
+        inherit system data inputs;
       }
       // constants
       // packages
