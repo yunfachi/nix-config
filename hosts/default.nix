@@ -3,8 +3,6 @@
   ylib,
   nixosConfigurations,
   nypkgs,
-  home-manager,
-  sops-nix,
   specialArgs,
 }: let
   hosts = builtins.attrNames (lib.filterAttrs (_name: type: type == "directory") (builtins.readDir ./.));
@@ -27,14 +25,6 @@
           ./${name}
           ./${name}/hardware.nix
           nypkgs.nixosModules.nypkgs
-          home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-            };
-          }
           {
             host.name = name;
           }
