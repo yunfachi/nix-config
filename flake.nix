@@ -27,10 +27,8 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     nypkgs,
     nix-vscode-extensions,
-    sops-nix,
     ...
   } @ inputs: let
     constants = import ./constants.nix;
@@ -76,8 +74,7 @@
       inherit (nixpkgs) lib;
       inherit (packages) ylib;
       inherit (self) nixosConfigurations;
-      inherit home-manager nypkgs sops-nix;
-      inherit specialArgs;
+      inherit nypkgs specialArgs;
     };
 
     devShells.${system}.default = with nixpkgs.legacyPackages.${system};
