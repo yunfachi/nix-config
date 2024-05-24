@@ -7,6 +7,7 @@ module-functions.module "programs" "eww" {
   yunfachi.programs.eww.config."top_bar/default.yuck" = let
     extraSpace = 5;
   in ''
+    (include "top_bar/widgets/battery.yuck")
     (include "top_bar/widgets/player.yuck")
     (include "top_bar/widgets/time.yuck")
     (include "top_bar/widgets/workspaces.yuck")
@@ -39,7 +40,11 @@ module-functions.module "programs" "eww" {
             )
             (box
               :class "top_bar_right"
+              :space-evenly false
+              :spacing 10
+              :halign "end"
               (widget_player)
+              (widget_battery)
             )
         )
     )
