@@ -1,5 +1,5 @@
-(deflisten status :initial "Paused" "playerctl -F status")
-(deflisten name :initial "None" "playerctl -F metadata title")
+(deflisten status :initial "Paused" "bash scripts/player-status.sh")
+(deflisten title :initial "None" "bash scripts/player-title.sh")
 
 (defwidget widget_player []
     (box
@@ -10,10 +10,10 @@
             :reveal {status == "Playing" || status == "Paused"}
             :duration "300ms"
             :transition "slideleft"
-            (eventbox :onclick "playerctl play-pause"
+            (eventbox :onclick "bash scripts/player-playpause.sh"
                 :timeout "50ms"
                 (box
-                    :tooltip name
+                    :tooltip title
                     :class "player_button"
                     :space-evenly false
                     :spacing 4
