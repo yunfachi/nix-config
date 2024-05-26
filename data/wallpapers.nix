@@ -44,6 +44,38 @@
     hash = "sha256-0bLV2cViopNMNCAMFyaX5+wsyYWnYYe+KojgwqzvGFA=";
   }
   {
+    url = "https://w.wallhaven.cc/full/ne/wallhaven-ne9exw.jpg";
+    hash = "sha256-B2g7GZ0TFipY8Rgqp8t5UIRobJYzfYV3UwrRrJJqRNQ=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/42/wallhaven-42k9vy.png";
+    hash = "sha256-hOt9ApMM5Y8H5uRl50y5mx63H/tx/RZaxFqt3P5fxxs=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/z8/wallhaven-z8zgqw.jpg";
+    hash = "sha256-tTsSwDLst8v4xF6AVvSLJzMEQBAUzZrOAh7yZjCSAjk=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/md/wallhaven-md2xlk.jpg";
+    hash = "sha256-5NHVN+srYOald2AykDLX72Q4NpBLuX5fNha1BjXDU/Q=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/vg/wallhaven-vgd3gl.jpg";
+    hash = "sha256-6LFYo0+KK6GKabFf+2hXV1BO1T9gE7a9ltNjOTCKHfU=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/qz/wallhaven-qz21l7.jpg";
+    hash = "sha256-vQ7WJdZKgOqd7BGZsCE0NYbGXKPRssKRWywtDRHcf9w=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/2e/wallhaven-2eojex.jpg";
+    hash = "sha256-7Gwh9n0tB+iljJ3vlwlFE0Vs+6oVAWmuc6FrWgmXbcc=";
+  }
+  {
+    url = "https://w.wallhaven.cc/full/8o/wallhaven-8ozzxk.jpg";
+    hash = "sha256-h2Yi9v7fM+uoCvCuCrx9YyRWTp3IUn3Tp0hBmTxlEcc=";
+  }
+  {
     url = "https://i.imgur.com/GN1EEOt.jpeg";
     hash = "sha256-tw5ICopb6BfexmYJqmbokxdDs8cxBNEjJXCQ3DnCZpc=";
   }
