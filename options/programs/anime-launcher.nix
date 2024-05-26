@@ -1,5 +1,9 @@
-{option-functions, ...}:
+{
+  option-functions,
+  host,
+  ...
+}:
 with option-functions;
   option "programs" "anime-launcher" {
-    enable = enableOption "anime-launcher" true;
+    enable = enableOption "anime-launcher" host.isDesktop;
   }
