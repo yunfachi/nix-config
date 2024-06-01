@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  config,
+  decryptSecret,
+  username,
+  ...
+}: {
   host.type = "desktop";
 
   yunfachi = {
@@ -22,7 +27,16 @@
     ];
 
     services = {
-      mopidy.media_dirs = ["/media"];
+      mopidy = {
+        media_dirs = ["/media"];
+        jellyfin = {
+          enable = true;
+          username = decryptSecret "hosts/mitama/mopidy/jellyfin/username";
+          user_id = decryptSecret "hosts/mitama/mopidy/jellyfin/user_id";
+          token = decryptSecret "hosts/mitama/mopidy/jellyfin/token";
+          libraries = ["Audio" "Videos"];
+        };
+      };
       filebrowser.enable = true;
       jellyfin.enable = true;
 

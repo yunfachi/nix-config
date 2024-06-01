@@ -4,20 +4,23 @@
   pkgs,
   decryptSecret,
   ypkgs,
+  lib,
   ...
 }:
 module-functions.module "services" "mopidy" (cfg: {
   hm.services.mopidy = {
     enable = true;
-    extensionPackages = with pkgs; [
-      mopidy-iris
-      mopidy-mpd
+    extensionPackages = with pkgs;
+      [
+        mopidy-iris
+        mopidy-mpd
 
-      ypkgs.mopidy-alsamixer
+        ypkgs.mopidy-alsamixer
 
-      mopidy-youtube
-      yt-dlp-light
-    ];
+        mopidy-youtube
+        yt-dlp-light
+      ]
+      ++ lib.optional cfg.jellyfin.enable mopidy-jellyfin;
 
     settings = {
       http = {
@@ -58,6 +61,8 @@ module-functions.module "services" "mopidy" (cfg: {
       alsamixer = {
         volume_scale = "cubic";
       };
+
+      jellyfin = lib.mkIf cfg.jellyfin.enable (builtins.removeAttrs cfg.jellyfin ["enable"]);
     };
   };
 })
