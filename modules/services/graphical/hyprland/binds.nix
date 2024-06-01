@@ -21,6 +21,7 @@ module-functions.module "services" "hyprland" {
         "$mod, v, togglefloating"
         "$mod, m, pseudo"
         "$mod, j, togglesplit"
+        "$mod, f, fullscreen"
         "$mod, d, pin"
 
         "$mod, TAB, cyclenext"
