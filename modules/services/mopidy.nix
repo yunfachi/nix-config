@@ -8,6 +8,13 @@
   ...
 }:
 module-functions.module "services" "mopidy" (cfg: {
+  yunfachi.programs.firefox.bookmarks = lib.mkOptionDefault [
+    {
+      name = "mopidy";
+      url = "http://localhost:6680/iris";
+    }
+  ];
+
   hm.services.mopidy = {
     enable = true;
     extensionPackages = with pkgs;
