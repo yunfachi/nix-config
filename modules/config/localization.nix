@@ -24,5 +24,12 @@ module-functions.module null "localization" (cfg: {
         then "C.UTF-8"
         else cfg.locale;
     };
+
+    supportedLocales = [
+      "${cfg.locale}/UTF-8"
+      "${cfg.extraLocale}/UTF-8"
+      "C.UTF-8/UTF-8"
+      "ru_RU.UTF-8/UTF-8"
+    ];
   };
 })
