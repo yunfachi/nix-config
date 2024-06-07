@@ -10,6 +10,7 @@ module-functions.module "programs" "eww" {
     (include "top_bar/widgets/battery.yuck")
     (include "top_bar/widgets/player.yuck")
     (include "top_bar/widgets/time.yuck")
+    (include "top_bar/widgets/volume.yuck")
     (include "top_bar/widgets/workspaces.yuck")
 
     ${builtins.concatStringsSep "\n" (builtins.genList (monitor_id: ''
@@ -44,6 +45,7 @@ module-functions.module "programs" "eww" {
               :spacing 10
               :halign "end"
               (widget_player)
+              (widget_volume)
               (widget_battery)
             )
         )
