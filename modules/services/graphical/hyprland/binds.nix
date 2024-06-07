@@ -22,12 +22,12 @@ module-functions.module "services" "hyprland" {
         "$mod, m, pseudo"
         "$mod, j, togglesplit"
         "$mod, f, fullscreen"
-        "$mod, d, pin"
+        "$mod, p, pin"
 
         "$mod, TAB, cyclenext"
         "$mod, TAB, bringactivetotop"
 
-        "$mod, s, exec, ~/.config/hypr/scripts/screenshot.sh screen"
+        "$mod, s, exec, ~/.config/hypr/scripts/screenshot.sh output"
         "$mod SHIFT, s, exec, ~/.config/hypr/scripts/screenshot.sh area"
       ]
       ++ builtins.concatMap (mod: [
