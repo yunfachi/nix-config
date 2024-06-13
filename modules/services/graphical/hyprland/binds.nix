@@ -6,6 +6,8 @@
 }:
 module-functions.module "services" "hyprland" {
   hm.wayland.windowManager.hyprland.settings = {
+    binds.scroll_event_delay = 1;
+
     bindm = [
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
@@ -26,6 +28,9 @@ module-functions.module "services" "hyprland" {
 
         "$mod, TAB, cyclenext"
         "$mod, TAB, bringactivetotop"
+
+        "$mod SHIFT, mouse_down, exec, ~/.config/hypr/scripts/change_volume.sh +1%"
+        "$mod SHIFT, mouse_up, exec, ~/.config/hypr/scripts/change_volume.sh -1%"
 
         "$mod, s, exec, ~/.config/hypr/scripts/screenshot.sh output"
         "$mod SHIFT, s, exec, ~/.config/hypr/scripts/screenshot.sh area"
