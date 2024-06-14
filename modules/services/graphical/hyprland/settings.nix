@@ -33,6 +33,10 @@ module-functions.module "services" "hyprland" (cfg: {
     input = {
       kb_layout = config.services.xserver.xkb.layout;
       kb_options = config.services.xserver.xkb.options;
+      touchpad = {
+        disable_while_typing = false;
+        natural_scroll = true;
+      };
     };
 
     monitor =
