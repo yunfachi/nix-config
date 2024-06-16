@@ -15,6 +15,7 @@
     ];
 
     services = {
+      bluetooth.enable = true;
       wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/ayane/privateKey".path;
     };
   };
