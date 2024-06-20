@@ -8,6 +8,7 @@ module-functions.module "programs" "eww" {
     extraSpace = 5;
   in ''
     (include "top_bar/widgets/battery.yuck")
+    (include "top_bar/widgets/clicker.yuck")
     (include "top_bar/widgets/player.yuck")
     (include "top_bar/widgets/time.yuck")
     (include "top_bar/widgets/volume.yuck")
@@ -37,7 +38,11 @@ module-functions.module "programs" "eww" {
             )
             (box
               :class "top_bar_center"
+              :halign "center"
+              :space-evenly false
+              :spacing 10
               (widget_time)
+              (widget_clicker)
             )
             (box
               :class "top_bar_right"

@@ -16,7 +16,7 @@ module-functions.module "services" "hyprland" {
       else
         state="''${current} true"
       fi
-      printf "''${state}" > ~/.clicker.data
+      echo "''${state}" > ~/.clicker.data
 
       if [[ "''${state}" == "''${current} true" ]] ; then
         if [[ $current == 1 ]]; then

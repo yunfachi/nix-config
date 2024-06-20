@@ -1,0 +1,20 @@
+(deflisten state :initial "1 false" "bash scripts/clicker-state.sh")
+
+(defwidget widget_clicker []
+    (box
+        :class "clicker"
+        :halign "end"
+        :valign "fill"
+        :visible {state == "1 true" || state == "3 true"}
+        :space-evenly false
+        :spacing 4
+        (label
+            :class "clicker_icon"
+            :text ""
+        )
+        (label
+            :class "clicker_label"
+            :text {state == "1 true" ? "LMB" : "RMB"}
+        )
+    )
+)
