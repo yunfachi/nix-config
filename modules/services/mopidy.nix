@@ -3,7 +3,6 @@
   hm,
   pkgs,
   decryptSecret,
-  ypkgs,
   lib,
   ...
 }:
@@ -21,8 +20,6 @@ module-functions.module "services" "mopidy" (cfg: {
       [
         mopidy-iris
         mopidy-mpd
-
-        ypkgs.mopidy-alsamixer
 
         mopidy-youtube
         yt-dlp-light
@@ -59,14 +56,6 @@ module-functions.module "services" "mopidy" (cfg: {
       mpd = {
         enabled = true;
         hostname = "::";
-      };
-
-      audio = {
-        mixer = "alsamixer";
-      };
-
-      alsamixer = {
-        volume_scale = "cubic";
       };
 
       jellyfin = lib.mkIf cfg.jellyfin.enable (builtins.removeAttrs cfg.jellyfin ["enable"]);
