@@ -10,7 +10,6 @@
     contentIfEnabled ? {},
     contentIfDisabled ? {},
     contentFinally ? {},
-    negate ? false,
     root ? false,
   }: let
     config1 =
@@ -27,10 +26,7 @@
       then content config2
       else content;
 
-    condition =
-      if !negate
-      then config2.enable or true
-      else !config2.enable or true;
+    condition = config2.enable or true;
   in {
     imports = [
       {
@@ -39,7 +35,7 @@
         content = wrapContent contentIfEnabled;
       }
       {
-        inherit condition;
+        condition = !condition;
         _type = "if";
         content = wrapContent contentIfDisabled;
       }
@@ -51,19 +47,17 @@
     moduleRaw {
       inherit type name contentIfEnabled;
     };
-  moduleIfDisabled = type: name: contentIfEnabled:
+  moduleIfDisabled = type: name: contentIfDisabled:
     moduleRaw {
-      inherit type name contentIfEnabled;
-      negate = true;
+      inherit type name contentIfDisabled;
     };
   moduleIfEnabledFinally = type: name: contentIfEnabled: contentFinally:
     moduleRaw {
       inherit type name contentIfEnabled contentFinally;
     };
-  moduleIfDisabledFinally = type: name: contentIfEnabled: contentFinally:
+  moduleIfDisabledFinally = type: name: contentIfDisabled: contentFinally:
     moduleRaw {
-      inherit type name contentIfEnabled contentFinally;
-      negate = true;
+      inherit type name contentIfDisabled contentFinally;
     };
   moduleIfElse = type: name: contentIfEnabled: contentIfDisabled:
     moduleRaw {
@@ -74,15 +68,14 @@
       inherit type name contentIfEnabled contentIfDisabled contentFinally;
     };
 
-  rootModuleIfEnabled = type: name: contentIfEnabled:
+  rootModuleIfEnabled = type: name: contentIfDisabled:
     moduleRaw {
-      inherit type name contentIfEnabled;
+      inherit type name contentIfDisabled;
       root = true;
     };
-  rootModuleIfDisabled = type: name: contentIfEnabled:
+  rootModuleIfDisabled = type: name: contentIfDisabled:
     moduleRaw {
-      inherit type name contentIfEnabled;
-      negate = true;
+      inherit type name contentIfDisabled;
       root = true;
     };
   rootModuleIfEnabledFinally = type: name: contentIfEnabled: contentFinally:
@@ -90,10 +83,9 @@
       inherit type name contentIfEnabled contentFinally;
       root = true;
     };
-  rootModuleIfDisabledFinally = type: name: contentIfEnabled: contentFinally:
+  rootModuleIfDisabledFinally = type: name: contentIfDisabled: contentFinally:
     moduleRaw {
-      inherit type name contentIfEnabled contentFinally;
-      negate = true;
+      inherit type name contentIfDisabled contentFinally;
       root = true;
     };
   rootModuleIfElse = type: name: contentIfEnabled: contentIfDisabled:
