@@ -8,7 +8,10 @@
 module-functions.moduleIfElseFinally "programs" "anime-launcher"
 {
   nix.settings = inputs.anime-launcher.nixConfig;
-  programs.anime-game-launcher.enable = true;
+  programs = {
+    anime-game-launcher.enable = true;
+    sleepy-launcher.enable = true;
+  };
 
   yunfachi.programs.firefox.bookmarks = lib.mkOptionDefault [
     {
