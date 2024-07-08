@@ -2,6 +2,7 @@
   module-functions,
   hm,
   lib,
+  config,
   ...
 }:
 module-functions.module "services" "hyprland" {
@@ -22,6 +23,7 @@ module-functions.module "services" "hyprland" {
       [
         "$mod, q, killactive,"
         "CTRLALT, Delete, exit,"
+        (lib.mkIf config.yunfachi.programs.hyprlock.enable "$mod, l, exec, hyprlock")
 
         "$mod, Return, exec, $terminal"
 
