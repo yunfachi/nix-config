@@ -1,4 +1,4 @@
-{module-functions, ...}:
+{module-functions, pkgs, ...}:
 module-functions.module "services" "openssh" {
   services.openssh = {
     enable = true;
@@ -19,5 +19,7 @@ module-functions.module "services" "openssh" {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
     };
+
+    package = pkgs.openssh;
   };
 }
