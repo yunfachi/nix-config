@@ -9,9 +9,9 @@ module-functions.module "system" "amd-gpu" {
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
-  hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
       rocmPackages.clr.icd
