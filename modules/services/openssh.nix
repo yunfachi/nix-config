@@ -1,4 +1,8 @@
-{module-functions, pkgs, ...}:
+{
+  module-functions,
+  pkgs,
+  ...
+}:
 module-functions.module "services" "openssh" {
   services.openssh = {
     enable = true;
