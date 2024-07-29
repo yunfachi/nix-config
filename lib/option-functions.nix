@@ -72,8 +72,15 @@ in {
   portOption = name: default:
     lib.mkOption {
       inherit default;
-      description = "Whether to specifiy ${name}.";
+      description = "Whether to specify ${name}.";
       type = lib.types.port;
+    };
+
+  packageOption = name: default:
+    lib.mkOption {
+      inherit default;
+      description = "Whether to specify ${name}.";
+      type = lib.types.package;
     };
 
   enumOption = name: default: values:
