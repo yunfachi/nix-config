@@ -22,7 +22,6 @@ module-functions.module "services" "mopidy" (cfg: {
         mopidy-mpd
 
         mopidy-youtube
-        yt-dlp-light
       ]
       ++ lib.optional cfg.jellyfin.enable mopidy-jellyfin;
 
