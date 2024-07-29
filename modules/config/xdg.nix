@@ -4,6 +4,7 @@
   pkgs,
   config,
   host,
+  lib,
   ...
 }:
 module-functions.module null "xdg" {
@@ -17,6 +18,19 @@ module-functions.module null "xdg" {
           xdg-desktop-portal-wlr)
         ++ (lib.optional config.yunfachi.services.hyprland.enable
           xdg-desktop-portal-hyprland);
+    };
+
+    mimeApps = {
+      enable = true;
+      defaultApplications = let
+        video = lib.mkIf config.yunfachi.programs.totem.enable ["org.gnome.Totem.desktop"];
+        image = lib.mkIf config.yunfachi.programs.loupe.enable ["org.gnome.Loupe.desktop"];
+      in {
+        "audio/*" = video;
+        "audio/mpeg" = video;
+        "video/*" = video;
+        "image/*" = image;
+      };
     };
 
     userDirs = let
