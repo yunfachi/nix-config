@@ -2,6 +2,8 @@
   module-functions,
   hm,
   vscode-extensions,
+  config,
+  lib,
   ...
 }:
 module-functions.module "programs" "codium" {
@@ -13,7 +15,7 @@ module-functions.module "programs" "codium" {
       wakatime.vscode-wakatime # WakaTime
       leonardssh.vscord # Discord RPC
 
-      kamadorueda.alejandra # Nix Formatter
+      (lib.mkIf config.yunfachi.programs.alejandra.enable kamadorueda.alejandra) # Nix Formatter
       jnoortheen.nix-ide # Nix Syntax Highlight and more
 
       github.vscode-github-actions # Github Actions
