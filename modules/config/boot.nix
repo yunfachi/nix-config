@@ -1,6 +1,7 @@
 {
   module-functions,
   lib,
+  pkgs,
   ...
 }:
 module-functions.module null "boot" (cfg: {
@@ -14,5 +15,12 @@ module-functions.module null "boot" (cfg: {
       "udev.log_priority=3"
     ];
     consoleLogLevel = lib.mkIf cfg.silent 0;
+
+    plymouth = {
+      enable = true;
+
+      themePackages = with pkgs; [adi1090x-plymouth-themes];
+      theme = "cubes";
+    };
   };
 })
