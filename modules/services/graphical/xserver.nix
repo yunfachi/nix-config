@@ -1,24 +1,26 @@
 {
   module-functions,
   host,
+  pkgs,
+  config,
   ...
 }:
 module-functions.module "services" "xserver" (cfg: {
-  services = {
-    xserver = {
+  services.displayManager = {
+    sessionPackages = [config.hm.wayland.windowManager.hyprland.package];
+
+    sddm = {
       enable = true;
+      wayland.enable = host.isWayland;
+    };
+  };
 
-      xkb = {
-        layout = "us,ru";
-        options = "grp:win_space_toggle";
-      };
+  services.xserver = {
+    enable = true;
 
-      displayManager = {
-        gdm = {
-          enable = cfg.login-manager == "gdm";
-          wayland = host.isWayland;
-        };
-      };
+    xkb = {
+      layout = "us,ru";
+      options = "grp:win_space_toggle";
     };
   };
 })
