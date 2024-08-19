@@ -1,9 +1,13 @@
 {
-  module-functions,
-  hm,
+  delib,
+  host,
   pkgs,
   ...
 }:
-module-functions.module "programs" "telegram" {
-  hm.home.packages = with pkgs; [kotatogram-desktop];
+delib.module {
+  name = "programs.telegram";
+
+  options = delib.singleEnableOption host.isDesktop;
+
+  home.ifEnabled.home.packages = [pkgs.kotatogram-desktop];
 }

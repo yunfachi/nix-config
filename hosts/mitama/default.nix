@@ -1,64 +1,29 @@
 {
-  config,
-  decryptSecret,
-  username,
+  delib,
+  decryptHostSecretFile,
   ...
-}: {
-  host.type = "desktop";
+}:
+delib.host {
+  name = "mitama";
 
-  yunfachi = {
-    system = {
-      amd-gpu.enable = true;
-    };
+  rice = "hito";
+  type = "desktop";
 
-    hardware.displays = [
-      {
-        id = "DP-3";
-        primary = true;
-        refreshRate = 144;
-      }
-      {
-        id = "HDMI-A-1";
-        primary = false;
-        refreshRate = 60;
-        x = 1920;
-        y = 100;
-      }
-    ];
+  displays = [
+    {
+      name = "eDP-1";
+      primary = true;
+      refreshRate = 60;
+      width = 1920;
+      height = 1080;
+      x = 0;
+      y = 0;
+    }
+  ];
 
+  myconfig = {name, ...}: {
     services = {
-      mopidy = {
-        media_dirs = ["/media"];
-        jellyfin = {
-          enable = true;
-          username = decryptSecret "hosts/mitama/mopidy/jellyfin/username";
-          user_id = decryptSecret "hosts/mitama/mopidy/jellyfin/user_id";
-          token = decryptSecret "hosts/mitama/mopidy/jellyfin/token";
-          libraries = ["Audio" "Videos"];
-        };
-      };
-      filebrowser.enable = true;
-      jellyfin.enable = true;
-
-      uni-sync = {
-        enable = true;
-        devices = [
-          {
-            device_id = "VID:3314/PID:41219/SN:6243168001";
-            sync_rgb = true;
-            channels =
-              builtins.genList (
-                _: {
-                  mode = "Manual";
-                  speed = 70;
-                }
-              )
-              4;
-          }
-        ];
-      };
-
-      wireguard.privateKeyFile = config.sops.secrets."wireguard/clients/mitama/privateKey".path;
+      wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
     };
   };
 }

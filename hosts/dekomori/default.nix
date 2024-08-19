@@ -1,16 +1,19 @@
-{config, ...}: {
-  host.type = "server";
+{
+  delib,
+  decryptHostSecretFile,
+  ...
+}:
+delib.host {
+  name = "dekomori";
 
-  yunfachi = {
-    infras = {
-      changelog.enable = true;
-      deshiro.enable = true;
-    };
+  rice = "hito";
+  type = "server";
+
+  myconfig = {name, ...}: {
     services = {
-      archisteamfarm.enable = true;
       wireguard = {
         enable = true;
-        privateKeyFile = config.sops.secrets."wireguard/servers/dekomori/privateKey".path;
+        privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
       };
     };
   };

@@ -1,9 +1,12 @@
 {
-  module-functions,
-  hm,
+  delib,
   pkgs,
   ...
 }:
-module-functions.module "programs" "alejandra" {
-  hm.home.packages = with pkgs; [alejandra];
+delib.module {
+  name = "programs.alejandra";
+
+  options = delib.singleEnableOption true;
+
+  home.ifEnabled.home.packages = [pkgs.alejandra];
 }

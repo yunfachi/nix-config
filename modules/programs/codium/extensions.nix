@@ -1,27 +1,25 @@
 {
-  module-functions,
-  hm,
-  vscode-extensions,
-  config,
+  delib,
+  pkgs,
+  inputs,
   lib,
   ...
 }:
-module-functions.module "programs" "codium" {
-  hm.programs.vscode = {
-    extensions = with vscode-extensions; [
+delib.module {
+  name = "programs.codium";
+
+  home.ifEnabled = {cfg, ...}: let
+    vscode-extensions = inputs.vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+  in {
+    programs.vscode.extensions = with vscode-extensions; [
       beardedbear.beardedtheme # Theme
       beardedbear.beardedicons # Icons
 
-      wakatime.vscode-wakatime # WakaTime
+      (lib.mkIf cfg.extensions.wakatime wakatime.vscode-wakatime) # WakaTime
       leonardssh.vscord # Discord RPC
 
-      (lib.mkIf config.yunfachi.programs.alejandra.enable kamadorueda.alejandra) # Nix Formatter
+      (lib.mkIf cfg.extensions.alejandra kamadorueda.alejandra) # Nix Formatter
       jnoortheen.nix-ide # Nix Syntax Highlight and more
-
-      github.vscode-github-actions # Github Actions
-
-      github.copilot # Copilot AI
-      github.copilot-chat # Copilot AI chat
     ];
   };
 }

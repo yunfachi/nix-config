@@ -1,9 +1,13 @@
 {
-  module-functions,
-  hm,
+  delib,
+  host,
   pkgs,
   ...
 }:
-module-functions.module "programs" "totem" {
-  hm.home.packages = with pkgs; [totem];
+delib.module {
+  name = "programs.totem";
+
+  options = delib.singleEnableOption host.isDesktop;
+
+  home.ifEnabled.home.packages = [pkgs.totem];
 }
