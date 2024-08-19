@@ -1,7 +1,23 @@
 keys:
-  - &primary age1dttl95n05v9x0h6r04f245y7yxvm6y2fmlp5vr0k9hw5tpsvluzsd869pa
+  - &dekomori age1hwl6lg8g6pfkv2tatqkrhakgygy3j76hyhast9yfmxajp8lqcelq668g25
+  - &jakuzure age1t3neptgl2h2nhkqgh5j5sst5y56g8pauvccmkh2weu9pffdjmsssaedspj
+  - &mitama age1jz4qfg4244mxnfjfthtr7t9h7qzuspmf6z440yrwr324kkn4acuqufd6gp
 creation_rules:
   - path_regex: ^secrets.yaml$
     key_groups:
     - age:
-      - *primary
+      - *dekomori
+      - *jakuzure
+      - *mitama
+  - path_regex: ^hosts/dekomori/secrets.yaml$
+    key_groups:
+    - age:
+      - *dekomori
+  - path_regex: ^hosts/jakuzure/secrets.yaml$
+    key_groups:
+    - age:
+      - *jakuzure
+  - path_regex: ^hosts/mitama/secrets.yaml$
+    key_groups:
+    - age:
+      - *mitama

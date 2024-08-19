@@ -1,17 +1,21 @@
-{hostName}: {
-  username,
-  user,
+{
+  delib,
   decryptSecret,
   ...
-}: {
-  user.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6lmOpmk0XqC7G5n6xBMVol8Div9PNpRrcQ211uwFh0 yunfachi@mitama"];
+}:
+delib.host {
+  name = "mitama";
 
-  sops.secrets."wireguard/clients/mitama/privateKey".owner = username;
+  shared.myconfig = {name, ...}: {
+    services = {
+      sshd = {
+        authorizedKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHN/Gb1Q+5daqcOIEOTBxonnwV2DDrFvcfK6i3pDhdEo yunfachi@ayane"];
+      };
 
-  yunfachi = {
-    services.wireguard.clients.${hostName} = {
-      ip = "10.0.0.101";
-      publicKey = decryptSecret "wireguard/clients/mitama/publicKey";
+      wireguard.clients.${name} = {
+        ip = "10.0.0.102";
+        publicKey = decryptSecret "services/wireguard/clients/${name}/publicKey";
+      };
     };
   };
 }

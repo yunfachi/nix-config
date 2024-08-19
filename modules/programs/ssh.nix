@@ -1,29 +1,18 @@
 {
-  module-functions,
-  username,
-  config,
+  delib,
   pkgs,
-  lib,
   ...
 }:
-module-functions.module "programs" "ssh" {
-  sops = {
-    templates.".ssh/config" = {
-      owner = "yunfachi";
-      content = ''
-        Host *
-          AddKeysToAgent yes
-          Port 22
+delib.module {
+  name = "programs.ssh";
 
-        Host dekomori
-          HostName ${config.sops.placeholder."hosts/dekomori/ip"}
-          User ${username}
-      '';
-    };
-  };
+  options = delib.singleEnableOption true;
 
-  environment.etc."ssh/ssh_config".source = lib.mkForce config.sops.templates.".ssh/config".path;
-  programs.ssh = {
+  home.ifEnabled.programs.ssh = {
+    enable = true;
+
     package = pkgs.openssh_hpn;
+    compression = true;
+    hashKnownHosts = true;
   };
 }
