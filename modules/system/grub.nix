@@ -12,6 +12,7 @@ module-functions.moduleIfEnabledFinally "system" "grub" (cfg: {
       enable = true;
       efiSupport = cfg.mode == "uefi";
       devices = ["nodev"];
+      configurationLimit = 1;
     };
 
     grub2-theme = {
