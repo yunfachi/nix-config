@@ -1,22 +1,20 @@
-{
-  module-functions,
-  hm,
-  username,
-  useremail,
-  ...
-}:
-module-functions.module "programs" "git" {
-  hm.programs.git = {
-    enable = true;
-    lfs.enable = true;
+{delib, ...}:
+delib.module {
+  name = "programs.git";
 
-    userName = username;
-    userEmail = useremail;
+  options = delib.singleEnableOption true;
 
-    extraConfig = {
-      init.defaultBranch = "master";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
+  home.ifEnabled = {myconfig, ...}: {
+    programs.git = {
+      enable = true;
+      lfs.enable = true;
+
+      userName = myconfig.constants.username;
+      userEmail = myconfig.constants.useremail;
+
+      extraConfig = {
+        init.defaultBranch = "master";
+      };
     };
   };
 }

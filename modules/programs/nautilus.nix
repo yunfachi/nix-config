@@ -1,9 +1,13 @@
 {
-  module-functions,
-  hm,
+  delib,
+  host,
   pkgs,
   ...
 }:
-module-functions.module "programs" "nautilus" {
-  hm.home.packages = with pkgs; [nautilus];
+delib.module {
+  name = "programs.nautilus";
+
+  options = delib.singleEnableOption host.isDesktop;
+
+  home.ifEnabled.home.packages = [pkgs.nautilus];
 }

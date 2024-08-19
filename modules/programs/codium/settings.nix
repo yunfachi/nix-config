@@ -1,21 +1,15 @@
-{
-  module-functions,
-  hm,
-  lib,
-  config,
-  ...
-}:
-module-functions.module "programs" "codium" {
-  hm.programs.vscode = {
-    keybindings = [];
+{delib, ...}:
+delib.module {
+  name = "programs.codium";
 
-    userSettings = let
+  home.ifEnabled = {
+    programs.vscode.userSettings = let
       icon = "https://user-images.githubusercontent.com/36299870/105232957-165bc380-5b61-11eb-8da4-37870387857f.png";
       work = "{git_owner}/{workspace} - {file_name}{file_extension}";
       idle = "idle ( ´ ▿ ` )";
     in {
       "breadcrumbs.enabled" = false;
-      "editor.fontFamily" = "'Droid Sans Mono', 'monospace'${lib.optionalString config.yunfachi.fonts.enable ", 'CaskaydiaCove Nerd Font'"}";
+      "editor.fontFamily" = "'Droid Sans Mono', 'monospace'";
       "editor.minimap.enabled" = false;
       "editor.stickyScroll.enabled" = true;
       "explorer.compactFolders" = false;
