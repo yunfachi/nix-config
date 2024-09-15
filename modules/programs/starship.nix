@@ -74,8 +74,17 @@ delib.module {
         style = "bold dimmed green";
       };
       battery = {
-        format = "([$percentage]($style)) ";
-        style = "bold dimmed green";
+        format = "with [$percentage]($style) ";
+        display = [
+          {
+            threshold = 100;
+            style = "bold dimmed green";
+          }
+          {
+            threshold = 30;
+            style = "bold dimmed red";
+          }
+        ];
       };
       nix_shell = {
         style = "bold purple";
