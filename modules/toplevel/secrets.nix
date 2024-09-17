@@ -4,6 +4,7 @@
   delib,
   homeconfig,
   ylib,
+  pkgs,
   ...
 }:
 delib.module {
@@ -38,4 +39,6 @@ delib.module {
   #     inherit (cfg) secrets;
   #   };
   # };
+
+  home.always.home.packages = [pkgs.sops];
 }
