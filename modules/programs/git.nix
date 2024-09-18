@@ -1,4 +1,8 @@
-{delib, ...}:
+{
+  delib,
+  pkgs,
+  ...
+}:
 delib.module {
   name = "programs.git";
 
@@ -17,4 +21,6 @@ delib.module {
       };
     };
   };
+
+  nixos.ifEnabled.environment.systemPackages = [pkgs.git];
 }
