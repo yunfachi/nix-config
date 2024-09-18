@@ -588,11 +588,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1726652697,
-        "narHash": "sha256-4CjgKKL0IPL5W2AxaUeEd6w0Vq81pdcb/dIccePFmfc=",
+        "lastModified": 1726654762,
+        "narHash": "sha256-rcpfV0gbqBMrNlFxbycvJg2kmGsXeIsvkANR48Bs8dg=",
         "owner": "yunfachi",
         "repo": "wallpaper-manager",
-        "rev": "b60565c9e49031b0b6d3c5a94f6a16c4ec4f31e7",
+        "rev": "f768544b138358ec40a5f5fa687b41bfbb900a56",
         "type": "github"
       },
       "original": {
