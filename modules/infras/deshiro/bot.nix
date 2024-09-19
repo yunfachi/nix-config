@@ -7,7 +7,7 @@
   ...
 }:
 delib.module {
-  name = "infras.changelog-bot";
+  name = "infras.deshiro";
 
   nixos.ifEnabled = {myconfig, ...}: {
     systemd.services = let
