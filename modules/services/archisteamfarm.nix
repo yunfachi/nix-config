@@ -34,6 +34,7 @@ delib.module {
           username = decryptSecret "services/archisteamfarm/bots/yunfachi/username";
           passwordFile = decryptSecretFile "services/archisteamfarm/bots/yunfachi/password";
           settings = {
+            EnableFreePackages = true; # FreePackages plugin is installed non-declaratively
             AcceptGifts = true;
             FarmingOrders = [5];
             FarmingPreferences = 128;
