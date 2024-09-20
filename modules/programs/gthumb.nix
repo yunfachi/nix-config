@@ -9,5 +9,9 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
+  myconfig.ifEnabled.xdg.defaultApplications = {
+    "image/*" = ["org.gnome.Loupe.desktop"];
+  };
+
   home.ifEnabled.home.packages = [pkgs.gthumb];
 }
