@@ -10,7 +10,7 @@ delib.host {
   rice = "hito";
   type = "server";
 
-  nixos = {myconfig, ...}: {
+  nixos = {
     systemd.services.postgresql.after = ["wg-quick-wg0.service"];
   };
 
