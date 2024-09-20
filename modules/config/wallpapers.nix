@@ -2,6 +2,7 @@
   delib,
   inputs,
   lib,
+  host,
   pkgs,
   ...
 }:
@@ -19,6 +20,11 @@ delib.module {
     excludedTags = listOfOption str [];
 
     interval = intOption 300000;
+    wallpaperDaemon = allowNull (enumOption ["swww" "hyprpaper"] (
+      if host.isDesktop
+      then "hyprpaper"
+      else null
+    ));
 
     imagesDir = noDefault (packageOption null);
   };
@@ -38,6 +44,4 @@ delib.module {
       }) (builtins.attrValues cfg.images));
     };
   };
-
-  home.always.home.packages = [inputs.wallpaper-manager.packages.${pkgs.system}.default];
 }
