@@ -34,6 +34,27 @@ delib.module {
     ];
   };
 
+  myconfig.ifEnabled.xdg.defaultApplications = let
+    firefox = "Schizofox.desktop";
+  in {
+    "application/json" = [firefox];
+    "application/pdf" = [firefox];
+    "application/rdf+xml" = [firefox];
+    "application/rss+xml" = [firefox];
+    "application/x-extension-htm" = [firefox];
+    "application/x-extension-html" = [firefox];
+    "application/x-extension-shtml" = [firefox];
+    "application/x-extension-xht" = [firefox];
+    "application/x-extension-xhtml" = [firefox];
+    "application/xhtml_xml" = [firefox];
+    "application/xhtml+xml" = [firefox];
+    "application/xml" = [firefox];
+    "x-scheme-handler/about" = [firefox];
+    "x-scheme-handler/http" = [firefox];
+    "x-scheme-handler/https" = [firefox];
+    "x-scheme-handler/unknown" = [firefox];
+  };
+
   home.always.imports = [inputs.schizofox.homeManagerModule];
 
   home.ifEnabled = {
