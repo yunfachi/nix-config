@@ -1,0 +1,43 @@
+$bar-spacing: 4px;
+
+.bar {
+    background-color: $bg;
+
+    .panel-button {
+        border-radius: 20px;
+        margin: $bar-spacing;
+        padding: 0px 6px;
+        color: $fg;
+    }
+
+    .workspaces {
+        label {
+            font-size: 0;
+            border-radius: 6px;
+            margin: 0 2.5px;
+            transition: .1s;
+
+            background-color: transparentize($fg, .8);;
+            min-height: 12px;
+            min-width: 12px;
+
+            &.active, &.active.occupied {
+                background-color: $accent;
+                min-width: 16px;
+                border-radius: 5px;
+            }
+
+            &.occupied {
+                background-color: transparentize($fg, .4);
+            }
+        }
+    }
+
+    .simpleplayer {
+        margin: $bar-spacing $bar-spacing $bar-spacing 0;
+
+        label {
+            margin: 0 0 0 $bar-spacing;
+        }
+    }
+}
