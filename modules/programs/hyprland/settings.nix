@@ -50,8 +50,8 @@ delib.module {
       };
 
       input = {
-        kb_layout = "us,ru"; #FIXME: xkb config
-        kb_options = "grp:win_space_toggle";
+        kb_layout = "us"; # fcitx5
+        kb_options = "";
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
