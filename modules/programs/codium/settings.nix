@@ -53,7 +53,7 @@ delib.module {
       "window.commandCenter" = false;
       "window.titleBarStyle" = "custom";
       "workbench.activityBar.location" = "hidden";
-      "workbench.colorTheme" = "Bearded Theme Coffee";
+      "workbench.colorTheme" = "nypkgs-base24";
       "workbench.editor.decorations.badges" = false;
       "workbench.editor.decorations.colors" = false;
       "workbench.iconTheme" = "bearded-icons";
