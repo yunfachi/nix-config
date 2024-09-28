@@ -8,6 +8,7 @@
     package = lib.mkForce pkgs.nix;
     settings = {
       experimental-features = ["nix-command" "flakes"];
+      warn-dirty = false;
     };
   };
 in
