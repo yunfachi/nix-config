@@ -4,7 +4,7 @@
   ...
 }:
 delib.rice {
-  name = "hito";
+  name = "marui";
 
   myconfig.programs.hyprland = with colorscheme; {
     background_color = "rgb(${base11.value})";

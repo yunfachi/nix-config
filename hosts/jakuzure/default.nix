@@ -6,7 +6,7 @@
 delib.host {
   name = "jakuzure";
 
-  rice = "hito";
+  rice = "yami";
   type = "desktop";
 
   displays = [
