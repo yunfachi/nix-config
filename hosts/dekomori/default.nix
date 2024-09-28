@@ -7,7 +7,7 @@
 delib.host {
   name = "dekomori";
 
-  rice = "hito";
+  rice = "yami";
   type = "server";
 
   nixos = {
