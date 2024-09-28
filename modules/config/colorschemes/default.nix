@@ -8,7 +8,7 @@ delib.module {
 
   options = {myconfig, ...}:
     with delib; let
-      colorscheme = let
+      colorscheme = {config, ...}: let
         colorOption = apply (noDefault (allowAttrs (strOption null))) (color:
           if builtins.typeOf color == "string"
           then ylib.color color
