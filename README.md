@@ -18,7 +18,7 @@ My [NixOS](https://nixos.org/) and [Home Manager](https://github.com/nix-communi
 |                            | Dekomori                                    | Jakuzure                                      | Mitama                                        |
 | -------------------------- | ------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | **Type**                   | Server                                      | Desktop                                       | Desktop                                       |
-| **Default Rice**           | [Hito](./rices/hito/)                       | [Hito](./rices/H/)                            | [Hito](./rices/hito/)                         |
+| **Default Rice**           | [Hito](./rices/hito/)                       | [Hito](./rices/hito/)                         | [Hito](./rices/hito/)                         |
 | **Window Manager**         | -                                           | [Hyprland](./modules/programs/hyprland/)      | [Hyprland](./modules/programs/hyprland/)      |
 | **Display Manager**        | -                                           | -                                             | -                                             |
 | **Shell**                  | [Bash](./modules/programs/bash.nix)         | [Bash](./modules/programs/bash.nix)           | [Bash](./modules/programs/bash.nix)           |
