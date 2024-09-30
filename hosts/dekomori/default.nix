@@ -21,6 +21,8 @@ delib.host {
     };
 
     services = {
+      archisteamfarm.enable = true;
+
       postgresql = {
         enable = true;
 
