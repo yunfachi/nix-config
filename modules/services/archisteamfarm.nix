@@ -9,7 +9,7 @@
 delib.module {
   name = "services.archisteamfarm";
 
-  options = delib.singleEnableOption true;
+  options = delib.singleEnableOption false;
 
   nixos.ifEnabled = {
     networking.firewall.allowedTCPPorts = [1242];
