@@ -1,15 +1,19 @@
-{delib, ...}:
+{
+  delib,
+  lib,
+  ...
+}:
 delib.module {
   name = "programs.codium";
 
-  home.ifEnabled = {
+  home.ifEnabled = {myconfig, ...}: {
     programs.vscode.userSettings = let
       icon = "https://user-images.githubusercontent.com/36299870/105232957-165bc380-5b61-11eb-8da4-37870387857f.png";
       work = "{git_owner}/{workspace} - {file_name}{file_extension}";
       idle = "idle ( ´ ▿ ` )";
     in {
       "breadcrumbs.enabled" = false;
-      "editor.fontFamily" = "'Droid Sans Mono', 'monospace'";
+      "editor.fontFamily" = "'Droid Sans Mono', 'monospace' ${lib.optionalString myconfig.fonts.enable ", 'CaskaydiaCove Nerd Font'"}";
       "editor.minimap.enabled" = false;
       "editor.stickyScroll.enabled" = true;
       "explorer.compactFolders" = false;
