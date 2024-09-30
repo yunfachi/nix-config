@@ -30,6 +30,26 @@ delib.host {
   ];
 
   myconfig = {name, ...}: {
+    programs = {
+      uni-sync = {
+        enable = true;
+        devices = [
+          {
+            device_id = "VID:3314/PID:41219/SN:6243168001";
+            sync_rgb = true;
+            channels =
+              builtins.genList (
+                _: {
+                  mode = "Manual";
+                  speed = 70;
+                }
+              )
+              4;
+          }
+        ];
+      };
+    };
+
     services = {
       wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
     };
