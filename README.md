@@ -35,5 +35,5 @@ My [NixOS](https://nixos.org/) and [Home Manager](https://github.com/nix-communi
 | -------------------- | ---------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------- |
 | **Inherits**         | Marui                                                                        | -     | Marui                                                                        |
 | **Inheritance Only** | No                                                                           | Yes   | No                                                                           |
-| **Color Scheme**     | [Kanagawa Dragon](./modules/config/colorschemes/schemes/kanagawa-dragon.nix) | -     | [Kanagawa Dragon](./modules/config/colorschemes/schemes/kanagawa-dragon.nix) |
+| **Color Scheme**     | [Coffee](./modules/config/colorschemes/schemes/coffee.nix)                   | -     | [Kanagawa Dragon](./modules/config/colorschemes/schemes/kanagawa-dragon.nix) |
 
