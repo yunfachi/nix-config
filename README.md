@@ -2,6 +2,8 @@
 
 My [NixOS](https://nixos.org/) and [Home Manager](https://github.com/nix-community/home-manager) configuration for all my hosts, including servers, laptops, and desktops, built with [Denix](https://github.com/yunfachi/denix).
 
+![](https://github.com/user-attachments/assets/fc5ab8bf-613e-496a-aec9-8418b5d06173)
+
 ## Features
 
 - Only [Denix](https://github.com/yunfachi/denix) modules, hosts, and rices.
