@@ -41,6 +41,10 @@ delib.module {
     };
   };
 
+  nixos.always = {myconfig, ...}: {
+    boot.kernelParams = map (display: with display; "video=${name}:${toString width}x${toString height}@${toString refreshRate}") myconfig.host.displays;
+  };
+
   home.always = {myconfig, ...}: {
     assertions = delib.hostNamesAssertions myconfig.hosts;
   };
