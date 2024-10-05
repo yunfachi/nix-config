@@ -22,6 +22,10 @@ delib.host {
   ];
 
   myconfig = {name, ...}: {
+    programs = {
+      xp-pen-deco-pro.enable = true;
+    };
+
     services = {
       wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
     };

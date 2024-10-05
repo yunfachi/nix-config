@@ -48,6 +48,8 @@ delib.host {
           }
         ];
       };
+
+      xp-pen-deco-pro.enable = true;
     };
 
     services = {
