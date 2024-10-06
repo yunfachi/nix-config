@@ -20,7 +20,7 @@ delib.module {
       pinentryPackage =
         if myconfig.services.gcr.enable
         then pkgs.pinentry-gnome3
-        else pkgs.pinentry-curves;
+        else pkgs.pinentry-curses;
     };
   };
 }
