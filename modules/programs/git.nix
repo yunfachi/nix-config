@@ -1,20 +1,33 @@
 {
   delib,
   pkgs,
+  lib,
   ...
 }:
 delib.module {
   name = "programs.git";
 
-  options = delib.singleEnableOption true;
+  options.programs.git = with delib; {
+    enable = boolOption true;
+    signingKey = allowNull (strOption null);
+  };
 
-  home.ifEnabled = {myconfig, ...}: {
+  home.ifEnabled = {
+    myconfig,
+    cfg,
+    ...
+  }: {
     programs.git = {
       enable = true;
       lfs.enable = true;
 
       userName = myconfig.constants.username;
       userEmail = myconfig.constants.useremail;
+
+      signing = lib.mkIf (cfg.signingKey != null) {
+        key = cfg.signingKey;
+        signByDefault = true;
+      };
 
       extraConfig = {
         init.defaultBranch = "master";

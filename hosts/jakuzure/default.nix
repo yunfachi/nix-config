@@ -31,6 +31,8 @@ delib.host {
 
   myconfig = {name, ...}: {
     programs = {
+      git.signingKey = "0x9D16EF5F68A5CEDF";
+
       uni-sync = {
         enable = true;
         devices = [
