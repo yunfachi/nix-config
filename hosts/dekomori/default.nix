@@ -21,7 +21,7 @@ delib.host {
     };
 
     programs = {
-      # git.signingKey = "0x";
+      git.signingKey = "0x3347EA00F28111FC";
     };
 
     services = {
