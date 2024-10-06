@@ -23,6 +23,7 @@ delib.host {
 
   myconfig = {name, ...}: {
     programs = {
+      # git.signingKey = "0x";
       xp-pen-deco-pro.enable = true;
     };
 

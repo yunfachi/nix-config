@@ -20,6 +20,10 @@ delib.host {
       deshiro.enable = true;
     };
 
+    programs = {
+      # git.signingKey = "0x";
+    };
+
     services = {
       archisteamfarm.enable = true;
 
