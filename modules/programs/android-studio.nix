@@ -1,7 +1,6 @@
 {
   delib,
   host,
-  user,
   pkgs,
   ...
 }:
