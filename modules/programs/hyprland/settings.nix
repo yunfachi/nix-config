@@ -68,6 +68,7 @@ delib.module {
 
         enable_swallow = true;
         swallow_regex = "^(kitty)$"; #FIXME: modules/config/terminal.nix
+        swallow_exception_regex = "^(noswallow|nvim)$";
       };
 
       cursor = {};
