@@ -21,6 +21,7 @@ delib.module {
           "CTRLALT, Delete, exit,"
 
           "$mod, Return, exec, kitty"
+          "$mod SHIFT, Return, exec, kitty --title noswallow"
 
           "$mod, v, togglefloating"
           "$mod, m, pseudo"
