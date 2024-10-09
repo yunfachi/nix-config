@@ -34,7 +34,7 @@ delib.module {
           "$mod, Tab, bringactivetotop"
 
           "$mod, s, exec, pkill -c slurp; hyprshot --mode output --mode active"
-          "$mod SHIFT, s, exec, pkill -c slurp; hyprshot --mode region"
+          "$mod SHIFT, s, exec, pkill -c slurp; hyprshot --mode region --freeze"
         ]
         ++ builtins.concatMap (x: [
           "$mod, ${toString (lib.mod x 10)}, split-workspace, ${toString x}"
