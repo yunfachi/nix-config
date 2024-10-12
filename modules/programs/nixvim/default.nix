@@ -8,24 +8,29 @@ delib.module {
 
   options.programs.nixvim = with delib; {
     enable = boolOption true;
+
+    defaultEditor = boolOption true;
   };
 
   home.always.imports = [inputs.nixvim.homeManagerModules.nixvim];
 
-  home.ifEnabled.programs.nixvim = {
-    enable = true;
+  home.ifEnabled = {cfg, ...}: {
+    programs.nixvim = {
+      enable = true;
+      inherit (cfg) defaultEditor;
 
-    opts = {
-      number = true;
-      relativenumber = true;
+      opts = {
+        number = true;
+        relativenumber = true;
 
-      list = true;
+        list = true;
 
-      expandtab = true;
-      tabstop = 2;
-      shiftwidth = 2;
-      softtabstop = 2;
-      listchars.tab = "-»";
+        expandtab = true;
+        tabstop = 2;
+        shiftwidth = 2;
+        softtabstop = 2;
+        listchars.tab = "-»";
+      };
     };
   };
 }
