@@ -5,11 +5,33 @@ delib.module {
   home.ifEnabled.xdg.configFile."fcitx5/config" = {
     force = true;
     text = ''
-      [Hotkey/TriggerKeys]
-      0=Super+space
+      TriggerKeys=
+      # Enumerate when press trigger key repeatedly
+      EnumerateWithTriggerKeys=True
+      # Temporally switch between first and current Input Method
+      AltTriggerKeys=
+      # Enumerate Input Method Forward
+      EnumerateForwardKeys=
+      # Enumerate Input Method Backward
+      EnumerateBackwardKeys=
+      # Skip first input method while enumerating
+      EnumerateSkipFirst=False
+      # Enumerate Input Method Group Forward
+      EnumerateGroupForwardKeys=
+      # Enumerate Input Method Group Backward
+      EnumerateGroupBackwardKeys=
+      # Activate Input Method
+      ActivateKeys=
+      # Deactivate Input Method
+      DeactivateKeys=
+      # Toggle embedded preedit
+      TogglePreedit=
 
-      [Hotkey/EnumerateGroupForwardKeys]
-      0=Alt+Super+space
+      [Hotkey/PrevPage]
+      0=Up
+
+      [Hotkey/NextPage]
+      0=Down
 
       [Hotkey/PrevCandidate]
       0=Shift+Tab

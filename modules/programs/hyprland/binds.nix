@@ -7,8 +7,9 @@
 delib.module {
   name = "programs.hyprland";
 
-  home.ifEnabled = {
+  home.ifEnabled = {myconfig, ...}: {
     home.packages = [pkgs.hyprshot];
+
     wayland.windowManager.hyprland.settings = {
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -16,7 +17,10 @@ delib.module {
       ];
 
       bind =
-        [
+        lib.optional myconfig.programs.fcitx5.enable ''
+          $mod SHIFT, Space, exec, if [[ "$(fcitx5-remote --check)" -eq "1" ]]; then fcitx5-remote -e; else fcitx5 -d --replace; fi
+        ''
+        ++ [
           "$mod, q, killactive,"
           "CTRLALT, Delete, exit,"
 
