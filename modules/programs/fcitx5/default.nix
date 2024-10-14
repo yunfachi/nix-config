@@ -1,17 +1,13 @@
 {
   delib,
-  host,
   pkgs,
+  host,
   ...
 }:
 delib.module {
   name = "programs.fcitx5";
 
   options = delib.singleEnableOption host.isDesktop;
-
-  myconfig.ifEnabled.commands.windowManager.onStartup = [
-    "fcitx5 -d --replace"
-  ];
 
   home.ifEnabled = {
     i18n.inputMethod = {
