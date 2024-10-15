@@ -3,14 +3,15 @@ delib.module {
   name = "programs.schizofox";
 
   home.ifEnabled.programs.schizofox.search = {
-    defaultSearchEngine = "Brave";
+    defaultSearchEngine = "Google";
+    removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "Wikipedia (en)"];
     addEngines = [
       {
-        Name = "Brave";
-        Description = "Brave engine";
-        Alias = "!brave";
+        Name = "Google";
+        Description = "Google Search";
+        Alias = "!google";
         Method = "GET";
-        URLTemplate = "https://search.brave.com/search?q={searchTerms}";
+        URLTemplate = "https://www.google.com/search?q={searchTerms}";
       }
       {
         Name = "Tronscan";
