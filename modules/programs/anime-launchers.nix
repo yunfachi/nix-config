@@ -31,8 +31,12 @@ delib.module {
   };
 
   myconfig.ifEnabled = {cfg, ...}: {
+    persist.user.directories =
+      lib.optional cfg.enableAnimeGameLauncher ".local/share/anime-game-launcher"
+      ++ lib.optional cfg.enableSleepyLauncher ".local/share/sleepy-launcher";
+
     programs.schizofox.bookmarks =
-      (lib.optionals cfg.enableAnimeGameLauncher [
+      lib.optionals cfg.enableAnimeGameLauncher [
         {
           Title = "тейват";
           URL = let
@@ -61,14 +65,14 @@ delib.module {
           Placement = "toolbar";
           Folder = "Genshin";
         }
-      ])
-      ++ (lib.optionals cfg.enableSleepyLauncher [
+      ]
+      ++ lib.optionals cfg.enableSleepyLauncher [
         {
           Title = "отметки";
           URL = "https://act.hoyolab.com/bbs/event/signin/zzz/e202406031448091.html?act_id=e202406031448091&lang=ru-ru";
           Placement = "toolbar";
           Folder = "Zenless";
         }
-      ]);
+      ];
   };
 }
