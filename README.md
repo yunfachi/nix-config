@@ -10,6 +10,7 @@ My [NixOS](https://nixos.org/) and [Home Manager](https://github.com/nix-communi
 - [Home Manager](https://github.com/nix-community/home-manager) configuration instead of [NixOS](https://nixos.org/) where applicable.
 - Options, [NixOS](https://nixos.org/) configuration, and [Home Manager](https://github.com/nix-community/home-manager) configuration can be written in a single file ([Denix](https://github.com/yunfachi/denix)).
 - Multiple rices, switchable via `nixos-rebuild switch` and working across all hosts.
+- Impermanence, Disko and ZFS on some hosts.
 - Virtual private network between all hosts.
 - Various infrastructures with all dependencies, including databases that can be enabled by a single option.
 - All nix files from `./modules`, `./hosts`, and `./rices` are imported simultaneously.
