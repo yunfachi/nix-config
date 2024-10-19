@@ -9,12 +9,17 @@ delib.module {
 
   options = delib.singleEnableOption true;
 
+  myconfig.ifEnabled.persist.user.directories = [
+    ".local/share/gnupg"
+  ];
+
   home.ifEnabled = {myconfig, ...}: {
     programs.gpg = {
       enable = true;
 
       homedir = "${homeconfig.xdg.dataHome}/gnupg";
     };
+
     services.gpg-agent = {
       enable = true;
       pinentryPackage =
