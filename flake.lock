@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728026888,
-        "narHash": "sha256-VI8WiQy9xC6kQn5ILSh8k38Ichcbqjeje1jriICo+aI=",
+        "lastModified": 1728524457,
+        "narHash": "sha256-R+GJ3H1PvRUHLm45muY1KEezhfgIl8l7HJ36DySZMu0=",
         "owner": "ezKEa",
         "repo": "aagl-gtk-on-nix",
-        "rev": "7f7b8a654dac5117db22b97a01d3975acdb359b4",
+        "rev": "5611dd61df02e0bc5d62bb3f5388821d8854faff",
         "type": "github"
       },
       "original": {
@@ -105,6 +105,26 @@
       "original": {
         "owner": "numtide",
         "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729099656,
+        "narHash": "sha256-VftVIg7UXTy1bq+tzi1aVYOWl7PQ35IpjW88yMYjjpc=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "d7d57edb72e54891fa67a6f058a46b2bb405663b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
         "type": "github"
       }
     },
@@ -424,6 +444,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1729068498,
+        "narHash": "sha256-C2sGRJl1EmBq0nO98TNd4cbUy20ABSgnHWXLIJQWRFA=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "e337457502571b23e449bf42153d7faa10c0a562",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nix-config-wallpapers": {
       "locked": {
         "lastModified": 1725738927,
@@ -611,7 +646,9 @@
         "ags": "ags",
         "anime-launcher": "anime-launcher",
         "denix": "denix",
+        "disko": "disko",
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "nix-config-wallpapers": "nix-config-wallpapers",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
