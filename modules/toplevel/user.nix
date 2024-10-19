@@ -2,6 +2,7 @@
   delib,
   lib,
   config,
+  decryptSecretFile,
   ...
 }:
 delib.module {
@@ -17,7 +18,7 @@ delib.module {
 
       users.${username} = {
         isNormalUser = true;
-        initialPassword = username;
+        hashedPasswordFile = decryptSecretFile "user/hashedPassword";
         extraGroups = ["wheel"];
       };
     };
