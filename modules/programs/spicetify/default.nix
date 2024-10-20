@@ -12,6 +12,8 @@ delib.module {
 
   myconfig.always.args.shared.spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.system};
 
+  myconfig.ifEnabled.persist.user.directories = [".config/spotify" ".cache/spotify"];
+
   home.always.imports = [inputs.spicetify.homeManagerModules.default];
 
   home.ifEnabled = {
