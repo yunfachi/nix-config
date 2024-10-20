@@ -1,7 +1,6 @@
 {
   delib,
   inputs,
-  config,
   lib,
   pkgs,
   ...
@@ -14,17 +13,10 @@ delib.module {
     configuration = attrsOption {};
   };
 
-  nixos.always = {
-    imports = [
-      inputs.disko.nixosModules.disko
-      (lib.mkIf config.myconfig.disko.enable {
-        disko = config.myconfig.disko.configuration;
-      })
-    ];
-  };
+  nixos.always.imports = [inputs.disko.nixosModules.disko];
 
   nixos.ifEnabled = {cfg, ...}: {
-    #   disko = cfg.configuration;
+    disko = cfg.configuration;
     environment.systemPackages = [inputs.disko.packages.${pkgs.system}.disko];
   };
 }
