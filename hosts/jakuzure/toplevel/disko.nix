@@ -72,6 +72,7 @@ delib.host {
             mountpoint = "/nix";
             options.mountpoint = "legacy";
           };
+          #TODO: "safe/persist/cache", "safe/persist/downloaded", "safe/persist/data", etc
           "safe/persist" = {
             type = "zfs_fs";
             mountpoint = "/persist";
