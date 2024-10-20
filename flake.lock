@@ -74,11 +74,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729423818,
-        "narHash": "sha256-QprMDUf+fMarYSorRb2cV1/7wjBl5nSPboAEQbguh7Q=",
+        "lastModified": 1729444687,
+        "narHash": "sha256-pbZG5X1HWcRZpt2IJd6DB6tMcNRKgvIOroxrFyGdtV0=",
         "owner": "yunfachi",
         "repo": "denix",
-        "rev": "1f5312628f9337a4b8edc1f809987c9b79dbbafc",
+        "rev": "eb5a44970945c4c3f9a67730ed5885dc175e00a2",
         "type": "github"
       },
       "original": {
