@@ -12,6 +12,8 @@ delib.module {
     defaultApplications = attrsOfOption (listOf str) {};
   };
 
+  myconfig.ifEnabled.persist.user.directories = ["media" "files"];
+
   home.ifEnabled = {cfg, ...}: {
     xdg = {
       enable = true;
