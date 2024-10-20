@@ -9,6 +9,8 @@ delib.module {
 
   options = delib.singleEnableOption true;
 
+  myconfig.ifEnabled.persist.directories = ["/var/lib/fail2ban" "/var/log/fail2ban"];
+
   # https://github.com/NotAShelf/nyx/blob/main/modules/core/common/system/os/networking/firewall/fail2ban.nix
   nixos.ifEnabled.services.fail2ban = {
     enable = true;
