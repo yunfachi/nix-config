@@ -4,7 +4,6 @@
   host,
   colorscheme,
   lib,
-  config,
   ...
 }:
 delib.module {
@@ -12,19 +11,17 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
-  home.ifEnabled = {
-    gtk = {
-      enable = true;
+  home.ifEnabled.gtk = {
+    enable = true;
 
-      theme = {
-        name = "adw-gtk3${lib.optionalString (config.myconfig.colorscheme.polarity == "dark") "-dark"}";
-        package = pkgs.adw-gtk3;
-      };
+    theme = {
+      name = "adw-gtk3${lib.optionalString (colorscheme.polarity == "dark") "-dark"}";
+      package = pkgs.adw-gtk3;
+    };
 
-      iconTheme = {
-        name = "Adwaita";
-        package = pkgs.adwaita-icon-theme;
-      };
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
     };
   };
 }

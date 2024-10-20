@@ -1,17 +1,17 @@
 {
   delib,
   lib,
-  config,
   decryptSecretFile,
+  constants,
   ...
 }:
 delib.module {
   name = "user";
 
-  nixos.always = {myconfig, ...}: let
-    inherit (myconfig.constants) username;
+  nixos.always = let
+    inherit (constants) username;
   in {
-    imports = [(lib.mkAliasOptionModule ["user"] ["users" "users" config.myconfig.constants.username])];
+    imports = [(lib.mkAliasOptionModule ["user"] ["users" "users" username])];
 
     users = {
       groups.${username} = {};
