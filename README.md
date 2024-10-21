@@ -34,9 +34,9 @@ My [NixOS](https://nixos.org/) and [Home Manager](https://github.com/nix-communi
 
 ## Rices
 
-|                      | Hito                                                                         | Marui | Yami                                                                         |
-| -------------------- | ---------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------- |
-| **Inherits**         | Marui                                                                        | -     | Marui                                                                        |
-| **Inheritance Only** | No                                                                           | Yes   | No                                                                           |
-| **Color Scheme**     | [Coffee](./modules/config/colorschemes/schemes/coffee.nix)                   | -     | [Kanagawa Dragon](./modules/config/colorschemes/schemes/kanagawa-dragon.nix) |
+|                      | Hito                                                                         | Marui | Yami                                                           |
+| -------------------- | ---------------------------------------------------------------------------- | ----- | -------------------------------------------------------------- |
+| **Inherits**         | Marui                                                                        | -     | Marui                                                          |
+| **Inheritance Only** | No                                                                           | Yes   | No                                                             |
+| **Color Scheme**     | [Coffee](./modules/config/colorschemes/schemes/coffee.nix)                   | -     | [Paradise](./modules/config/colorschemes/schemes/paradise.nix) |
 

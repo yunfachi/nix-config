@@ -3,6 +3,6 @@ delib.rice {
   name = "yami";
 
   myconfig = {myconfig, ...}: {
-    colorscheme = myconfig.colorschemes.kanagawa-dragon;
+    colorscheme = myconfig.colorschemes.paradise;
   };
 }
