@@ -22,7 +22,7 @@ delib.module {
     interval = intOption 300000;
     wallpaperDaemon = allowNull (enumOption ["swww" "hyprpaper"] (
       if host.isDesktop
-      then "hyprpaper"
+      then "swww"
       else null
     ));
 
