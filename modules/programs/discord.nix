@@ -9,6 +9,8 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
+  myconfig.ifEnabled.persist.user.directories = [".config/discordptb" ".config/Vencord"];
+
   home.ifEnabled.home.packages = [
     (pkgs.discord-ptb.override {
       withOpenASAR = true;
