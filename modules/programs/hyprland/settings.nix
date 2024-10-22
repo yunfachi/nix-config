@@ -36,6 +36,11 @@ delib.module {
         "col.active_border" = cfg.border.active_color;
       };
 
+      plugin.hyprsplit = {
+        num_workspaces = 10;
+        persistent_workspaces = true;
+      };
+
       decoration = {
         rounding = cfg.border.radius;
         screen_shader = lib.mkIf (cfg.shader != null) (toString cfg.shader);

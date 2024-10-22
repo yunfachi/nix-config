@@ -2,6 +2,7 @@
   delib,
   lib,
   pkgs,
+  host,
   ...
 }:
 delib.module {
@@ -34,6 +35,8 @@ delib.module {
           "$mod, f, fullscreen"
           "$mod, p, pin"
 
+          "$mod SHIFT, n, split:grabroguewindows" # Finds all windows that are in invalid workspaces and moves them to the current workspace.
+
           "$mod, Tab, cyclenext"
           "$mod, Tab, bringactivetotop"
 
@@ -41,9 +44,10 @@ delib.module {
           "$mod SHIFT, s, exec, pkill -c slurp; hyprshot --mode region --freeze"
         ]
         ++ builtins.concatMap (x: [
-          "$mod, ${toString (lib.mod x 10)}, split-workspace, ${toString x}"
-          "$mod SHIFT, ${toString (lib.mod x 10)}, split-movetoworkspacesilent, ${toString x}"
-        ]) (lib.range 1 10);
+          "$mod, ${toString (lib.mod x 10)}, split:workspace, ${toString x}"
+          "$mod SHIFT, ${toString (lib.mod x 10)}, split:movetoworkspacesilent, ${toString x}"
+        ]) (lib.range 1 10)
+        ++ lib.optional (builtins.length host.displays == 2) "$mod, n, split:swapactiveworkspaces, ${(builtins.elemAt host.displays 0).name} ${(builtins.elemAt host.displays 1).name}";
     };
   };
 }
