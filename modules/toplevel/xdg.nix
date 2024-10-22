@@ -9,7 +9,11 @@ delib.module {
 
   options.xdg = with delib; {
     enable = boolOption host.isDesktop;
-    defaultApplications = attrsOfOption (listOf str) {};
+    mime = {
+      recommended = attrsOfOption (listOf str) {};
+      associations = attrsOfOption (listOf str) {};
+      removed = attrsOfOption (listOf str) {};
+    };
   };
 
   myconfig.ifEnabled.persist.user.directories = ["media" "files"];
@@ -38,7 +42,10 @@ delib.module {
 
       mimeApps = {
         enable = true;
-        inherit (cfg) defaultApplications;
+
+        defaultApplications = cfg.mime.recommended;
+        associations.added = cfg.mime.associations;
+        associations.removed = cfg.mime.removed;
       };
     };
   };

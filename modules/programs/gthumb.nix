@@ -9,8 +9,10 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
-  myconfig.ifEnabled.xdg.defaultApplications = {
-    "image/*" = ["org.gnome.Loupe.desktop"];
+  myconfig.ifEnabled.xdg.mime.associations = {
+    "image/*" = ["org.gnome.gThumb.desktop"];
+    "image/png" = ["org.gnome.gThumb.desktop"];
+    "image/jpeg" = ["org.gnome.gThumb.desktop"];
   };
 
   home.ifEnabled.home.packages = [pkgs.gthumb];
