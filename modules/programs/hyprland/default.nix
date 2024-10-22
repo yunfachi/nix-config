@@ -1,7 +1,7 @@
 {
   delib,
   host,
-  ypkgs,
+  pkgs,
   ...
 }:
 delib.module {
@@ -41,6 +41,6 @@ delib.module {
   home.ifEnabled.wayland.windowManager.hyprland = {
     enable = true;
 
-    plugins = [ypkgs.split-monitor-workspaces];
+    plugins = [pkgs.hyprlandPlugins.hyprsplit];
   };
 }
