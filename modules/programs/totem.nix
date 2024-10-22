@@ -9,7 +9,7 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
-  myconfig.ifEnabled.xdg.defaultApplications = {
+  myconfig.ifEnabled.xdg.mime.associations = {
     "audio/*" = ["org.gnome.Totem.desktop"];
     "audio/mpeg" = ["org.gnome.Totem.desktop"];
     "video/*" = ["org.gnome.Totem.desktop"];
