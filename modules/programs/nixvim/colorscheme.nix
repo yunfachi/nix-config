@@ -6,7 +6,13 @@ delib.module {
     #TODO FIXME: base24 colorscheme
     colorschemes.kanagawa = {
       enable = true;
-      settings.theme = "dragon";
+      settings = {
+        theme = "dragon";
+        background = {
+          dark = "dragon";
+          light = "lotus";
+        };
+      };
     };
   };
 }
