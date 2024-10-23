@@ -7,6 +7,12 @@ delib.module {
   home.ifEnabled.programs.nixvim = {
     plugins.nvim-tree = {
       enable = true;
+
+      renderer = {
+        rootFolderLabel = false;
+        highlightGit = true;
+        indentMarkers.enable = true;
+      };
     };
 
     keymaps = [
