@@ -12,6 +12,8 @@ delib.module {
           dark = "dragon";
           light = "lotus";
         };
+        # Noice issue
+        colors.theme.all.ui.bg_gutter = "none";
       };
     };
   };
