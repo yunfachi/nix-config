@@ -34,6 +34,10 @@ delib.module {
         softtabstop = 2;
         listchars.tab = "-»";
       };
+
+      diagnostics = {
+        update_in_insert = true;
+      };
     };
   };
 }
