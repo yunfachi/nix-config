@@ -1,10 +1,10 @@
 {delib, ...}:
 delib.module {
-  name = "program.nixvim.plugin.noice";
+  name = "programs.nixvim.plugins.noice";
 
-  option = delib.ingleEnableOptiontrue;
+  options = delib.singleEnableOption true;
 
-  home.ifEnabled.program.nixvim.plugin.noice = {
+  home.ifEnabled.programs.nixvim.plugins.noice = {
     enable = true;
   };
 }
