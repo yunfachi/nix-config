@@ -13,6 +13,7 @@ delib.module {
     enable = boolOption host.isDesktop;
     enableAnimeGameLauncher = boolOption true;
     enableSleepyLauncher = boolOption true;
+    enableHonkersRailwayLauncher = boolOption true;
   };
 
   nixos.always.imports = [inputs.anime-launcher.nixosModules.default];
@@ -27,13 +28,15 @@ delib.module {
 
     home.packages = with inputs.anime-launcher.packages.${pkgs.system};
       (lib.optional cfg.enableAnimeGameLauncher anime-game-launcher)
-      ++ (lib.optional cfg.enableSleepyLauncher sleepy-launcher);
+      ++ (lib.optional cfg.enableSleepyLauncher sleepy-launcher)
+      ++ (lib.optional cfg.enableHonkersRailwayLauncher honkers-railway-launcher);
   };
 
   myconfig.ifEnabled = {cfg, ...}: {
     persist.user.directories =
       lib.optional cfg.enableAnimeGameLauncher ".local/share/anime-game-launcher"
-      ++ lib.optional cfg.enableSleepyLauncher ".local/share/sleepy-launcher";
+      ++ lib.optional cfg.enableSleepyLauncher ".local/share/sleepy-launcher"
+      ++ lib.optional cfg.enableHonkersRailwayLauncher ".local/share/honkers-railway-launcher";
 
     programs.schizofox.bookmarks =
       lib.optionals cfg.enableAnimeGameLauncher [
@@ -72,6 +75,14 @@ delib.module {
           URL = "https://act.hoyolab.com/bbs/event/signin/zzz/e202406031448091.html?act_id=e202406031448091&lang=ru-ru";
           Placement = "toolbar";
           Folder = "Zenless";
+        }
+      ]
+      ++ lib.optionals cfg.enableHonkersRailwayLauncher [
+        {
+          Title = "отметки";
+          URL = "https://act.hoyolab.com/bbs/event/signin/hkrpg/index.html?act_id=e202303301540311&lang=ru-ru";
+          Placement = "toolbar";
+          Folder = "Honkai";
         }
       ];
   };
