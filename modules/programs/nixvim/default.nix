@@ -33,6 +33,18 @@ delib.module {
         shiftwidth = 2;
         softtabstop = 2;
         listchars.tab = "-»";
+
+        foldcolumn = "1";
+        foldlevel = 99;
+        foldlevelstart = 99;
+        foldenable = true;
+        fillchars = {
+          eob = " ";
+          fold = " ";
+          foldopen = "";
+          foldsep = " ";
+          foldclose = "";
+        };
       };
 
       diagnostics = {
