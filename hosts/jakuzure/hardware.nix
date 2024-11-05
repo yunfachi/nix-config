@@ -22,6 +22,7 @@ delib.host {
       initrd.kernelModules = [];
       kernelModules = ["kvm-amd"];
       extraModulePackages = [];
+      kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
     };
 
     fileSystems."/".neededForBoot = true;
