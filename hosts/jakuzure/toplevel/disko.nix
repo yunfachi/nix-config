@@ -37,6 +37,24 @@ delib.host {
             };
           };
         };
+
+        adata_sx6000lnp = {
+          type = "disk";
+          device = "/dev/disk/by-id/nvme-ADATA_SX6000LNP_2L31291Q4HGH";
+          content = {
+            type = "gpt";
+            partitions = {
+              root = {
+                size = "100%";
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/media";
+                };
+              };
+            };
+          };
+        };
       };
 
       zpool.zroot = {
