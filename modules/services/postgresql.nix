@@ -1,7 +1,6 @@
 {
   delib,
   pkgs,
-  user,
   lib,
   ...
 }:
@@ -14,8 +13,10 @@ delib.module {
     openFirewall = boolOption false;
     port = portOption 5432;
     listen_addresses = listOfOption str [];
+    extraSettings = attrsOption {};
 
     package = packageOption pkgs.postgresql_16;
+    extraPlugins = coercedToOption (listOf path) (path: _: path) (lambdaTo (listOf path)) (_: []);
 
     databases = listOfOption str [];
     users = attrsOfOption attrs {};
@@ -33,12 +34,15 @@ delib.module {
     initialScripts = listOfOption str [];
   };
 
+  myconfig.ifEnabled.persist.directories = ["/var/lib/postgresql"];
+
   nixos.ifEnabled = {cfg, ...}: {
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [cfg.port];
 
     services.postgresql = {
       enable = true;
-      package = cfg.package;
+
+      inherit (cfg) package extraPlugins;
 
       ensureDatabases = cfg.databases;
       ensureUsers = lib.mapAttrsToList (name: value: {inherit name;} // value) cfg.users;
@@ -60,10 +64,12 @@ delib.module {
           ++ cfg.authentications)
       );
 
-      settings = {
-        inherit (cfg) port;
-        listen_addresses = lib.mkForce (builtins.concatStringsSep ", " cfg.listen_addresses);
-      };
+      settings =
+        {
+          inherit (cfg) port;
+          listen_addresses = lib.mkForce (builtins.concatStringsSep ", " cfg.listen_addresses);
+        }
+        // cfg.extraSettings;
     };
   };
 }
