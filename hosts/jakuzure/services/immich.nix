@@ -6,5 +6,6 @@ delib.host {
     enable = true;
 
     mediaLocation = "/media/immich";
+    host = "0.0.0.0";
   };
 }
