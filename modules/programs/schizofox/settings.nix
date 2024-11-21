@@ -5,6 +5,7 @@ delib.module {
   home.ifEnabled.programs.schizofox.settings = {
     "extensions.activeThemeID" = "coffee_theme_firefox";
     "browser.theme.toolbar-theme" = 0;
+    "privacy.resistFingerprinting.letterboxing" = false;
     "browser.uiCustomization.state" = builtins.toJSON {
       currentVersion = 20;
       newElementCount = 23;

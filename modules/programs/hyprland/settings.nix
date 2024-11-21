@@ -34,6 +34,10 @@ delib.module {
         border_size = cfg.border.size;
         "col.inactive_border" = cfg.border.inactive_color;
         "col.active_border" = cfg.border.active_color;
+
+        snap = {
+          enabled = true;
+        };
       };
 
       plugin.hyprsplit = {
@@ -45,13 +49,12 @@ delib.module {
         rounding = cfg.border.radius;
         screen_shader = lib.mkIf (cfg.shader != null) (toString cfg.shader);
 
-        drop_shadow = cfg.shadow.enable;
-        shadow_range = cfg.shadow.range;
-        shadow_render_power = cfg.shadow.power;
-        shadow_offset = cfg.shadow.offset;
-        shadow_scale = cfg.shadow.scale;
-        "col.shadow" = cfg.shadow.color;
-        "col.shadow_inactive" = lib.mkIf (cfg.shadow.inactive_color != null) cfg.shadow.inactive_color;
+        shadow = {
+          inherit (cfg.shadow) range offset scale color;
+          enabled = cfg.enable;
+          render_power = cfg.shadow.power;
+          color_inactive = lib.mkIf (cfg.shadow.inactive_color != null) cfg.shadow.inactive_color;
+        };
       };
 
       input = {
