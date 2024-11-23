@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $bar-spacing: 4px;
 
 .bar {
@@ -14,10 +16,10 @@ $bar-spacing: 4px;
         label {
             font-size: 0;
             border-radius: 6px;
-            margin: 0 2.5px;
+            margin: 6.5px 2.5px;
             transition: .1s;
 
-            background-color: transparentize($fg, .8);;
+            background-color: color.scale($fg, $alpha: -80%);
             min-height: 12px;
             min-width: 12px;
 
@@ -28,7 +30,7 @@ $bar-spacing: 4px;
             }
 
             &.occupied {
-                background-color: transparentize($fg, .4);
+                background-color: color.scale($fg, $alpha: -60%);
             }
         }
     }
