@@ -13,6 +13,11 @@ delib.module {
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+
+      # icons
       font-awesome
       material-design-icons
       nerdfonts
