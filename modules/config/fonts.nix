@@ -20,7 +20,6 @@ delib.module {
       # icons
       font-awesome
       material-design-icons
-      nerdfonts
     ];
   };
 }
