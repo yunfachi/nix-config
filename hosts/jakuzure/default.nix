@@ -20,7 +20,7 @@ delib.host {
       y = 0;
     }
     {
-      name = "HDMI-A-1";
+      name = "HDMI-A-2";
       refreshRate = 60;
       width = 1920;
       height = 1080;
