@@ -17,7 +17,7 @@ delib.module {
 
       mapping = {
         "<CR>" = "cmp.mapping.confirm({ select = true })";
-        "<Esc>" = "cmp.mapping.close()";
+        "<C-e>" = "cmp.mapping.abort()";
         "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
       };
