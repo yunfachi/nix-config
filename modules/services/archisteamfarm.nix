@@ -11,6 +11,8 @@ delib.module {
 
   options = delib.singleEnableOption false;
 
+  myconfig.ifEnabled.persist.directories = ["/var/lib/asf"];
+
   nixos.ifEnabled = {
     networking.firewall.allowedTCPPorts = [1242];
 
