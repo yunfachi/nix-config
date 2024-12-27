@@ -9,6 +9,8 @@
 delib.module {
   name = "infras.deshiro";
 
+  myconfig.ifEnabled.persist.user.directories = ["infras/deshiro-bot"];
+
   nixos.ifEnabled = {myconfig, ...}: {
     systemd.services = let
       repo_path = "/${homeconfig.home.homeDirectory}/infras/deshiro-bot";

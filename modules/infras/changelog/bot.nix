@@ -8,6 +8,8 @@
 delib.module {
   name = "infras.changelog";
 
+  myconfig.ifEnabled.persist.user.directories = ["infras/changelog-bot"];
+
   nixos.ifEnabled = {myconfig, ...}: {
     systemd.services = let
       repo_path = "/${homeconfig.home.homeDirectory}/infras/changelog-bot";
