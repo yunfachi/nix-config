@@ -17,6 +17,11 @@ delib.module {
         "$mod, mouse:273, resizewindow"
       ];
 
+      bindit = [
+        ", mouse:276, exec, ~/.config/hypr/scripts/clicker.sh 1"
+        ", mouse:275, exec, ~/.config/hypr/scripts/clicker.sh 3"
+      ];
+
       bind =
         lib.optional myconfig.programs.fcitx5.enable ''
           $mod SHIFT, Space, exec, if [[ "$(fcitx5-remote --check)" -eq "1" ]]; then fcitx5-remote -e; else fcitx5 -d --replace; fi
