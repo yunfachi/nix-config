@@ -33,24 +33,6 @@ delib.host {
     programs = {
       git.signingKey = "0x9D16EF5F68A5CEDF";
 
-      uni-sync = {
-        enable = true;
-        devices = [
-          {
-            device_id = "VID:3314/PID:41219/SN:6243168001";
-            sync_rgb = true;
-            channels =
-              builtins.genList (
-                _: {
-                  mode = "Manual";
-                  speed = 70;
-                }
-              )
-              4;
-          }
-        ];
-      };
-
       xp-pen-deco-pro.enable = true;
     };
 
