@@ -13,7 +13,7 @@ delib.host {
       };
 
       wireguard.clients.${name} = {
-        ip = "10.0.0.101";
+        ip = "10.0.1.101";
         publicKey = decryptSecret "services/wireguard/clients/${name}/publicKey";
       };
     };
