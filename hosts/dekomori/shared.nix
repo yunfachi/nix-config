@@ -19,21 +19,21 @@ delib.host {
           port = lib.toInt (decryptSecret "services/wireguard/servers/${name}/port");
           hostname = name;
           interface = "ens3";
-          tunnel = "10.0.0.1";
+          tunnel = "10.0.1.1";
           publicKey = decryptSecret "services/wireguard/servers/${name}/publicKey";
         };
 
         clients = {
           "a52" = {
-            ip = "10.0.0.201";
+            ip = "10.0.1.201";
             publicKey = decryptSecret "services/wireguard/clients/a52/publicKey";
           };
           "p11" = {
-            ip = "10.0.0.202";
+            ip = "10.0.1.202";
             publicKey = decryptSecret "services/wireguard/clients/p11/publicKey";
           };
           "m21" = {
-            ip = "10.0.0.203";
+            ip = "10.0.1.203";
             publicKey = decryptSecret "services/wireguard/clients/m21/publicKey";
           };
         };
