@@ -510,11 +510,11 @@
     },
     "nix-config-wallpapers": {
       "locked": {
-        "lastModified": 1725738927,
-        "narHash": "sha256-BuZnSI6bKjCpXJ7E71F+2gzAKMd6bRGsQGuc2b8A2Cw=",
+        "lastModified": 1735912057,
+        "narHash": "sha256-F3M6TyqBDsFE687Ju151OEtpVtUlXIXk1jVuT3KL3wI=",
         "owner": "yunfachi",
         "repo": "nix-config-wallpapers",
-        "rev": "b463d78899bf7b961d9d86ad4e10a410d775bddf",
+        "rev": "c8eecec75949488190556d6cf18b3cce11d2551c",
         "type": "github"
       },
       "original": {
