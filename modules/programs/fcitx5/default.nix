@@ -2,7 +2,6 @@
   delib,
   pkgs,
   host,
-  lib,
   ...
 }:
 delib.module {
@@ -10,20 +9,16 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
-  home.ifEnabled = {
+  nixos.ifEnabled = {
     i18n.inputMethod = {
       enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-gtk
+        ];
+      };
     };
-
-    systemd.user.services.fcitx5-daemon = {
-      Unit.PartOf = lib.mkForce [];
-      Install.WantedBy = lib.mkForce [];
-    };
-
-    home.sessionVariables.SDL_IM_MODULE = "fcitx";
   };
 }
