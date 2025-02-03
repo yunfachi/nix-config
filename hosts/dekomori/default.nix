@@ -2,6 +2,7 @@
   delib,
   decryptHostSecretFile,
   wireguardLocalAddress,
+  lib,
   ...
 }:
 delib.host {
@@ -12,6 +13,10 @@ delib.host {
 
   nixos = {
     systemd.services.postgresql.after = ["wg-quick-wg0.service"];
+
+    boot.loader.grub.device = "/dev/vda";
+    boot.loader.grub.devices = lib.mkForce ["/dev/vda"];
+    zramSwap.enable = true;
   };
 
   myconfig = {name, ...}: {
