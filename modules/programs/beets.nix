@@ -79,6 +79,15 @@ delib.module {
             force = true;
           };
 
+          replaygain = {
+            parallel_on_import = true;
+            backend = "ffmpeg";
+            overwrite = true;
+            targetlevel = 89;
+            r128_targetlevel = 84;
+            r128 = ["flac" "mp3"];
+          };
+
           plugins =
             [
               "spotify"
@@ -90,6 +99,8 @@ delib.module {
               "fetchart"
               "thumbnails"
               "embedart"
+
+              "replaygain"
 
               "duplicates"
               "missing"
