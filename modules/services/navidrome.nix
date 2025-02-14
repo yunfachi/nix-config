@@ -1,4 +1,8 @@
-{delib, ...}:
+{
+  delib,
+  decryptSecret,
+  ...
+}:
 delib.module {
   name = "services.navidrome";
 
@@ -23,6 +27,10 @@ delib.module {
         Address = cfg.address;
         Port = cfg.port;
         MusicFolder = cfg.folder;
+        LastFM = {
+          ApiKey = decryptSecret "services/navidrome/lastfm/apikey";
+          Secret = decryptSecret "services/navidrome/lastfm/secret";
+        };
       };
     };
   };
