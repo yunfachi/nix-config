@@ -26,7 +26,14 @@ delib.module {
 
       buildPhase = ''
         cp ${colors} style/colors.scss
-        cp ./. -r $out
+        dart-sass style/main.scss build/main.css --no-source-map
+        tailwindcss -i "build/main.css" -o "$out/main.css"
+
+        bun build main.ts \
+          --outfile="$out/config.js" \
+          --external="resource://*" \
+          --external="gi://*" \
+          --external="file://*"
       '';
 
       nativeBuildInputs = with pkgs; [bun tailwindcss dart-sass];
