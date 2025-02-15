@@ -14,15 +14,15 @@ const widget = {
     expander: () => <box expand={true} />,
 }
 
-export default (gdkmonitor: Gdk.Monitor, monitor) => <window
+export default (gdkmonitor: Gdk.Monitor) => <window
     gdkmonitor={gdkmonitor}
     className="bar"
-    name={"bar" + monitor}
+    name={"bar" + gdkmonitor}
     anchor={TOP | LEFT | RIGHT}
     exclusivity={Astal.Exclusivity.EXCLUSIVE}>
     <centerbox
         startWidget=<box hexpand={true}>
-            {widget.workspaces(monitor)}
+            {widget.workspaces(0)}
         </box>
         centerWidget=<box hpack="center">
             {widget.date()}
