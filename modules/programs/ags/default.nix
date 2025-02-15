@@ -23,9 +23,7 @@ delib.module {
       configDir = cfg.configPackage;
       systemd.enable = true;
 
-      extraPackages = with inputs.ags.packages.${pkgs.system}; [
-        hyprland
-        mpris
+      extraPackages = with pkgs; [
       ];
     };
   };

@@ -1,10 +1,14 @@
-import { execAsync } from "astal"
-
 import Gtk from "gi://Gtk?version=3.0"
 import Gdk from "gi://Gdk"
 import GLib from "gi://GLib?version=2.0"
 
 import icons, { substitutes } from "./icons"
+
+// https://github.com/Aylur/dotfiles/blob/18b83b2d2c6ef2b9045edefe49a66959f93b358a/ags/lib/utils.ts#L52
+export function forMonitors(widget: (monitor: number) => Gtk.Window) {
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1
+    return range(n, 0).flatMap(widget)
+}
 
 // https://github.com/Aylur/dotfiles/blob/18b83b2d2c6ef2b9045edefe49a66959f93b358a/ags/lib/utils.ts#L60
 export function range(length: number, start = 1) {
@@ -13,7 +17,7 @@ export function range(length: number, start = 1) {
 
 // https://github.com/Aylur/dotfiles/blob/18b83b2d2c6ef2b9045edefe49a66959f93b358a/ags/lib/utils.ts#L45
 export async function sh(cmd: string | string[]) {
-    return execAsync(cmd).catch(err => {
+    return Utils.execAsync(cmd).catch(err => {
         console.error(typeof cmd === "string" ? cmd : cmd.join(" "), err)
         return ""
     })

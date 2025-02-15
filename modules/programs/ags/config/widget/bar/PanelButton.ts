@@ -2,15 +2,16 @@ export default ({
     child,
     window = "",
     ...args
-}) => <button
-    setup={self => {
+}) => Widget.Button({
+    child: Widget.Box({ child }),
+    setup: self => {
         let open = false
         
         self.toggleClassName("panel-button")
         self.toggleClassName("flat")
         self.toggleClassName(window)
 
-        /*self.hook(App, (_, win, visible) => {
+        self.hook(App, (_, win, visible) => {
             if (win !== window)
                 return
 
@@ -23,10 +24,7 @@ export default ({
                 open = true
                 self.toggleClassName("active")
             }
-        })*/
-    }}
-    {...args}
-    >
-    <box>{child}</box>
-</button>
-
+        })
+    },
+    ...args,
+})
