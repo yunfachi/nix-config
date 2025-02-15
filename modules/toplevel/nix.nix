@@ -5,8 +5,7 @@
   ...
 }: let
   shared.nix = {
-    # plan to stay on this version because it's impossible with my method to read .config/sops/age/keys.txt in pure mode on a newer versions.
-    package = lib.mkForce pkgs.nixVersions.nix_2_18;
+    package = lib.mkForce pkgs.nixVersions.latest;
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
