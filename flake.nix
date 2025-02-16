@@ -2,7 +2,7 @@
   description = "Modular configuration of Home Manager and NixOS with Denix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,10 +24,10 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     schizofox = {
