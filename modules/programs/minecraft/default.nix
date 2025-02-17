@@ -12,6 +12,6 @@ delib.module {
     enable = boolOption host.isDesktop;
 
     enableLunarClient = boolOption true;
-    enableModrinthApp = boolOption true;
+    enableModrinthApp = boolOption false;
   };
 }

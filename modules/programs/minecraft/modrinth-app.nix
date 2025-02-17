@@ -8,7 +8,7 @@ delib.module {
   name = "programs.minecraft";
 
   myconfig.ifEnabled = {cfg, ...}: {
-    persist.user.directories = lib.mkIf cfg.enableLunarClient [".local/share/ModrinthApp"];
+    persist.user.directories = lib.mkIf cfg.enableModrinthApp [".local/share/ModrinthApp"];
   };
 
   home.ifEnabled = {cfg, ...}: {
