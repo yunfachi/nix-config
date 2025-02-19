@@ -9,5 +9,7 @@ delib.module {
 
   options = delib.singleEnableOption host.isDesktop;
 
+  myconfig.ifEnabled.persist.user.directories = [".cache/thumbnails"];
+
   home.ifEnabled.home.packages = [pkgs.nautilus];
 }
