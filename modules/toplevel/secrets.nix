@@ -23,10 +23,10 @@ delib.module {
       });
       rootDecryptSecret = path: key: builtins.readFile (rootDecryptSecretFile path key);
     in {
-      decryptSecret = rootDecryptSecret ../../secrets.yaml;
-      decryptHostSecret = hostName: rootDecryptSecret ../../hosts/${hostName}/secrets.yaml;
-      decryptSecretFile = rootDecryptSecretFile ../../secrets.yaml;
-      decryptHostSecretFile = hostName: rootDecryptSecretFile ../../hosts/${hostName}/secrets.yaml;
+      decryptSecret = rootDecryptSecret ../../secrets.json;
+      decryptHostSecret = hostName: rootDecryptSecret ../../hosts/${hostName}/secrets.json;
+      decryptSecretFile = rootDecryptSecretFile ../../secrets.json;
+      decryptHostSecretFile = hostName: rootDecryptSecretFile ../../hosts/${hostName}/secrets.json;
     };
 
     persist.user.files = [".config/sops/age/keys.txt"];
