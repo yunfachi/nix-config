@@ -32,6 +32,8 @@ delib.module {
       server = {
         ip = noDefault (strOption null);
         port = portOption 51820;
+        openFirewall = boolOption true;
+
         hostname = noDefault (strOption null);
         interface = strOption "wg0";
         tunnel = strOption "10.0.0.1";

@@ -10,7 +10,7 @@ delib.module {
   nixos.ifEnabled = {cfg, ...}:
     lib.mkIf (cfg.type == "server") {
       networking = {
-        firewall.allowedUDPPorts = [cfg.server.port];
+        firewall.allowedUDPPorts = lib.mkIf cfg.server.openFirewall [cfg.server.port];
 
         nat = {
           enable = true;
