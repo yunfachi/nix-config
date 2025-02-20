@@ -1,6 +1,7 @@
 {
   delib,
   decryptHostSecretFile,
+  decryptSecret,
   ...
 }:
 delib.host {
@@ -29,6 +30,10 @@ delib.host {
 
     services = {
       wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
+      xray.client = {
+        id = decryptSecret "services/xray/clients/${name}/id";
+        shortId = decryptSecret "services/xray/clients/${name}/shortId";
+      };
     };
   };
 }

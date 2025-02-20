@@ -15,8 +15,10 @@ delib.host {
 
       wireguard = {
         server = {
-          ip = decryptSecret "hosts/dekomori/ip";
+          ip = "127.0.0.1"; # xray dokodemo door
           port = lib.toInt (decryptSecret "services/wireguard/servers/${name}/port");
+          openFirewall = false;
+
           hostname = name;
           interface = "ens3";
           tunnel = "10.0.1.1";
@@ -37,6 +39,19 @@ delib.host {
             publicKey = decryptSecret "services/wireguard/clients/m21/publicKey";
           };
         };
+      };
+
+      xray.server = let
+        clients = builtins.fromJSON (decryptSecret "services/xray/clients");
+        mapClients = f: map f (builtins.attrValues clients);
+      in {
+        ip = decryptSecret "hosts/dekomori/ip";
+        port = 443;
+
+        publicKey = decryptSecret "services/xray/server/publicKey";
+
+        clientIds = mapClients (client: client.id);
+        shortIds = mapClients (client: client.shortId);
       };
     };
   };

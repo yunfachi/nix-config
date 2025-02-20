@@ -1,6 +1,7 @@
 {
   delib,
   decryptHostSecretFile,
+  decryptHostSecret,
   wireguardLocalAddress,
   lib,
   ...
@@ -42,6 +43,11 @@ delib.host {
       wireguard = {
         enable = true;
         privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
+      };
+
+      xray = {
+        enable = true;
+        server.privateKey = decryptHostSecret name "services/xray/privateKey";
       };
     };
   };

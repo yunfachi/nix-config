@@ -3,21 +3,21 @@ keys:
   - &jakuzure age1t3neptgl2h2nhkqgh5j5sst5y56g8pauvccmkh2weu9pffdjmsssaedspj
   - &mitama age1jz4qfg4244mxnfjfthtr7t9h7qzuspmf6z440yrwr324kkn4acuqufd6gp
 creation_rules:
-  - path_regex: ^secrets.yaml$
+  - path_regex: ^secrets.json$
     key_groups:
     - age:
       - *dekomori
       - *jakuzure
       - *mitama
-  - path_regex: ^hosts/dekomori/secrets.yaml$
+  - path_regex: ^hosts/dekomori/secrets.json$
     key_groups:
     - age:
       - *dekomori
-  - path_regex: ^hosts/jakuzure/secrets.yaml$
+  - path_regex: ^hosts/jakuzure/secrets.json$
     key_groups:
     - age:
       - *jakuzure
-  - path_regex: ^hosts/mitama/secrets.yaml$
+  - path_regex: ^hosts/mitama/secrets.json$
     key_groups:
     - age:
       - *mitama
