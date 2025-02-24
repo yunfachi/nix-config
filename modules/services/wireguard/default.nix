@@ -8,7 +8,11 @@
 delib.module {
   name = "services.wireguard";
 
-  options = {cfg, ...}: {
+  options = {
+    myconfig,
+    cfg,
+    ...
+  }: {
     services.wireguard = with delib; {
       enable = boolOption host.isDesktop;
       type = enumOption ["client" "server"] (
@@ -18,7 +22,11 @@ delib.module {
       );
 
       privateKeyFile = noDefault (strOption null);
-      routedIPs = listOfOption str ["0.0.0.0/0" "::/0"];
+      routedIPs = listOfOption str (
+        if !myconfig.services.xray.enable
+        then ["0.0.0.0/0" "::/0"]
+        else ["10.0.1.0/24"]
+      );
 
       client = allowNull (submoduleOption
         {
@@ -36,7 +44,7 @@ delib.module {
 
         hostname = noDefault (strOption null);
         interface = strOption "wg0";
-        tunnel = strOption "10.0.0.1";
+        tunnel = strOption "10.0.1.1";
         publicKey = noDefault (strOption null);
       };
 
