@@ -1,7 +1,7 @@
 {
   delib,
   pkgs,
-  user,
+  lib,
   constants,
   wireguardLocalAddress,
   ...
@@ -13,13 +13,10 @@ delib.module {
     enable = boolOption true;
 
     ports = listOfOption port [22];
-    listenAddresses =
-      listOfOption str
-      (
-        if wireguardLocalAddress != null
-        then [wireguardLocalAddress]
-        else []
-      );
+    listenAddresses = listOfOption str (
+      ["127.0.0.1"]
+      ++ lib.optional (wireguardLocalAddress != null) wireguardLocalAddress
+    );
 
     authorizedKeys = listOfOption str [];
   };
