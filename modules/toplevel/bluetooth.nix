@@ -26,7 +26,6 @@ delib.module {
     };
 
     services.blueman.enable = true;
-    environment.systemPackages = [pkgs.gparted];
   };
 
   home.ifEnabled = {cfg, ...}: {
