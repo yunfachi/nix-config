@@ -23,7 +23,7 @@ delib.module {
         inbounds =
           [
             {
-              #tag = "proxy";
+              tag = "socks-proxy";
 
               listen = "127.0.0.1";
               port = 10808;
@@ -42,6 +42,13 @@ delib.module {
                 ];
                 routeOnly = true;
               };
+            }
+            {
+              tag = "http-proxy";
+
+              listen = "127.0.0.1";
+              port = 10818;
+              protocol = "http";
             }
           ]
           ++ (lib.optional myconfig.services.wireguard.enable (let
