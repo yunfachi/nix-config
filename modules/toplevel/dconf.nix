@@ -7,13 +7,20 @@
 delib.module {
   name = "dconf";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options.dconf = with delib; {
+    enable = boolOption host.isDesktop;
+    settings = attrsOption {};
+  };
 
-  nixos.ifEnabled.programs.dconf.enable = true;
-
-  home.ifEnabled.dconf.settings = {
+  myconfig.always.dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-${colorscheme.polarity}";
     };
+  };
+
+  nixos.ifEnabled.programs.dconf.enable = true;
+
+  home.ifEnabled = {cfg, ...}: {
+    dconf.settings = cfg.settings;
   };
 }
