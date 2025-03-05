@@ -26,6 +26,9 @@ delib.module {
         lib.optional myconfig.programs.fcitx5.enable ''
           $mod SHIFT, Space, exec, if [[ "$(fcitx5-remote --check)" -eq "1" ]]; then fcitx5-remote -e; else fcitx5 -d --replace; fi
         ''
+        ++ lib.optional myconfig.programs.hyprlock.enable ''
+          $mod, l, exec, hyprlock
+        ''
         ++ [
           "$mod, q, killactive,"
           "CTRLALT, Delete, exit,"
