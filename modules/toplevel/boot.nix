@@ -1,15 +1,26 @@
-{delib, ...}:
+{
+  delib,
+  lib,
+  ...
+}:
 delib.module {
   name = "boot";
 
-  options.boot = with delib; {
-    enable = boolOption true;
+  options = {cfg, ...}: {
+    boot = with delib; {
+      enable = boolOption true;
 
-    mode = enumOption ["uefi" "legacy"] (
-      if builtins.pathExists /sys/firmware/efi/efivars
-      then "uefi"
-      else "legacy"
-    );
+      loader = enumOption ["grub" "systemd-boot"] (
+        if cfg.mode == "uefi"
+        then "systemd-boot"
+        else "grub"
+      );
+      mode = enumOption ["uefi" "legacy"] (
+        if builtins.pathExists /sys/firmware/efi/efivars
+        then "uefi"
+        else "legacy"
+      );
+    };
   };
 
   nixos.ifEnabled = {cfg, ...}: {
@@ -18,14 +29,19 @@ delib.module {
         canTouchEfiVariables = true;
       };
 
-      grub = {
+      grub = lib.mkIf (cfg.loader == "grub") {
         enable = true;
         efiSupport = cfg.mode == "uefi";
         devices = ["nodev"];
-        configurationLimit = 1;
+        configurationLimit = 10;
       };
 
-      timeout = 0;
+      systemd-boot = lib.mkIf (cfg.loader == "systemd-boot") {
+        enable = true;
+        configurationLimit = 10;
+      };
+
+      timeout = 5;
     };
   };
 }

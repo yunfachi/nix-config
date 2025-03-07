@@ -11,6 +11,8 @@ delib.host {
   homeManagerSystem = "x86_64-linux";
   home.home.stateVersion = "23.11";
 
+  myconfig.boot.mode = "uefi";
+
   nixos = {
     nixpkgs.hostPlatform = "x86_64-linux";
     system.stateVersion = "23.11";
