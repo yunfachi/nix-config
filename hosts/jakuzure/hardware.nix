@@ -11,6 +11,8 @@ delib.host {
   homeManagerSystem = "x86_64-linux";
   home.home.stateVersion = "24.05";
 
+  myconfig.boot.mode = "uefi";
+
   nixos = {
     nixpkgs.hostPlatform = "x86_64-linux";
     system.stateVersion = "24.05";
@@ -22,7 +24,7 @@ delib.host {
       initrd.kernelModules = [];
       kernelModules = ["kvm-amd"];
       extraModulePackages = [];
-      kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
+      kernelParams = ["nvme_core.default_ps_max_latency_us=0"];
     };
 
     fileSystems."/".neededForBoot = true;
