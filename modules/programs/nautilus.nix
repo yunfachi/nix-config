@@ -8,7 +8,7 @@
 delib.module {
   name = "programs.nautilus";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled = {myconfig, ...}: {
     persist.user.directories = [".cache/thumbnails"];

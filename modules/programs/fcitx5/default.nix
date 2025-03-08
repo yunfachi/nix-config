@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.fcitx5";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   nixos.ifEnabled = {
     i18n.inputMethod = {

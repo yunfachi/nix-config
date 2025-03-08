@@ -7,7 +7,7 @@
 delib.module {
   name = "services.gcr";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   nixos.ifEnabled.services.dbus.packages = [pkgs.gcr];
 }

@@ -7,7 +7,7 @@
 delib.module {
   name = "services.hypridle";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled = {myconfig, ...}: {
     services.hypridle = {

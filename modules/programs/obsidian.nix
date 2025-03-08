@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.obsidian";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.persist.user.directories = [".config/obsidian"];
 

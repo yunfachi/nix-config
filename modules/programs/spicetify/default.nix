@@ -8,7 +8,7 @@
 delib.module {
   name = "programs.spicetify";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.always.args.shared.spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.system};
 

@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.obs-studio";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled.programs.obs-studio = {
     enable = true;

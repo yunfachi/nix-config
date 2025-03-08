@@ -6,7 +6,7 @@
 delib.module {
   name = "services.gnome-keyring";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.persist.user.directories = [".local/share/keyrings"];
 

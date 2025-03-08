@@ -6,7 +6,7 @@
 delib.module {
   name = "graphics";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   nixos.ifEnabled.hardware.graphics = {
     enable = true;

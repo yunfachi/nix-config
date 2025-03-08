@@ -3,12 +3,13 @@
   lib,
   pkgs,
   homeconfig,
+  host,
   ...
 }:
 delib.module {
   name = "programs.starship";
 
-  options = delib.singleEnableOption true;
+  options = delib.singleEnableOption host.cliFeatured;
 
   nixos.ifEnabled = {
     programs = {

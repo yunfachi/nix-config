@@ -8,7 +8,7 @@ delib.module {
   name = "xdg";
 
   options.xdg = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption host.isDesktop; # FIXME
     mime = {
       recommended = attrsOfOption (listOf str) {};
       associations = attrsOfOption (listOf str) {};

@@ -10,7 +10,7 @@ delib.module {
   name = "programs.anime-launchers";
 
   options.programs.anime-launchers = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption (host.guiFeatured && host.gamingFeatured);
     enableAnimeGameLauncher = boolOption true;
     enableSleepyLauncher = boolOption true;
     enableHonkersRailwayLauncher = boolOption true;

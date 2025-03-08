@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.hyprlock";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled.programs.hyprlock = {
     enable = true;

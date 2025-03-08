@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.qbittorent";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.persist.user.directories = [".config/qBittorrent" ".local/share/qBittorrent" ".cache/qBittorrent"];
 
