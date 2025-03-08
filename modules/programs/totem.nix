@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.totem";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.xdg.mime.associations = {
     "audio/*" = ["org.gnome.Totem.desktop"];

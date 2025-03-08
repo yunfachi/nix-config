@@ -2,13 +2,14 @@
   delib,
   inputs,
   homeconfig,
+  host,
   ...
 }:
 delib.module {
   name = "programs.nixvim";
 
   options.programs.nixvim = with delib; {
-    enable = boolOption true;
+    enable = boolOption host.cliFeatured;
 
     defaultEditor = boolOption true;
   };

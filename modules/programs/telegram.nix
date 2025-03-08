@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.telegram";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.persist.user.directories = [".local/share/KotatogramDesktop/tdata"];
 

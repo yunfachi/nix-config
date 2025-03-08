@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.wireshark";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption (host.guiFeatured && host.hackingFeatured);
 
   nixos.ifEnabled = {
     users.groups.wireshark = {};

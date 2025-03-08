@@ -9,7 +9,7 @@ delib.module {
 
   options = {myconfig, ...}: {
     programs.codium = with delib; {
-      enable = boolOption host.isDesktop;
+      enable = boolOption host.guiFeatured;
       extensions = {
         wakatime = boolOption myconfig.wakatime.enable;
         alejandra = boolOption myconfig.programs.alejandra.enable;

@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.gthumb";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   myconfig.ifEnabled.xdg.mime.associations = {
     "image/*" = ["org.gnome.gThumb.desktop"];

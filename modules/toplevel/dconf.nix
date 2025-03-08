@@ -8,7 +8,7 @@ delib.module {
   name = "dconf";
 
   options.dconf = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption host.guiFeatured;
     settings = attrsOption {};
   };
 

@@ -9,7 +9,7 @@ delib.module {
   name = "programs.ags";
 
   options.programs.ags = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption host.guiFeatured;
 
     configPackage = noDefault (packageOption null);
   };

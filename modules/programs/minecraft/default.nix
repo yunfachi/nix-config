@@ -9,7 +9,7 @@ delib.module {
   myconfig.ifEnabled.persist.user.directories = [".minecraft"];
 
   options.programs.minecraft = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption (host.guiFeatured && host.gamingFeatured);
 
     enableLunarClient = boolOption true;
     enableModrinthApp = boolOption false;

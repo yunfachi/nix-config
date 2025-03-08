@@ -11,6 +11,7 @@ delib.host {
 
   rice = "yami";
   type = "server";
+  features = ["cli"];
 
   nixos = {
     systemd.services.postgresql.after = ["wg-quick-wg0.service"];

@@ -7,7 +7,7 @@
 delib.module {
   name = "programs.burpsuite";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption (host.guiFeatured && host.hackingFeatured);
 
   home.ifEnabled.home.packages = [pkgs.burpsuite];
 }

@@ -8,7 +8,7 @@ delib.module {
   name = "programs.schizofox";
 
   options.programs.schizofox = with delib; {
-    enable = boolOption host.isDesktop;
+    enable = boolOption host.guiFeatured;
     bookmarks = listOfOption attrs [];
     defaultBookmarks = listOfOption attrs [
       {

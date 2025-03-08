@@ -7,7 +7,7 @@
 delib.module {
   name = "fonts";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled = {
     fonts.fontconfig.enable = true;

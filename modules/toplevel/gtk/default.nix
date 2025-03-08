@@ -9,7 +9,7 @@
 delib.module {
   name = "gtk";
 
-  options = delib.singleEnableOption host.isDesktop;
+  options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled.gtk = {
     enable = true;

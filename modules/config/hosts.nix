@@ -12,6 +12,21 @@ delib.module {
           isDesktop = boolOption (config.type == "desktop");
           isServer = boolOption (config.type == "server");
 
+          # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
+          # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
+          features =
+            listOfOption (enum ["cli" "gui" "gaming" "hacking"])
+            {
+              desktop = ["cli" "gui" "gaming" "hacking"];
+              server = [""];
+            }
+            .${config.type};
+
+          cliFeatured = boolOption (builtins.elem "cli" config.features);
+          guiFeatured = boolOption (builtins.elem "gui" config.features);
+          gamingFeatured = boolOption (builtins.elem "gaming" config.features);
+          hackingFeatured = boolOption (builtins.elem "hacking" config.features);
+
           displays = listOfOption (submodule {
             options = {
               enable = boolOption true;
