@@ -1,5 +1,4 @@
-# !!! BLACKMAGIC !!!
-# Black magic is used in this file to read ~/.config/sops/age/keys.txt
+# IMPURE
 {
   delib,
   homeconfig,
