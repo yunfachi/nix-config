@@ -15,17 +15,11 @@ delib.module {
 
       subsonicUpdate = {
         enable = boolOption false;
-        # TODO: https://github.com/yunfachi/denix/issues/18
-        url =
-          (
-            if myconfig.services.navidrome.enable
-            then (x: x)
-            else noDefault
-          ) (strOption (
-            if myconfig.services.navidrome.enable
-            then "http://${myconfig.services.navidrome.address}:${toString myconfig.services.navidrome.port}"
-            else null
-          ));
+        url = noNullDefault (strOption (
+          if myconfig.services.navidrome.enable
+          then "http://${myconfig.services.navidrome.address}:${toString myconfig.services.navidrome.port}"
+          else null
+        ));
         user = strOption "admin";
         pass = strOption "admin";
         auth = enumOption ["token" "password"] "password";
