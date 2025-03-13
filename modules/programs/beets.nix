@@ -73,6 +73,15 @@ delib.module {
             force = true;
           };
 
+          fetchart = {
+            sources = "coverart itunes lastfm amazon albumart filesystem";
+            cautious = true;
+            store_source = true;
+            minwidth = 1200;
+            maxwidth = 1200;
+            lastfm_key = decryptSecret "programs/beets/lastfm_key";
+          };
+
           replaygain = {
             parallel_on_import = true;
             backend = "ffmpeg";
