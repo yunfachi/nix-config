@@ -94,7 +94,8 @@ delib.module {
           plugins =
             [
               "spotify"
-              "mbsync"
+              "chroma"
+              "fromfilename"
 
               "lastgenre"
               "lyrics"
@@ -105,6 +106,7 @@ delib.module {
 
               "replaygain"
 
+              "mbsync"
               "duplicates"
               "missing"
             ]
