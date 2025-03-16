@@ -1,6 +1,7 @@
 {
   delib,
   lib,
+  decryptSecret,
   ...
 }:
 delib.module {
