@@ -9,6 +9,7 @@ delib.host {
 
   rice = "yami";
   type = "desktop";
+  features = ["powersave"];
 
   displays = [
     {
