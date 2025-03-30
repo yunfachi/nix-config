@@ -3,6 +3,8 @@ delib.module {
   name = "hosts";
 
   options = with delib; let
+    allFeatures = ["cli" "gui" "gaming" "hacking" "powersave"];
+
     host = {config, ...}: {
       options =
         hostSubmoduleOptions
@@ -15,18 +17,12 @@ delib.module {
           # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
           # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
           features =
-            listOfOption (enum ["cli" "gui" "gaming" "hacking" "powersave"])
+            listOfOption (enum allFeatures)
             {
               desktop = ["cli" "gui" "gaming" "hacking"];
               server = [""];
             }
             .${config.type};
-
-          cliFeatured = boolOption (builtins.elem "cli" config.features);
-          guiFeatured = boolOption (builtins.elem "gui" config.features);
-          gamingFeatured = boolOption (builtins.elem "gaming" config.features);
-          hackingFeatured = boolOption (builtins.elem "hacking" config.features);
-          powersaveFeatured = boolOption (builtins.elem "powersave" config.features);
 
           displays = listOfOption (submodule {
             options = {
@@ -44,7 +40,14 @@ delib.module {
               y = intOption 0;
             };
           }) [];
-        };
+        }
+        // builtins.listToAttrs (
+          map (feature: {
+            name = "${feature}Featured";
+            value = boolOption (builtins.elem feature config.features);
+          })
+          allFeatures
+        );
     };
   in {
     host = hostOption host;
