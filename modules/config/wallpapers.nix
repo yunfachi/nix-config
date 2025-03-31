@@ -32,10 +32,11 @@ delib.module {
   myconfig.always = {cfg, ...}: {
     wallpapers = {
       images = lib.filterAttrs (_: wallpaper:
-        !(builtins.any (
-          tag: builtins.elem tag cfg.excludedTags
+        !(
+          builtins.any
+          (tag: builtins.elem tag cfg.excludedTags)
+          wallpaper.tags
         ))
-        wallpaper.tags)
       inputs.nix-config-wallpapers.wallpapers;
 
       imagesDir = pkgs.linkFarm "wallpapers" (map (image: {
