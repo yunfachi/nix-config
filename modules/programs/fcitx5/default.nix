@@ -9,16 +9,14 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  nixos.ifEnabled = {
-    i18n.inputMethod = {
-      enabled = "fcitx5";
-      fcitx5 = {
-        waylandFrontend = true;
-        addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-gtk
-        ];
-      };
+  nixos.ifEnabled.i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
     };
   };
 }
