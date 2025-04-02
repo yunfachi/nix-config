@@ -38,6 +38,7 @@ delib.module {
   };
 
   nixos.ifEnabled.programs.hyprland.enable = true;
+
   home.ifEnabled.wayland.windowManager.hyprland = {
     enable = true;
 
