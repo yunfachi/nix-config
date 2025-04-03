@@ -12,6 +12,5 @@ delib.module {
     enable = boolOption (host.guiFeatured && host.gamingFeatured);
 
     enableLunarClient = boolOption true;
-    enableModrinthApp = boolOption false;
   };
 }
