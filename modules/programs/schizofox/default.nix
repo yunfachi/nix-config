@@ -32,11 +32,6 @@ delib.module {
         Placement = "toolbar";
       }
       {
-        Title = "wanikani";
-        URL = "https://www.wanikani.com";
-        Placement = "toolbar";
-      }
-      {
         Title = "jisho";
         URL = "https://jisho.org";
         Placement = "toolbar";
