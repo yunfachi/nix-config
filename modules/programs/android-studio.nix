@@ -15,7 +15,5 @@ delib.module {
     user.extraGroups = ["kvm" "adbusers"];
   };
 
-  home.ifEnabled = {
-    home.packages = with pkgs; [android-tools android-studio];
-  };
+  home.ifEnabled.home.packages = with pkgs; [android-tools android-studio];
 }
