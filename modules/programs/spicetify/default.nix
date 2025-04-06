@@ -16,10 +16,8 @@ delib.module {
 
   home.always.imports = [inputs.spicetify.homeManagerModules.default];
 
-  home.ifEnabled = {
-    programs.spicetify = {
-      enable = true;
-      alwaysEnableDevTools = true;
-    };
+  home.ifEnabled.programs.spicetify = {
+    enable = true;
+    alwaysEnableDevTools = true;
   };
 }
