@@ -8,7 +8,5 @@ delib.module {
 
   options = delib.singleEnableOption host.cliFeatured;
 
-  home.ifEnabled.programs.gitui = {
-    enable = true;
-  };
+  home.ifEnabled.programs.gitui.enable = true;
 }
