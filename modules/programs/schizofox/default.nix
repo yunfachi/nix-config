@@ -40,7 +40,7 @@ delib.module {
   };
 
   myconfig.ifEnabled = {
-    xdg.mime.associations = let
+    xdg.mime.recommended = let
       firefox = "Schizofox.desktop";
     in {
       "application/json" = [firefox];

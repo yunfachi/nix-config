@@ -9,7 +9,7 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  myconfig.ifEnabled.xdg.mime.associations = {
+  myconfig.ifEnabled.xdg.mime.recommended = {
     "image/*" = ["org.gnome.gThumb.desktop"];
     "image/png" = ["org.gnome.gThumb.desktop"];
     "image/jpeg" = ["org.gnome.gThumb.desktop"];
