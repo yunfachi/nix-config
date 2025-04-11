@@ -1,8 +1,4 @@
-{
-  delib,
-  pkgs,
-  ...
-}:
+{delib, ...}:
 delib.module {
   name = "bluetooth";
 
