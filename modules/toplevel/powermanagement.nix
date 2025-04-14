@@ -22,5 +22,6 @@ delib.module {
       inherit (cfg) cpuFreqGovernor;
     };
   };
+
   nixos.ifDisabled.powerManagement.enable = false;
 }
