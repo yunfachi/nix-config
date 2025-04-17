@@ -46,6 +46,8 @@ delib.module {
           foldsep = " ";
           foldclose = "";
         };
+
+        clipboard = "unnamedplus";
       };
 
       diagnostics = {
