@@ -17,9 +17,10 @@ delib.module {
         disable_loading_bar = true;
         hide_cursor = true;
         grace = 0;
-        no_fade_in = true;
         ignore_empty_input = true;
       };
+
+      animation = "fadeIn,0,0,default";
 
       background = {
         monitor = "";
