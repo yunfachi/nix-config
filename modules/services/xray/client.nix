@@ -1,6 +1,7 @@
 {
   delib,
   lib,
+  decryptSecret,
   ...
 }:
 delib.module {
@@ -100,7 +101,36 @@ delib.module {
               };
             };
           }
+          {
+            tag = "direct";
+            protocol = "freedom";
+          }
+          {
+            tag = "block";
+            protocol = "blackhole";
+          }
         ];
+
+        routing = {
+          domainStrategy = "IPIfNonMatch";
+          rules = [
+            {
+              type = "field";
+              domain = ["geosite:private" "regexp:.ru$"] ++ (builtins.fromJSON (decryptSecret "services/xray/direct_domains"));
+              outboundTag = "direct";
+            }
+            {
+              type = "field";
+              ip = ["geoip:ru" "geoip:private"];
+              outboundTag = "direct";
+            }
+            {
+              type = "field";
+              domain = ["dnsQuery"];
+              outboundTag = "proxy";
+            }
+          ];
+        };
       };
     };
 }
