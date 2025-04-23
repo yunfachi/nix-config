@@ -21,7 +21,6 @@ delib.module {
   };
 
   nixos.always.imports = [inputs.impermanence.nixosModules.impermanence];
-  # home.always.imports = [inputs.impermanence.nixosModules.home-manager.impermanence];
 
   nixos.ifEnabled = {cfg, ...}: {
     environment.persistence.${cfg.persistPath} = {
