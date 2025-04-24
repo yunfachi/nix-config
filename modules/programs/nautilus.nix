@@ -16,7 +16,7 @@ delib.module {
     dconf.settings."com/github/stunkymonkey/nautilus-open-any-terminal".terminal = lib.mkIf myconfig.programs.kitty.enable "kitty";
   };
 
-  home.ifEnabled = let
+  home.ifEnabled.home = let
     nautilusEnv = pkgs.buildEnv {
       name = "nautilus-env";
 
@@ -31,9 +31,7 @@ delib.module {
       ];
     };
   in {
-    home = {
-      packages = [nautilusEnv];
-      sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${nautilusEnv}/lib/nautilus/extensions-4";
-    };
+    packages = [nautilusEnv];
+    sessionVariables.NAUTILUS_4_EXTENSION_DIR = "${nautilusEnv}/lib/nautilus/extensions-4";
   };
 }
