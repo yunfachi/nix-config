@@ -8,6 +8,16 @@ delib.module {
     home = attrsLegacyOption {};
   };
 
-  nixos.always = {cfg, ...}: {_module.args = cfg.shared // cfg.nixos;};
-  home.always = {cfg, ...}: {_module.args = cfg.shared // cfg.home;};
+  nixos.always = {cfg, ...}: {
+    imports = [
+      {_module.args = cfg.shared;}
+      {_module.args = cfg.nixos;}
+    ];
+  };
+  home.always = {cfg, ...}: {
+    imports = [
+      {_module.args = cfg.shared;}
+      {_module.args = cfg.home;}
+    ];
+  };
 }
