@@ -34,6 +34,7 @@ delib.module {
         ++ cfg.directories;
       files =
         [
+          # TODO: set machine in host config
           "/etc/machine-id"
         ]
         ++ cfg.files;
