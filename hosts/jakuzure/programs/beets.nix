@@ -6,11 +6,7 @@
 delib.host {
   name = "jakuzure";
 
-  myconfig = {
-    myconfig,
-    name,
-    ...
-  }: {
+  myconfig = {name, ...}: {
     programs.beets = {
       enable = true;
 
