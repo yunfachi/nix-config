@@ -121,6 +121,17 @@ delib.module {
             }
             {
               type = "field";
+              ip = ["10.0.1.0/24"];
+              outboundTag = "proxy";
+            }
+            {
+              type = "field";
+              ip = ["127.0.0.1"];
+              port = 51820;
+              outboundTag = "proxy";
+            }
+            {
+              type = "field";
               ip = ["geoip:ru" "geoip:private"];
               outboundTag = "direct";
             }
