@@ -6,11 +6,7 @@
 delib.module {
   name = "programs.minecraft";
 
+  options = delib.singleEnableOption (host.guiFeatured && host.gamingFeatured);
+
   myconfig.ifEnabled.persist.user.directories = [".minecraft"];
-
-  options.programs.minecraft = with delib; {
-    enable = boolOption (host.guiFeatured && host.gamingFeatured);
-
-    enableLunarClient = boolOption true;
-  };
 }

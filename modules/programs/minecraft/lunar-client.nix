@@ -7,6 +7,10 @@
 delib.module {
   name = "programs.minecraft";
 
+  options.programs.minecraft = with delib; {
+    enableLunarClient = boolOption true;
+  };
+
   myconfig.ifEnabled = {cfg, ...}: {
     persist.user.directories = lib.mkIf cfg.enableLunarClient [".lunarclient"];
   };
