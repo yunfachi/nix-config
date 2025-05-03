@@ -6,7 +6,7 @@ delib.module {
     polarity = "dark";
 
     base00 = "#181616";
-    base01 = "#1D1C19";
+    base01 = "#1d1c19";
     base02 = "#282727";
     base03 = "#393836";
     base04 = "#9e9b93";
