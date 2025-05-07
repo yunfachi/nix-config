@@ -61,7 +61,7 @@ delib.module {
             with ps; [
               discordpy
               psycopg2
-              requests
+              httpx
             ]))
         ];
         script = ''
