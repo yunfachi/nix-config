@@ -5,9 +5,9 @@
   ...
 }:
 delib.module {
-  name = "programs.schizofox";
+  name = "programs.firefox";
 
-  options.programs.schizofox = with delib; {
+  options.programs.firefox = with delib; {
     enable = boolOption host.guiFeatured;
     bookmarks = listOfOption attrs [];
     defaultBookmarks = listOfOption attrs [
@@ -64,10 +64,10 @@ delib.module {
     persist.user.directories = [".mozilla/firefox/schizo.default"];
   };
 
-  home.always.imports = [inputs.schizofox.homeManagerModule];
+  home.always.imports = [inputs.firefox.homeManagerModule];
 
   home.ifEnabled = {
-    programs.schizofox = {
+    programs.firefox = {
       enable = true;
       misc.drm.enable = true;
     };
