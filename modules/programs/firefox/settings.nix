@@ -1,8 +1,8 @@
 {delib, ...}:
 delib.module {
-  name = "programs.schizofox";
+  name = "programs.firefox";
 
-  home.ifEnabled.programs.schizofox.settings = {
+  home.ifEnabled.programs.firefox.settings = {
     "extensions.activeThemeID" = "coffee_theme_firefox";
     "browser.theme.toolbar-theme" = 0;
     "privacy.resistFingerprinting.letterboxing" = false;

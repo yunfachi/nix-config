@@ -1,8 +1,8 @@
 {delib, ...}:
 delib.module {
-  name = "programs.schizofox";
+  name = "programs.firefox";
 
-  home.ifEnabled.programs.schizofox.extensions = {
+  home.ifEnabled.programs.firefox.extensions = {
     enableExtraExtensions = true;
     extraExtensions = {
       "uBlock0@raymondhill.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";

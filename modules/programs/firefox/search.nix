@@ -1,8 +1,8 @@
 {delib, ...}:
 delib.module {
-  name = "programs.schizofox";
+  name = "programs.firefox";
 
-  home.ifEnabled.programs.schizofox.search = {
+  home.ifEnabled.programs.firefox.search = {
     defaultSearchEngine = "Google";
     removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "Wikipedia (en)"];
     addEngines = [
