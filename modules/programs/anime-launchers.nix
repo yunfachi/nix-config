@@ -38,7 +38,7 @@ delib.module {
       ++ lib.optional cfg.enableSleepyLauncher ".local/share/sleepy-launcher"
       ++ lib.optional cfg.enableHonkersRailwayLauncher ".local/share/honkers-railway-launcher";
 
-    programs.schizofox.bookmarks =
+    programs.firefox.bookmarks =
       lib.optionals cfg.enableAnimeGameLauncher [
         {
           Title = "тейват";
