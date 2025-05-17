@@ -2,7 +2,7 @@
 delib.module {
   name = "programs.firefox";
 
-  home.ifEnabled.programs.firefox.extensions = {
+  home.ifEnabled.programs.schizofox.extensions = {
     enableExtraExtensions = true;
     extraExtensions = {
       "uBlock0@raymondhill.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
