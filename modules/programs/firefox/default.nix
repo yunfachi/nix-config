@@ -64,10 +64,10 @@ delib.module {
     persist.user.directories = [".mozilla/firefox/schizo.default"];
   };
 
-  home.always.imports = [inputs.firefox.homeManagerModule];
+  home.always.imports = [inputs.schizofox.homeManagerModule];
 
   home.ifEnabled = {
-    programs.firefox = {
+    programs.schizofox = {
       enable = true;
       misc.drm.enable = true;
     };

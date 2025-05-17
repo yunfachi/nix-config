@@ -2,7 +2,7 @@
 delib.module {
   name = "programs.firefox";
 
-  home.ifEnabled.programs.firefox.settings = {
+  home.ifEnabled.programs.schizofox.settings = {
     "extensions.activeThemeID" = "coffee_theme_firefox";
     "browser.theme.toolbar-theme" = 0;
     "privacy.resistFingerprinting.letterboxing" = false;

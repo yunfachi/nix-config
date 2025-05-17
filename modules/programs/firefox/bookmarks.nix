@@ -3,7 +3,7 @@ delib.module {
   name = "programs.firefox";
 
   home.ifEnabled = {cfg, ...}: {
-    programs.firefox.misc = {
+    programs.schizofox.misc = {
       displayBookmarksInToolbar = "always";
       bookmarks = cfg.bookmarks ++ cfg.defaultBookmarks;
     };
