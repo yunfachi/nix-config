@@ -12,5 +12,5 @@ delib.module {
 
   home.ifEnabled.home.packages = [pkgs.nh];
 
-  nixos.ifEnabled.environment.variables.FLAKE = "${homeconfig.home.homeDirectory}/nix-config"; #FIXME: looks terrible
+  nixos.ifEnabled.environment.variables.NH_FLAKE = "${homeconfig.home.homeDirectory}/nix-config"; #FIXME: looks terrible
 }
