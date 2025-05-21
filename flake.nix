@@ -64,19 +64,19 @@
     nixpkgs,
     ...
   } @ inputs: let
-    mkConfigurations = isHomeManager:
+    mkConfigurations = moduleSystem:
       denix.lib.configurations rec {
+        inherit moduleSystem;
         homeManagerUser = "yunfachi";
-        inherit isHomeManager;
 
         paths = [./hosts ./modules ./rices];
 
         specialArgs = {
-          inherit inputs isHomeManager homeManagerUser;
+          inherit inputs moduleSystem homeManagerUser;
         };
       };
   in {
-    nixosConfigurations = mkConfigurations false;
-    homeConfigurations = mkConfigurations true;
+    nixosConfigurations = mkConfigurations "nixos";
+    homeConfigurations = mkConfigurations "home";
   };
 }
