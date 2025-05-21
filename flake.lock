@@ -63,17 +63,18 @@
         "home-manager": [
           "home-manager"
         ],
+        "nix-darwin": "nix-darwin",
         "nixpkgs": [
           "nixpkgs"
         ],
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1746686966,
-        "narHash": "sha256-4FVISH3G2TsPpoPMSGY3HssaYUrtGcTYYpFC3s2BdNg=",
+        "lastModified": 1747733729,
+        "narHash": "sha256-HqqpVQ35HJrLAXdLA9z/FTCP4CM62kcqrIKi3006M9Y=",
         "owner": "yunfachi",
         "repo": "denix",
-        "rev": "2b814721eb336222ec88cbb006888000f15369ff",
+        "rev": "292a5ff2c043435f3b7afa40e1a610e1723338da",
         "type": "github"
       },
       "original": {
@@ -503,6 +504,27 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
+          "denix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746254942,
+        "narHash": "sha256-Y062AuRx6l+TJNX8wxZcT59SSLsqD9EedAY0mqgTtQE=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "760a11c87009155afa0140d55c40e7c336d62d7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-darwin_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixvim",
           "nixpkgs"
         ]
@@ -599,7 +621,7 @@
         "flake-parts": "flake-parts",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager_2",
-        "nix-darwin": "nix-darwin",
+        "nix-darwin": "nix-darwin_2",
         "nixpkgs": "nixpkgs_2",
         "nuschtosSearch": "nuschtosSearch",
         "treefmt-nix": "treefmt-nix"
@@ -672,11 +694,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737465171,
-        "narHash": "sha256-R10v2hoJRLq8jcL4syVFag7nIGE7m13qO48wRIukWNg=",
+        "lastModified": 1746537231,
+        "narHash": "sha256-Wb2xeSyOsCoTCTj7LOoD6cdKLEROyFAArnYoS+noCWo=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "9364dc02281ce2d37a1f55b6e51f7c0f65a75f17",
+        "rev": "fa466640195d38ec97cf0493d6d6882bc4d14969",
         "type": "github"
       },
       "original": {

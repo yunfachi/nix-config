@@ -1,6 +1,6 @@
 {
   delib,
-  isHomeManager,
+  moduleSystem,
   homeManagerUser,
   config,
   pkgs,
@@ -10,7 +10,7 @@ delib.module {
   name = "home-manager";
 
   myconfig.always.args.shared.homeconfig =
-    if isHomeManager
+    if moduleSystem == "home"
     then config
     else config.home-manager.users.${homeManagerUser};
 
