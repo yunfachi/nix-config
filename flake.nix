@@ -1,5 +1,5 @@
 {
-  description = "Modular configuration of Home Manager and NixOS with Denix";
+  description = "Modular configuration of NixOS and Home Manager with Denix";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
