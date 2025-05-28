@@ -79,6 +79,13 @@ delib.module {
         enable_swallow = true;
         swallow_regex = "^(kitty)$"; #FIXME: modules/config/terminal.nix
         swallow_exception_regex = "^(noswallow|nvim)$";
+
+        anr_missed_pings = 5;
+      };
+
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
       };
 
       cursor = {};
