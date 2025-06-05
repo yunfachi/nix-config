@@ -1,43 +1,79 @@
-$bar-spacing: 4px;
+@use "../globals" as *;
+@use "sass:color";
 
 .bar {
-    background-color: $bg;
+  $container-margin: 6px;
 
-    .panel-button {
-        border-radius: 20px;
-        margin: $bar-spacing;
-        padding: 0px 6px;
-        color: $fg;
+  $button-height: 30px;
+  $button-border-radius: 9px;
+  $button-lr-padding-offset: calc(6px + ($button-height - 24px) / 2); // 6px (padding-left - padding-top) and 24px (min-height) is taken from gtk.css 
+  $button-padding: 0px calc(0px + $button-lr-padding-offset);
+
+  background-color: $bg;
+  
+  .bar-container {
+    margin: $container-margin;
+  }
+
+  .panel-button {
+    min-height: $button-height;
+    padding: $button-padding;
+    border-radius: $button-border-radius;
+    color: $fg
+  }
+
+  .workspaces {
+    box {
+      border-radius: 6px;
+      transition: .1s;
+
+      background-color: color.scale($fg, $alpha: -80%);
+      min-height: 12px;
+      min-width: 12px;
+
+      margin-right: 3px;
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.active, &.active.occupied {
+        background-color: $accent;
+        min-width: 16px;
+        border-radius: 5px;
+      }
+
+      &.occupied {
+        background-color: color.scale($fg, $alpha: -50%);
+      }
+
+    }
+  }
+
+  .player {
+    .player-background, .cover {
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
-    .workspaces {
-        label {
-            font-size: 0;
-            border-radius: 6px;
-            margin: 0 2.5px;
-            transition: .1s;
-
-            background-color: transparentize($fg, .8);;
-            min-height: 12px;
-            min-width: 12px;
-
-            &.active, &.active.occupied {
-                background-color: $accent;
-                min-width: 16px;
-                border-radius: 5px;
-            }
-
-            &.occupied {
-                background-color: transparentize($fg, .4);
-            }
-        }
+    .player-background {
+      // mimic panel-button's edge
+      margin-left: -6px;
+      padding-left: 6px;
+      margin-right: -$button-lr-padding-offset;
+      padding-right: $button-lr-padding-offset;
+      border-radius: 0 $button-border-radius $button-border-radius 0;
     }
 
-    .simpleplayer {
-        margin: $bar-spacing $bar-spacing $bar-spacing 0;
+    .cover {
+      min-width: 30px; //todo: auto
+      min-height: 30px;
 
-        label {
-            margin: 0 0 0 $bar-spacing;
-        }
+      // mimic panel-button's edge
+      margin-left: -$button-lr-padding-offset;
+      margin-right: 6px;
+      border-radius: $button-border-radius 0 0 $button-border-radius;
     }
+  }
 }
+

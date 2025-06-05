@@ -1,19 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "module": "ES2022",
-        "lib": [
-            "ES2022"
-        ],
-        "allowJs": true,
-        "checkJs": true,
-        "strict": true,
-        "noImplicitAny": false,
-        "baseUrl": ".",
-        "typeRoots": [
-            "./types",
-            "./node_modules/@girs"
-        ],
-        "skipLibCheck": true
-    }
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "Bundler",
+    "allowJs": false,
+    "checkJs": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "noImplicitThis": true,
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "types": [],
+    "experimentalDecorators": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "astal/gtk3"  
+  }
 }
