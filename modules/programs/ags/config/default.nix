@@ -1,8 +1,8 @@
 {
   delib,
   pkgs,
-  lib,
   colorscheme,
+  lib,
   ...
 }:
 delib.module {
@@ -10,7 +10,7 @@ delib.module {
 
   myconfig.always.programs.ags.configPackage = let
     #TODO: ideally the accent is the closest from the colorscheme to the one generated from the wallpaper (or set declaratively in nix-config-wallpapers)
-    colors = builtins.toFile "colors.scss" ''
+    colorsScssFile = builtins.toFile "_colors.scss" ''
       $bg: ${colorscheme.base00.hex};
       $fg: ${colorscheme.base05.hex};
       $accent: ${colorscheme.base0B.hex};
@@ -21,21 +21,16 @@ delib.module {
 
       src = lib.fileset.toSource {
         root = ./.;
-        fileset = ./.;
+        fileset = lib.fileset.fileFilter (f: !f.hasExt "nix") ./.;
       };
 
       buildPhase = ''
-        cp ${colors} style/colors.scss
-        dart-sass style/main.scss build/main.css --no-source-map
-        tailwindcss -i "build/main.css" -o "$out/main.css"
+        mkdir -p $out
 
-        bun build main.ts \
-          --outfile="$out/config.js" \
-          --external="resource://*" \
-          --external="gi://*" \
-          --external="file://*"
+        mkdir -p style
+        cp ${colorsScssFile} style/globals/_colors.scss;
+
+        cp -r * $out
       '';
-
-      nativeBuildInputs = with pkgs; [bun tailwindcss dart-sass];
     };
 }
