@@ -10,7 +10,6 @@ delib.module {
     enable = boolOption host.isDesktop;
 
     timeZone = strOption "Etc/GMT-3";
-    force24Hour = boolOption true;
 
     locale = strOption "en_US.UTF-8";
     extraLocale = strOption "ja_JP.UTF-8";
@@ -33,10 +32,7 @@ delib.module {
         LC_MONETARY = cfg.extraLocale;
         LC_PAPER = cfg.extraLocale;
         LC_TELEPHONE = cfg.extraLocale;
-        LC_TIME =
-          if cfg.force24Hour
-          then "C.UTF-8"
-          else cfg.locale;
+        LC_TIME = cfg.extraLocale;
       };
 
       # Installing all locales solves bugs in some applications
