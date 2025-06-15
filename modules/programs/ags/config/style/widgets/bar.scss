@@ -8,6 +8,7 @@
   $button-border-radius: 9px;
   $button-lr-padding-offset: calc(6px + ($button-height - 24px) / 2); // 6px (padding-left - padding-top) and 24px (min-height) is taken from gtk.css 
   $button-padding: 0px calc(0px + $button-lr-padding-offset);
+  $cover-border-radius: 6px;
 
   background-color: $bg;
   
@@ -50,6 +51,8 @@
   }
 
   .player {
+    padding: 0px;
+
     .player-background, .cover {
       background-size: cover;
       background-position: center center;
@@ -57,11 +60,9 @@
     }
 
     .player-background {
-      // mimic panel-button's edge
-      margin-left: -6px;
       padding-left: 6px;
-      margin-right: -$button-lr-padding-offset;
       padding-right: $button-lr-padding-offset;
+      // mimic panel-button's edge
       border-radius: 0 $button-border-radius $button-border-radius 0;
     }
 
@@ -70,9 +71,7 @@
       min-height: 30px;
 
       // mimic panel-button's edge
-      margin-left: -$button-lr-padding-offset;
-      margin-right: 6px;
-      border-radius: $button-border-radius 0 0 $button-border-radius;
+      border-radius: $cover-border-radius 0 0 $cover-border-radius;
     }
   }
 }

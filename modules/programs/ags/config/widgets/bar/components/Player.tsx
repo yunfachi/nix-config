@@ -1,13 +1,14 @@
 import PanelButton from "widgets/common/PanelButton.tsx"
 import AstalMpris from "gi://AstalMpris"
 import { Variable, bind } from "astal"
-import { Gtk } from "astal/gtk3"
+import { Gtk, Astal } from "astal/gtk3"
 import { VarMap, blurImage } from "utils"
 
 const preferredPlayersNames = ["Feishin", "Spotify", "Mozilla firefox"]
 
 function getPlayer(allPlayers: Map<string, CustomPlayer>) {
-  const players = Array.from(allPlayers.values());
+  const players = Array.from(allPlayers.values())
+    .filter(p => p.title != null || p.artist != null);
 
   if (players.length == 0) return undefined
 
@@ -15,12 +16,12 @@ function getPlayer(allPlayers: Map<string, CustomPlayer>) {
     .filter(p => p.playbackStatus === AstalMpris.PlaybackStatus.PLAYING)
 
   const playingPreferredPlayer = preferredPlayersNames
-    .filter(name => playingPlayers.some(p => p.player.identity.toLowerCase() === name.toLowerCase()))
-    .map(name => playingPlayers.find(p => p.player.identity.toLowerCase() === name.toLowerCase()))
+    .filter(name => playingPlayers.some(p => p.player.identity?.toLowerCase() === name.toLowerCase()))
+    .map(name => playingPlayers.find(p => p.player.identity?.toLowerCase() === name.toLowerCase()))
     .find(p => p)
 
   const preferredPlayer = preferredPlayersNames
-    .map(name => players.find(p => p.player.identity.toLowerCase() === name.toLowerCase()))
+    .map(name => players.find(p => p.player.identity?.toLowerCase() === name.toLowerCase()))
     .find(p => p) || players[0]
 
   const player =
@@ -158,43 +159,93 @@ class PlayerService {
 const playerService = PlayerService.getInstance();
 
 export default function Player() {
-  const BLUR_STRENGTH = 3;
-  const DARK_ALPHA = 0.65;
-  const blurredCover = Variable<string | undefined>(undefined);
+  const BLUR_STRENGTH = 3
+  const DARK_ALPHA = 0.65
 
-  return playerService.currentPlayer.as(
-    (player: CustomPlayer | undefined) => {
-      const coverArt = player?.coverArt;
-      const visible = player !== undefined;
+  const reveal = Variable(false)
+  const current = playerService.currentPlayer
+  const coverArt = Variable.derive([current], (player) => player?.coverArt)
+  const titleAndArtist = Variable.derive([current], (player) => {
+    return `${player?.title} - ${player?.artist}`;
+  })
+  const blurredCover = Variable<string | undefined>(undefined)
 
-      if (coverArt !== undefined) {
-        blurImage(BLUR_STRENGTH, coverArt).then(out => {
-          blurredCover.set(out)
-        });
-      } else {
-        blurredCover.set(undefined);
-      }
+  Variable.derive([coverArt], (coverArt) => {
+    if (coverArt) {
+      blurImage(BLUR_STRENGTH, coverArt).then(out => blurredCover.set(out))
+    } else {
+      blurredCover.set(undefined)
+    }
+  })
 
-      return (
-        <PanelButton className="player" visible={visible}>
-          {coverArt !== undefined ? (
-            <box>
-              <box
-                className="cover"
-                valign={Gtk.Align.CENTER}
-                css={`background-image: url("${coverArt}")`} // XSS ?
-              />
-              <box
-                className="player-background"
-                css={blurredCover(blurredCover => `background-image: linear-gradient(rgba(0,0,0,${DARK_ALPHA}), rgba(0,0,0,${DARK_ALPHA})), url("${blurredCover || coverArt}")`)} // XSS ?
-              >
-                <label label={`${player?.title ?? ""} - ${player?.artist ?? ""}`} />
-              </box>
+  var revealOnSongChangeTimeout = undefined;
+  Variable.derive([titleAndArtist], (x) => {
+    if (revealOnSongChangeTimeout) clearTimeout(revealOnSongChangeTimeout)
+
+    reveal.set(true)
+    revealOnSongChangeTimeout = setTimeout(() => {
+      revealOnSongChangeTimeout = undefined
+      reveal.set(false)
+    }, 3000);
+  })
+
+  return (
+    <PanelButton
+      className="player"
+      visible={current.as(player => !!player && (player?.title?.length ?? 0) + (player?.artist?.length ?? 0) > 0)}
+      onClick={(self, event) => {
+        const player = current.get()?.player
+        if (event.button === Astal.MouseButton.PRIMARY) player?.play_pause()
+      }}
+      onScroll={(self, event) => {
+        const player = current.get()?.player
+        event.delta_y >= 0 ? player?.next() : player?.previous()
+      }}
+      onHover={() => {
+        if (revealOnSongChangeTimeout) {
+          clearTimeout(revealOnSongChangeTimeout)
+          revealOnSongChangeTimeout = undefined
+        }
+
+        reveal.set(true)
+      }}
+      onHoverLost={() => {
+        if (revealOnSongChangeTimeout) return;
+
+        reveal.set(false)
+      }}
+    >
+      {coverArt() ? (
+        <box spacing={0}>
+          <box
+            className='cover'
+            valign={Gtk.Align.CENTER}
+            css={Variable.derive([reveal, coverArt], (r, coverArt) => `
+              background-image: url('${coverArt}');
+              border-radius: 6px ${r ? '0px 0px' : '6px 6px'} 6px;
+              transition-property: border-radius;
+              transition-delay: ${!r ? '.175s' : '0'};
+              transition-duration: ${!r ? '.2s' : '.1s'};
+            `)()}
+          />
+          <revealer
+            className='revealer'
+            revealChild={reveal()}
+            transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+          >
+            <box
+              className='player-background'
+              css={blurredCover(b =>
+                `background-image: linear-gradient(rgba(0,0,0,${DARK_ALPHA}),rgba(0,0,0,${DARK_ALPHA})),url('${b}');`
+              )}
+            >
+              <label label={titleAndArtist()} />
             </box>
-          ) : (
-            <label label={`${player?.title ?? ""} - ${player?.artist ?? ""}`} />
-          )}
-        </PanelButton>
-      )
-    })
+          </revealer>
+        </box>
+      ) : (
+        <label label={titleAndArtist()} />
+      )}
+    </PanelButton>)
 }
+
