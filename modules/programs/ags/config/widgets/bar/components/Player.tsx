@@ -186,7 +186,7 @@ export default function Player() {
     revealOnSongChangeTimeout = setTimeout(() => {
       revealOnSongChangeTimeout = undefined
       reveal.set(false)
-    }, 3000);
+    }, 5000);
   })
 
   return (
