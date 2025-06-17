@@ -4,16 +4,16 @@ import { Variable, bind } from "astal"
 import { Gtk, Astal } from "astal/gtk3"
 import { VarMap, blurImage } from "utils"
 
-const preferredPlayersNames = ["Feishin", "Spotify", "Mozilla firefox"]
+const preferredPlayersNames = ["Mozilla firefox", "Feishin", "Spotify"]
 
 function getPlayer(allPlayers: Map<string, CustomPlayer>) {
   const players = Array.from(allPlayers.values())
-    .filter(p => p.title != null || p.artist != null);
+    .filter(p => p.title.length + p.artist.length > 0);
 
   if (players.length == 0) return undefined
 
   const playingPlayers = players
-    .filter(p => p.playbackStatus === AstalMpris.PlaybackStatus.PLAYING)
+    .filter(p => p.playbackStatus === AstalMpris.PlaybackStatus.PLAYING);
 
   const playingPreferredPlayer = preferredPlayersNames
     .filter(name => playingPlayers.some(p => p.player.identity?.toLowerCase() === name.toLowerCase()))
@@ -29,6 +29,7 @@ function getPlayer(allPlayers: Map<string, CustomPlayer>) {
     || playingPlayers[0]
     || preferredPlayer
     || players[0]
+    || undefined;
 
   return player;
 }
@@ -56,9 +57,7 @@ class PlayerService {
   private _subscriptions: Map<string, Map<string, any>> = new Map();
 
   public allPlayers: VarMap<string, CustomPlayer> = new VarMap([]);
-  public currentPlayer: Variable<string, any> = bind(this.allPlayers).as((allPlayers: Map<string, CustomPlayer>) => {
-    return getPlayer(allPlayers)
-  })
+  public currentPlayer: Variable<string, any> | undefined = new Variable(undefined);
 
   private constructor() {
     this._mprisService = AstalMpris.get_default()
@@ -69,6 +68,12 @@ class PlayerService {
 
     this._mprisService.connect("player-added", (_, addedPlayer: AstalMpris.Player) => this._handlePlayerAdded(addedPlayer));
     this._mprisService.connect("player-closed", (_, closedPlayer: AstalMpris.Player) => this._handlePlayerClosed(closedPlayer));
+
+    Variable.derive([this.allPlayers], (allPlayers) => {
+      if (this.currentPlayer.get() !== undefined) {
+        this.currentPlayer.set(allPlayers.get(this.currentPlayer.get().player.busName))
+      }
+    })
   }
 
   public static getInstance(): PlayerService {
@@ -101,10 +106,19 @@ class PlayerService {
     this._subscriptions.set(addedPlayer.busName, new Map());
 
     this._updateAll(addedPlayer);
+
+    if (this.currentPlayer.get() === undefined || this.currentPlayer.get().PlaybackStatus !== AstalMpris.PlaybackStatus.PLAYING) {
+      this.currentPlayer.set(getPlayer(this.allPlayers.get()));
+    }
   }
 
   private _handlePlayerClosed(closedPlayer: AstalMpris.Player): void {
     this._resetSubscription(closedPlayer.busName);
+
+    if (this.currentPlayer.get() !== undefined && this.currentPlayer.get().player.busName === closedPlayer.busName) {
+      this.currentPlayer.set(getPlayer(this.allPlayers.get()));
+    }
+
     this.allPlayers.delete(closedPlayer.busName);
   }
 
@@ -122,6 +136,13 @@ class PlayerService {
 
     this._setSubscription(player.busName, "playbackStatus", Variable.derive([playbackStatusBinding], (status) => {
       this.allPlayers.set(player.busName, { ...this.allPlayers.get(player.busName), playbackStatus: status ?? AstalMpris.PlaybackStatus.STOPPED });
+
+      const currentPlayer = this.currentPlayer.get();
+      const eventPlayer = this.allPlayers.get(player.busName);
+
+      if (currentPlayer !== undefined && /*currentPlayer.playbackStatus !== AstalMpris.PlaybackStatus.PLAYING &&*/ eventPlayer.playbackStatus === AstalMpris.PlaybackStatus.PLAYING) {
+        this.currentPlayer.set(eventPlayer)
+      }
     }));
   }
 
@@ -192,7 +213,7 @@ export default function Player() {
   return (
     <PanelButton
       className="player"
-      visible={current.as(player => !!player && (player?.title?.length ?? 0) + (player?.artist?.length ?? 0) > 0)}
+      visible={current(player => !!player && (player?.title?.length ?? 0) + (player?.artist?.length ?? 0) > 0)}
       onClick={(self, event) => {
         const player = current.get()?.player
         if (event.button === Astal.MouseButton.PRIMARY) player?.play_pause()
