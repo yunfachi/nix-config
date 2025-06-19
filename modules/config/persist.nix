@@ -2,6 +2,7 @@
   delib,
   inputs,
   constants,
+  homeconfig,
   ...
 }:
 delib.module {
@@ -11,12 +12,12 @@ delib.module {
     enable = boolOption false;
     persistPath = noDefault (strOption null);
 
-    directories = listOfOption str [];
-    files = listOfOption str [];
+    directories = listOption [];
+    files = listOption [];
 
     user = {
-      directories = listOfOption str [];
-      files = listOfOption str [];
+      directories = listOption [];
+      files = listOption [];
     };
   };
 
@@ -40,6 +41,9 @@ delib.module {
         ++ cfg.files;
 
       users.${constants.username} = {
+        # https://github.com/nix-community/impermanence/blob/4b3e914cdf97a5b536a889e939fb2fd2b043a170/nixos.nix#L307
+        #home = homeconfig.home.homeDirectory;
+
         directories =
           [
             "nix-config"
