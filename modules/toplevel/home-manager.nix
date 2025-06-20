@@ -4,6 +4,7 @@
   homeManagerUser,
   config,
   pkgs,
+  constants,
   ...
 }:
 delib.module {
@@ -21,8 +22,8 @@ delib.module {
     };
   };
 
-  home.always = {myconfig, ...}: let
-    inherit (myconfig.constants) username;
+  home.always = let
+    inherit (constants) username;
   in {
     home = {
       inherit username;
