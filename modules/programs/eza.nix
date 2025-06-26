@@ -22,8 +22,6 @@ delib.module {
 
       extraOptions = [
         "--hyperlink"
-        "--no-permissions"
-        "--no-user"
         "--no-time"
         "--group-directories-first"
       ];
