@@ -41,6 +41,14 @@ delib.host {
         listen_addresses = [wireguardLocalAddress];
       };
 
+      vaultwarden = {
+        enable = true;
+        database = {
+          backend = "postgresql";
+          password = decryptHostSecret name "services/vaultwarden/postgresql/password";
+        };
+      };
+
       wireguard = {
         enable = true;
         privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
