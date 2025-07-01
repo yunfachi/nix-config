@@ -11,6 +11,7 @@ delib.module {
       "{0d48da55-7195-4662-aafc-934d90cb26c2}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/sepia-coffee-v1/latest.xpi";
       "{a138007c-5ff6-4d10-83d9-0afaf0efbe5e}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/history-cleaner/latest.xpi";
       "{6b733b82-9261-47ee-a595-2dda294a4d08}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/yomitan/latest.xpi";
+      "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
     };
   };
 }
