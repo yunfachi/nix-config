@@ -37,6 +37,7 @@ delib.module {
         Placement = "toolbar";
       }
     ];
+    extensions = attrsOption {};
   };
 
   myconfig.ifEnabled = {
