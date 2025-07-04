@@ -2,6 +2,7 @@
   delib,
   inputs,
   host,
+  pkgs,
   ...
 }:
 delib.module {
@@ -71,6 +72,7 @@ delib.module {
   home.ifEnabled = {
     programs.schizofox = {
       enable = true;
+      package = pkgs.firefox-esr-140-unwrapped;
       misc.drm.enable = true;
     };
   };
