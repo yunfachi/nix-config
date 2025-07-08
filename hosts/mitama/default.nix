@@ -7,7 +7,7 @@
 delib.host {
   name = "mitama";
 
-  rice = "yami";
+  rice = "marukutekurai";
   type = "desktop";
   features = ["powersave"];
 

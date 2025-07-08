@@ -9,7 +9,7 @@
 delib.host {
   name = "dekomori";
 
-  rice = "yami";
+  rice = "marukutekurai";
   type = "server";
   features = ["cli"];
 
