@@ -1,6 +1,6 @@
 {delib, ...}:
 delib.rice {
-  name = "yami";
+  name = "marukutekurai";
 
   inherits = ["marui"];
 }
