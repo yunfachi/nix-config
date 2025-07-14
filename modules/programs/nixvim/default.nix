@@ -14,7 +14,8 @@ delib.module {
     defaultEditor = boolOption true;
   };
 
-  myconfig.always.args.shared.nixvimLib = homeconfig.lib.nixvim;
+  #myconfig.always.args.shared.nixvimLib = homeconfig.lib.nixvim;
+  myconfig.always.args.shared.nixvimLib = inputs.nixvim.lib;
 
   home.always.imports = [inputs.nixvim.homeManagerModules.nixvim];
 
