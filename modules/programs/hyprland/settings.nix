@@ -17,14 +17,16 @@ delib.module {
       "$mod" = cfg.mod;
 
       monitor =
-        map (display: let
-          resolution = "${toString display.width}x${toString display.height}@${toString display.refreshRate}";
-          position = "${toString display.x}x${toString display.y}";
-        in "${display.name},${
-          if display.enable
-          then "${resolution},${position},1"
-          else "disable"
-        }")
+        map (
+          display: let
+            resolution = "${toString display.width}x${toString display.height}@${toString display.refreshRate}";
+            position = "${toString display.x}x${toString display.y}";
+          in "${display.name},${
+            if display.enable
+            then "${resolution},${position},1"
+            else "disable"
+          }"
+        )
         host.displays;
 
       general = {
@@ -53,7 +55,13 @@ delib.module {
         screen_shader = lib.mkIf (cfg.shader != null) (toString cfg.shader);
 
         shadow = {
-          inherit (cfg.shadow) range offset scale color;
+          inherit
+            (cfg.shadow)
+            range
+            offset
+            scale
+            color
+            ;
           enabled = cfg.enable;
           render_power = cfg.shadow.power;
           color_inactive = lib.mkIf (cfg.shadow.inactive_color != null) cfg.shadow.inactive_color;
@@ -69,6 +77,10 @@ delib.module {
         };
       };
 
+      gestures = {
+        workspace_swipe = true;
+      };
+
       misc = {
         disable_hyprland_logo = true; # (╥﹏╥)
         disable_splash_rendering = true;
@@ -78,7 +90,7 @@ delib.module {
         background_color = cfg.background_color;
 
         enable_swallow = true;
-        swallow_regex = "^(kitty)$"; #FIXME: modules/config/terminal.nix
+        swallow_regex = "^(kitty)$"; # FIXME: modules/config/terminal.nix
         swallow_exception_regex = "^(noswallow|nvim)$";
 
         anr_missed_pings = 5;
@@ -93,8 +105,16 @@ delib.module {
 
       dwindle.preserve_split = true;
 
-      exec-once = map (x: (pkgs.writeShellScript "commands-windowManager-onStartup-map.sh" x).outPath) myconfig.commands.windowManager.onStartup;
-      exec = map (x: (pkgs.writeShellScript "commands-windowManager-onReload-map.sh" x).outPath) myconfig.commands.windowManager.onReload;
+      exec-once =
+        map (
+          x: (pkgs.writeShellScript "commands-windowManager-onStartup-map.sh" x).outPath
+        )
+        myconfig.commands.windowManager.onStartup;
+      exec =
+        map (
+          x: (pkgs.writeShellScript "commands-windowManager-onReload-map.sh" x).outPath
+        )
+        myconfig.commands.windowManager.onReload;
     };
   };
 }
