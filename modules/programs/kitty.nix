@@ -17,6 +17,8 @@ delib.module {
       scrollback_lines = 10000;
       tab_bar_edge = "top";
       confirm_os_window_close = 0;
+      cursor_trail = 3;
+      cursor_trail_decay = "0.1 0.4";
 
       # https://github.com/Base24/base24-kitty-te/blob/32024a49ba4cd0bdd83b6a6cf6d578909f29fecf/templates/default.mustache
       background = base00.hex;
