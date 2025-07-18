@@ -22,7 +22,7 @@ delib.module {
 
       sections = {
         lualine_a = ["mode"];
-        lualine_b = nixvimLib.emptyTable;
+        lualine_b = nixvimLib.nixvim.emptyTable;
         lualine_c = ["filename"];
 
         lualine_x = [
@@ -54,12 +54,12 @@ delib.module {
       };
 
       inactive_sections = {
-        lualine_a = nixvimLib.emptyTable;
-        lualine_b = nixvimLib.emptyTable;
+        lualine_a = nixvimLib.nixvim.emptyTable;
+        lualine_b = nixvimLib.nixvim.emptyTable;
         lualine_c = ["filename"];
         lualine_x = ["location"];
-        lualine_y = nixvimLib.emptyTable;
-        lualine_z = nixvimLib.emptyTable;
+        lualine_y = nixvimLib.nixvim.emptyTable;
+        lualine_z = nixvimLib.nixvim.emptyTable;
       };
     };
   };
