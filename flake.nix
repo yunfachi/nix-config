@@ -23,8 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     schizofox = {
       url = "github:schizofox/schizofox";
@@ -47,6 +47,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-config-wallpapers.url = "github:yunfachi/nix-config-wallpapers";
     wallpaper-manager = {
@@ -65,7 +69,40 @@
         inherit moduleSystem;
         homeManagerUser = "yunfachi";
 
-        paths = [./hosts ./modules ./rices];
+        paths = [
+          ./hosts
+          ./modules
+          ./rices
+        ];
+
+        extensions = with denix.lib.extensions; [
+          args
+          (base.withConfig {
+            args.enable = true;
+
+            hosts.features = {
+              # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
+              # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
+              features = [
+                "cli"
+                "gui"
+                "gaming"
+                "hacking"
+                "powersave"
+                "wireless"
+              ];
+              defaultByHostType = {
+                desktop = [
+                  "cli"
+                  "gui"
+                  "gaming"
+                  "hacking"
+                ];
+                server = [];
+              };
+            };
+          })
+        ];
 
         specialArgs = {
           inherit inputs moduleSystem homeManagerUser;

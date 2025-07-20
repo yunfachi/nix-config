@@ -1,9 +1,13 @@
-{delib, ...}:
+{
+  delib,
+  host,
+  ...
+}:
 delib.module {
   name = "bluetooth";
 
   options.bluetooth = with delib; {
-    enable = boolOption false;
+    enable = boolOption host.wirelessFeatured;
     enableMprisProxy = boolOption true;
   };
 
