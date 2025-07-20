@@ -9,6 +9,9 @@ delib.host {
 
   rice = "marukutekurai";
   type = "desktop";
+  features = [
+    "wireless"
+  ];
 
   displays = [
     {
