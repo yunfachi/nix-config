@@ -14,6 +14,7 @@ delib.module {
       then wireguardLocalAddress
       else "localhost"
     );
+    port = intOption 2283;
     openFirewall = boolOption true;
 
     database = {
@@ -33,7 +34,14 @@ delib.module {
     services.immich = {
       enable = true;
 
-      inherit (cfg) host openFirewall settings mediaLocation;
+      inherit
+        (cfg)
+        host
+        port
+        openFirewall
+        settings
+        mediaLocation
+        ;
 
       database = {
         enable = false;
@@ -42,6 +50,9 @@ delib.module {
       };
     };
 
-    users.users.immich.extraGroups = ["video" "render"];
+    users.users.immich.extraGroups = [
+      "video"
+      "render"
+    ];
   };
 }
