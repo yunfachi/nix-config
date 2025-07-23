@@ -11,5 +11,5 @@ delib.module {
 
   myconfig.ifEnabled.persist.user.directories = [".local/share/KotatogramDesktop/tdata"];
 
-  home.ifEnabled.home.packages = [pkgs.kotatogram-desktop];
+  home.ifEnabled.home.packages = [pkgs.ayugram-desktop];
 }
