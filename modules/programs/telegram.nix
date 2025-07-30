@@ -9,7 +9,7 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  myconfig.ifEnabled.persist.user.directories = [".local/share/KotatogramDesktop/tdata"];
+  myconfig.ifEnabled.persist.user.directories = [".local/share/AyuGramDesktop/tdata"];
 
   home.ifEnabled.home.packages = [pkgs.ayugram-desktop];
 }
