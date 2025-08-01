@@ -10,7 +10,10 @@ delib.module {
   options = delib.singleEnableOption true;
 
   myconfig.ifEnabled.persist.user.directories = [
-    ".local/share/gnupg"
+    {
+      directory = ".gnupg";
+      mode = "u=rwx,g=,o=";
+    }
   ];
 
   home.ifEnabled = {myconfig, ...}: {
