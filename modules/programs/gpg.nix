@@ -20,7 +20,7 @@ delib.module {
     programs.gpg = {
       enable = true;
 
-      homedir = "${homeconfig.xdg.dataHome}/gnupg";
+      homedir = "${homeconfig.home.homeDirectory}/.gnupg";
     };
 
     services.gpg-agent = {
