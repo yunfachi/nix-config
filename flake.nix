@@ -80,6 +80,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nixowos = {
+      url = "github:yunfachi/NixOwOS";
+      inputs.denix.follows = "denix";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
