@@ -6,25 +6,25 @@
 delib.module {
   name = "programs.eza";
 
-  options = {myconfig, ...}: {
-    programs.eza = with delib; {
-      enable = boolOption host.cliFeatured;
-      icons = boolOption myconfig.fonts.enable;
-    };
+  options.programs.eza = with delib; {
+    enable = boolOption host.cliFeatured;
+    icons = enumOption [ "auto" "always" "never" ] "auto";
   };
 
-  home.ifEnabled = {cfg, ...}: {
-    programs.eza = {
-      enable = true;
+  home.ifEnabled =
+    { cfg, ... }:
+    {
+      programs.eza = {
+        enable = true;
 
-      git = true;
-      icons = cfg.icons;
+        git = true;
+        icons = cfg.icons;
 
-      extraOptions = [
-        "--hyperlink"
-        "--no-time"
-        "--group-directories-first"
-      ];
+        extraOptions = [
+          "--hyperlink"
+          "--no-time"
+          "--group-directories-first"
+        ];
+      };
     };
-  };
 }
