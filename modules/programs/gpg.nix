@@ -16,19 +16,19 @@ delib.module {
     }
   ];
 
-  home.ifEnabled = {myconfig, ...}: {
-    programs.gpg = {
-      enable = true;
+  home.ifEnabled =
+    { myconfig, ... }:
+    {
+      programs.gpg = {
+        enable = true;
 
-      homedir = "${homeconfig.home.homeDirectory}/.gnupg";
-    };
+        homedir = "${homeconfig.home.homeDirectory}/.gnupg";
+      };
 
-    services.gpg-agent = {
-      enable = true;
-      pinentryPackage =
-        if myconfig.services.gcr.enable
-        then pkgs.pinentry-gnome3
-        else pkgs.pinentry-curses;
+      services.gpg-agent = {
+        enable = true;
+        pinentry.package =
+          if myconfig.services.gcr.enable then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
+      };
     };
-  };
 }
