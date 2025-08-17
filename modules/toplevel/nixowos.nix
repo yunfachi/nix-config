@@ -8,9 +8,15 @@ delib.module {
 
   options = delib.singleEnableOption true;
 
-  nixos.always.imports = [inputs.nixowos.nixosModules.default];
+  nixos.always.imports = [ inputs.nixowos.nixosModules.default ];
 
   nixos.ifEnabled.nixowos = {
+    enable = true;
+  };
+
+  home.always.imports = [ inputs.nixowos.homeModules.default ];
+
+  home.ifEnabled.nixowos = {
     enable = true;
   };
 }
