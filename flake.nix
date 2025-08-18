@@ -1,72 +1,73 @@
 {
   description = "Modular configuration of NixOS and Home Manager with Denix";
 
-  outputs = {
-    denix,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    mkConfigurations = moduleSystem:
-      denix.lib.configurations rec {
-        inherit moduleSystem;
-        homeManagerUser = "yunfachi";
+  outputs =
+    { denix, nixpkgs, ... }@inputs:
+    let
+      mkConfigurations =
+        moduleSystem:
+        denix.lib.configurations rec {
+          inherit moduleSystem;
+          homeManagerUser = "yunfachi";
 
-        paths = [
-          ./hosts
-          ./modules
-          ./rices
-        ];
+          paths = [
+            ./hosts
+            ./modules
+            ./rices
+          ];
 
-        extensions = with denix.lib.extensions; [
-          rices
-          args
-          (base.withConfig {
-            args.enable = true;
+          extensions = with denix.lib.extensions; [
+            #rices
+            args
+            (base.withConfig {
+              args.enable = true;
 
-            hosts.features = {
-              # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
-              # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
-              features = [
-                "cli"
-                "gui"
-                "gaming"
-                "hacking"
-                "powersave"
-                "wireless"
-              ];
-              defaultByHostType = {
-                desktop = [
+              hosts.features = {
+                # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
+                # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
+                features = [
                   "cli"
                   "gui"
                   "gaming"
                   "hacking"
+                  "powersave"
+                  "wireless"
                 ];
-                server = [];
+                defaultByHostType = {
+                  desktop = [
+                    "cli"
+                    "gui"
+                    "gaming"
+                    "hacking"
+                  ];
+                  server = [ ];
+                };
               };
-            };
-          })
-        ];
+            })
+          ];
 
-        specialArgs = {
-          inherit inputs moduleSystem homeManagerUser;
+          specialArgs = { inherit inputs moduleSystem; };
+        };
+    in
+    {
+      nixosConfigurations = mkConfigurations "nixos";
+      homeConfigurations = mkConfigurations "home";
+
+      devShells.x86_64-linux = {
+        hacking = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+          name = "hacking";
+          packages = with nixpkgs.legacyPackages.x86_64-linux; [
+            # Recon
+            assetfinder
+            nmap
+            python313Packages.dirsearch
+            # Reverse
+            binwalk
+            foremost
+          ];
         };
       };
-  in {
-    nixosConfigurations = mkConfigurations "nixos";
-    homeConfigurations = mkConfigurations "home";
-
-    devShells.x86_64-linux = {
-      hacking = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-        name = "hacking";
-        packages = with nixpkgs.legacyPackages.x86_64-linux; [
-          # Recon
-          assetfinder
-          nmap
-          python313Packages.dirsearch
-        ];
-      };
     };
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
