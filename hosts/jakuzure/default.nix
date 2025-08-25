@@ -20,7 +20,7 @@ delib.host {
       refreshRate = 144;
       width = 1920;
       height = 1080;
-      x = 0;
+      x = 1920;
       y = 0;
     }
     {
@@ -28,7 +28,7 @@ delib.host {
       refreshRate = 60;
       width = 1920;
       height = 1080;
-      x = 1920;
+      x = 0;
       y = 100;
     }
   ];
