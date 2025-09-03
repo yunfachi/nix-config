@@ -1,4 +1,4 @@
-{delib, ...}:
+{ delib, ... }:
 delib.module {
   name = "programs.nixvim.plugins.nvim-tree";
 
@@ -8,7 +8,7 @@ delib.module {
     plugins.nvim-tree = {
       enable = true;
 
-      extraOptions = {
+      settings = {
         renderer = {
           root_folder_label = false;
           indent_markers.enable = true;
@@ -23,7 +23,7 @@ delib.module {
             modified_placement = "signcolumn";
 
             show = {
-              git = false; #maybe true
+              git = false; # maybe true
               modified = true;
               diagnostics = true;
 
