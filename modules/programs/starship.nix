@@ -38,7 +38,16 @@ delib.module {
     enable = true;
 
     settings = {
-      format = lib.concatStrings ["$username" "$hostname" "$battery" "$nix_shell" "$directory" "$git_branch" "$cmd_duration" "$character"];
+      format = lib.concatStrings [
+        "$username"
+        "$hostname"
+        "$battery"
+        "$nix_shell"
+        "$directory"
+        "$git_branch"
+        "$cmd_duration"
+        "$character"
+      ];
 
       add_newline = true;
       scan_timeout = 10;
@@ -61,7 +70,10 @@ delib.module {
       git_branch = {
         style = "bold dimmed green";
         format = "on [$branch]($style) ";
-        ignore_branches = ["master" "main"];
+        ignore_branches = [
+          "master"
+          "main"
+        ];
       };
       cmd_duration = {
         min_time = 1000;
