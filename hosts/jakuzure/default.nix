@@ -39,7 +39,6 @@ delib.host {
     programs = {
       git.signingKey = "0x9D16EF5F68A5CEDF";
 
-      xp-pen-deco-pro.enable = true;
     };
 
     services = {
