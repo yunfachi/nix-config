@@ -5,9 +5,9 @@
   ...
 }:
 delib.module {
-  name = "programs.alejandra";
+  name = "programs.nixfmt";
 
   options = delib.singleEnableOption host.cliFeatured;
 
-  home.ifEnabled.home.packages = [pkgs.alejandra];
+  home.ifEnabled.home.packages = [ pkgs.nixfmt ];
 }
