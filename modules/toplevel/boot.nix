@@ -1,6 +1,8 @@
 {
   delib,
   lib,
+  host,
+  pkgs,
   ...
 }:
 delib.module {
@@ -20,28 +22,50 @@ delib.module {
         then "uefi"
         else "legacy"
       );
+
+      plymouth = {
+        enable = boolOption host.isDesktop;
+      };
     };
   };
 
   nixos.ifEnabled = {cfg, ...}: {
-    boot.loader = {
-      efi = {
-        canTouchEfiVariables = true;
-      };
+    boot = {
+      loader = {
+        efi = {
+          canTouchEfiVariables = true;
+        };
 
-      grub = lib.mkIf (cfg.loader == "grub") {
-        enable = true;
-        efiSupport = cfg.mode == "uefi";
-        devices = ["nodev"];
-        configurationLimit = 10;
-      };
+        grub = lib.mkIf (cfg.loader == "grub") {
+          enable = true;
+          efiSupport = cfg.mode == "uefi";
+          devices = ["nodev"];
+          configurationLimit = 10;
+        };
 
-      systemd-boot = lib.mkIf (cfg.loader == "systemd-boot") {
-        enable = true;
-        configurationLimit = 10;
-      };
+        systemd-boot = lib.mkIf (cfg.loader == "systemd-boot") {
+          enable = true;
+          configurationLimit = 10;
+          consoleMode = "max";
+        };
 
-      timeout = 5;
+        timeout = 0; # 5;
+      };
+      consoleLogLevel = 0;
+      initrd.verbose = false;
+      plymouth = {
+        enable = cfg.plymouth.enable;
+        logo = "${pkgs.nixos-icons}/share/icons/hicolor/256x256/apps/nix-snowflake-white.png";
+        theme = "breeze";
+      };
+      kernelParams = [
+        "quiet"
+        "splash"
+        "rd.systemd.show_status=false"
+        "rd.udev.log_level=3"
+        "udev.log_priority=3"
+        "boot.shell_on_fail"
+      ];
     };
   };
 }
