@@ -2,7 +2,7 @@
   delib,
   inputs,
   constants,
-  homeconfig,
+  lib,
   ...
 }:
 delib.module {
@@ -12,46 +12,45 @@ delib.module {
     enable = boolOption false;
     persistPath = noDefault (strOption null);
 
-    directories = listOption [];
-    files = listOption [];
+    directories = listOption [ ];
+    files = listOption [ ];
 
     user = {
-      directories = listOption [];
-      files = listOption [];
+      directories = listOption [ ];
+      files = listOption [ ];
     };
   };
 
-  nixos.always.imports = [inputs.impermanence.nixosModules.impermanence];
+  nixos.always.imports = [ inputs.impermanence.nixosModules.impermanence ];
 
-  nixos.ifEnabled = {cfg, ...}: {
-    environment.persistence.${cfg.persistPath} = {
-      enable = true;
-      hideMounts = true;
+  nixos.ifEnabled =
+    { cfg, ... }:
+    {
+      environment.persistence.${cfg.persistPath} = {
+        enable = true;
+        hideMounts = true;
 
-      directories =
-        [
+        directories = [
           "/var/lib/nixos"
         ]
-        ++ cfg.directories;
-      files =
-        [
+        ++ lib.unique cfg.directories;
+        files = [
           # TODO: set machine in host config
           "/etc/machine-id"
         ]
-        ++ cfg.files;
+        ++ lib.unique cfg.files;
 
-      users.${constants.username} = {
-        # https://github.com/nix-community/impermanence/blob/4b3e914cdf97a5b536a889e939fb2fd2b043a170/nixos.nix#L307
-        #home = homeconfig.home.homeDirectory;
+        users.${constants.username} = {
+          # https://github.com/nix-community/impermanence/blob/4b3e914cdf97a5b536a889e939fb2fd2b043a170/nixos.nix#L307
+          #home = homeconfig.home.homeDirectory;
 
-        directories =
-          [
+          directories = [
             "nix-config"
           ]
-          ++ cfg.user.directories;
+          ++ lib.unique cfg.user.directories;
 
-        files = cfg.user.files;
+          files = lib.unique cfg.user.files;
+        };
       };
     };
-  };
 }
