@@ -1,4 +1,4 @@
-{delib, ...}:
+{ delib, ... }:
 delib.module {
   name = "programs.nixvim.lsp.none-ls";
 
@@ -7,9 +7,12 @@ delib.module {
   home.ifEnabled.programs.nixvim.plugins.none-ls = {
     enable = true;
     enableLspFormat = true;
-    updateInInsert = true;
-    diagnosticConfig = {
-      update_in_insert = true;
+
+    settings = {
+      updateInInsert = true;
+      diagnosticConfig = {
+        update_in_insert = true;
+      };
     };
 
     sources = {
@@ -17,7 +20,7 @@ delib.module {
         statix.enable = true;
       };
       formatting = {
-        alejandra.enable = true;
+        #nixfmt.enable = true;
       };
     };
   };
