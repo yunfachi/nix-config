@@ -1,10 +1,18 @@
-{delib, ...}:
+{ delib, ... }:
 delib.module {
-  name = "programs.firefox";
+  name = "programs.librewolf";
 
-  home.ifEnabled = {cfg, ...}: {
-    programs.schizofox.settings =
-      {
+  options.programs.librewolf = with delib; {
+    settings = attrsOption { };
+  };
+
+  home.ifEnabled =
+    { cfg, ... }:
+    {
+      programs.librewolf.profiles.default.settings = {
+        "extensions.autoDisableScopes" = 0;
+        "privacy.clearOnShutdown_v2.cache" = 0;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
         "extensions.activeThemeID" = "coffee_theme_firefox";
         "browser.theme.toolbar-theme" = 0;
         "privacy.resistFingerprinting.letterboxing" = false;
@@ -35,12 +43,12 @@ delib.module {
               "unified-extensions-button"
               "fxa-toolbar-menu-button"
             ];
-            PersonalToolbar = ["personal-bookmarks"];
+            PersonalToolbar = [ "personal-bookmarks" ];
             TabsToolbar = [
               "tabbrowser-tabs"
               "alltabs-button"
             ];
-            toolbar-menubar = ["menubar-items"];
+            toolbar-menubar = [ "menubar-items" ];
             unified-extensions-area = [
               "ublock0_raymondhill_net-browser-action"
               "_0050e3fa-15cc-4fb6-9c73-7354489a810b_-browser-action"
@@ -56,5 +64,5 @@ delib.module {
         };
       }
       // cfg.settings;
-  };
+    };
 }
