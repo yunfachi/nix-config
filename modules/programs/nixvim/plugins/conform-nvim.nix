@@ -16,7 +16,7 @@ delib.module {
       };
 
       formatters_by_ft = {
-        nix = ["alejandra"];
+        nix = ["nixfmt"];
       };
     };
   };
