@@ -27,49 +27,69 @@ delib.module {
         database = noDefault (strOption null);
         user = noDefault (strOption null);
         address = strOption "";
-        authMethod = noDefault (enumOption ["trust" "reject" "scram-sha-256" "md5" "password" "gss" "sspi" "ident" "peer" "ldap" "radius" "cert" "pam" "bsd"] null);
+        authMethod = noDefault (
+          enumOption [
+            "trust"
+            "reject"
+            "scram-sha-256"
+            "md5"
+            "password"
+            "gss"
+            "sspi"
+            "ident"
+            "peer"
+            "ldap"
+            "radius"
+            "cert"
+            "pam"
+            "bsd"
+          ] null
+        );
       };
-    }) [];
+    }) [ ];
 
-    initialScripts = listOfOption str [];
+    initialScripts = listOfOption str [ ];
   };
 
-  myconfig.ifEnabled.persist.directories = ["/var/lib/postgresql"];
+  myconfig.ifEnabled.persist.directories = [ "/var/lib/postgresql" ];
 
-  nixos.ifEnabled = {cfg, ...}: {
-    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [cfg.port];
+  nixos.ifEnabled =
+    { cfg, ... }:
+    {
+      networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ cfg.port ];
 
-    services.postgresql = {
-      enable = true;
+      services.postgresql = {
+        enable = true;
 
-      inherit (cfg) package extraPlugins;
+        inherit (cfg) package extensions;
 
-      ensureDatabases = cfg.databases;
-      ensureUsers = lib.mapAttrsToList (name: value: {inherit name;} // value) cfg.users;
+        ensureDatabases = cfg.databases;
+        ensureUsers = lib.mapAttrsToList (name: value: { inherit name; } // value) cfg.users;
 
-      initialScript = builtins.toFile "postgresql-initialScript" (builtins.concatStringsSep " " cfg.initialScripts);
+        initialScript = builtins.toFile "postgresql-initialScript" (
+          builtins.concatStringsSep " " cfg.initialScripts
+        );
 
-      authentication = lib.mkForce (
-        lib.concatMapStringsSep "\n" (
-          a: "${a.type} ${a.database} ${a.user} ${a.address} ${a.authMethod}"
-        ) ([
-            {
-              type = "local";
-              database = "all";
-              user = "all";
-              address = "";
-              authMethod = "trust";
-            }
-          ]
-          ++ cfg.authentications)
-      );
+        authentication = lib.mkForce (
+          lib.concatMapStringsSep "\n" (a: "${a.type} ${a.database} ${a.user} ${a.address} ${a.authMethod}") (
+            [
+              {
+                type = "local";
+                database = "all";
+                user = "all";
+                address = "";
+                authMethod = "trust";
+              }
+            ]
+            ++ cfg.authentications
+          )
+        );
 
-      settings =
-        {
+        settings = {
           inherit (cfg) port;
           listen_addresses = lib.mkForce (builtins.concatStringsSep ", " cfg.listen_addresses);
         }
         // cfg.extraSettings;
+      };
     };
-  };
 }
