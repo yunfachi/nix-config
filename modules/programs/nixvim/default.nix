@@ -17,43 +17,45 @@ delib.module {
   #myconfig.always.args.shared.nixvimLib = homeconfig.lib.nixvim;
   myconfig.always.args.shared.nixvimLib = inputs.nixvim.lib;
 
-  home.always.imports = [inputs.nixvim.homeManagerModules.nixvim];
+  home.always.imports = [ inputs.nixvim.homeModules.nixvim ];
 
-  home.ifEnabled = {cfg, ...}: {
-    programs.nixvim = {
-      enable = true;
-      inherit (cfg) defaultEditor;
+  home.ifEnabled =
+    { cfg, ... }:
+    {
+      programs.nixvim = {
+        enable = true;
+        inherit (cfg) defaultEditor;
 
-      opts = {
-        number = true;
-        relativenumber = true;
+        opts = {
+          number = true;
+          relativenumber = true;
 
-        list = true;
+          list = true;
 
-        expandtab = true;
-        tabstop = 2;
-        shiftwidth = 2;
-        softtabstop = 2;
-        listchars.tab = "-»";
+          expandtab = true;
+          tabstop = 2;
+          shiftwidth = 2;
+          softtabstop = 2;
+          listchars.tab = "-»";
 
-        foldcolumn = "1";
-        foldlevel = 99;
-        foldlevelstart = 99;
-        foldenable = true;
-        fillchars = {
-          eob = " ";
-          fold = " ";
-          foldopen = "";
-          foldsep = " ";
-          foldclose = "";
+          foldcolumn = "1";
+          foldlevel = 99;
+          foldlevelstart = 99;
+          foldenable = true;
+          fillchars = {
+            eob = " ";
+            fold = " ";
+            foldopen = "";
+            foldsep = " ";
+            foldclose = "";
+          };
+
+          clipboard = "unnamedplus";
         };
 
-        clipboard = "unnamedplus";
-      };
-
-      diagnostics = {
-        update_in_insert = true;
+        diagnostic.settings = {
+          update_in_insert = true;
+        };
       };
     };
-  };
 }
