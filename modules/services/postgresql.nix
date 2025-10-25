@@ -12,18 +12,18 @@ delib.module {
 
     openFirewall = boolOption false;
     port = portOption 5432;
-    listen_addresses = listOfOption str [];
-    extraSettings = attrsOption {};
+    listen_addresses = listOfOption str [ ];
+    extraSettings = attrsOption { };
 
     package = packageOption pkgs.postgresql_16;
-    extraPlugins = coercedToOption (listOf path) (path: _: path) (lambdaTo (listOf path)) (_: []);
+    extensions = coercedToOption (listOf path) (path: _: path) (lambdaTo (listOf path)) (_: [ ]);
 
-    databases = listOfOption str [];
-    users = attrsOfOption attrs {};
+    databases = listOfOption str [ ];
+    users = attrsOfOption attrs { };
 
     authentications = listOfOption (submodule {
       options = {
-        type = noDefault (enumOption ["local" "host"] null);
+        type = noDefault (enumOption [ "local" "host" ] null);
         database = noDefault (strOption null);
         user = noDefault (strOption null);
         address = strOption "";
