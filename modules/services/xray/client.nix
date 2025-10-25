@@ -7,54 +7,58 @@
 delib.module {
   name = "services.xray";
 
-  options = {cfg, ...}: {
-    services.xray.client = with delib; {
-      id = noDefault (enumOption cfg.server.clientIds null);
-      shortId = noDefault (enumOption cfg.server.shortIds null);
+  options =
+    { cfg, ... }:
+    {
+      services.xray.client = with delib; {
+        id = noDefault (enumOption cfg.server.clientIds null);
+        shortId = noDefault (enumOption cfg.server.shortIds null);
+      };
     };
-  };
 
-  nixos.ifEnabled = {
-    myconfig,
-    cfg,
-    ...
-  }:
+  nixos.ifEnabled =
+    {
+      myconfig,
+      cfg,
+      ...
+    }:
     lib.mkIf (cfg.type == "client") {
       services.xray.settings = {
-        inbounds =
-          [
-            {
-              tag = "socks-proxy";
+        inbounds = [
+          {
+            tag = "socks-proxy";
 
-              listen = "127.0.0.1";
-              port = 10808;
-              protocol = "socks";
+            listen = "127.0.0.1";
+            port = 10808;
+            protocol = "socks";
 
-              settings = {
-                udp = true;
-              };
+            settings = {
+              udp = true;
+            };
 
-              sniffing = {
-                enabled = true;
-                destOverride = [
-                  "http"
-                  "tls"
-                  "quic"
-                ];
-                routeOnly = true;
-              };
-            }
-            {
-              tag = "http-proxy";
+            sniffing = {
+              enabled = true;
+              destOverride = [
+                "http"
+                "tls"
+                "quic"
+              ];
+              routeOnly = true;
+            };
+          }
+          {
+            tag = "http-proxy";
 
-              listen = "127.0.0.1";
-              port = 10818;
-              protocol = "http";
-            }
-          ]
-          ++ (lib.optional myconfig.services.wireguard.enable (let
+            listen = "127.0.0.1";
+            port = 10818;
+            protocol = "http";
+          }
+        ]
+        ++ (lib.optional myconfig.services.wireguard.enable (
+          let
             port = myconfig.services.wireguard.server.port;
-          in {
+          in
+          {
             tag = "wireguard";
 
             listen = "127.0.0.1";
@@ -66,7 +70,8 @@ delib.module {
               port = port;
               network = "udp";
             };
-          }));
+          }
+        ));
 
         outbounds = [
           {
@@ -116,28 +121,35 @@ delib.module {
           rules = [
             {
               type = "field";
-              domain = ["geosite:private" "regexp:.ru$"] ++ (builtins.fromJSON (decryptSecret "services/xray/direct_domains"));
+              domain = [
+                "geosite:private"
+                "regexp:.ru$"
+              ]
+              ++ (builtins.fromJSON (decryptSecret "services/xray/direct_domains"));
               outboundTag = "direct";
             }
             {
               type = "field";
-              ip = ["10.0.1.0/24"];
+              ip = [ "10.0.1.0/24" ];
               outboundTag = "proxy";
             }
             {
               type = "field";
-              ip = ["127.0.0.1"];
+              ip = [ "127.0.0.1" ];
               port = 51820;
               outboundTag = "proxy";
             }
             {
               type = "field";
-              ip = ["geoip:ru" "geoip:private"];
+              ip = [
+                "geoip:ru"
+                "geoip:private"
+              ];
               outboundTag = "direct";
             }
             {
               type = "field";
-              domain = ["dnsQuery"];
+              domain = [ "dnsQuery" ];
               outboundTag = "proxy";
             }
           ];
