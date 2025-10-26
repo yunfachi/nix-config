@@ -7,7 +7,14 @@
 delib.module {
   name = "programs.nixfmt";
 
-  options = delib.singleEnableOption host.cliFeatured;
+  options.programs.nixfmt = with delib; {
+    enable = boolOption host.cliFeatured;
+    package = packageOption pkgs.nixfmt;
+  };
 
-  home.ifEnabled.home.packages = [ pkgs.nixfmt ];
+  home.ifEnabled =
+    { cfg, ... }:
+    {
+      home.packages = [ cfg.package ];
+    };
 }
