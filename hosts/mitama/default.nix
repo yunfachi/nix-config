@@ -26,17 +26,19 @@ delib.host {
     }
   ];
 
-  myconfig = {name, ...}: {
-    programs = {
-      git.signingKey = "0xA0CD74D32A0CB3F1";
-    };
+  myconfig =
+    { name, ... }:
+    {
+      programs = {
+        git.signingKey = "0xA0CD74D32A0CB3F1";
+      };
 
-    services = {
-      wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
-      xray.client = {
-        id = decryptSecret "services/xray/clients/${name}/id";
-        shortId = decryptSecret "services/xray/clients/${name}/shortId";
+      services = {
+        wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
+        xray.client = {
+          id = decryptSecret "services/xray/clients/${name}/id";
+          shortId = decryptSecret "services/xray/clients/${name}/shortId";
+        };
       };
     };
-  };
 }
