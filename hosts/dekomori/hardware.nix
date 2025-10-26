@@ -7,22 +7,28 @@
 delib.host {
   name = "dekomori";
 
-  homeManagerSystem = "x86_64-linux";
+  system = "x86_64-linux";
+
   home.home.stateVersion = "24.11";
 
   myconfig.boot.mode = "legacy";
 
   nixos = {
-    nixpkgs.hostPlatform = "x86_64-linux";
     system.stateVersion = "24.11";
 
-    imports = [(modulesPath + "/profiles/qemu-guest.nix")];
+    imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
     boot = {
-      initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk"];
-      initrd.kernelModules = [];
-      kernelModules = ["kvm-amd"];
-      extraModulePackages = [];
+      initrd.availableKernelModules = [
+        "ata_piix"
+        "uhci_hcd"
+        "virtio_pci"
+        "sr_mod"
+        "virtio_blk"
+      ];
+      initrd.kernelModules = [ ];
+      kernelModules = [ "kvm-amd" ];
+      extraModulePackages = [ ];
     };
 
     fileSystems."/" = {
