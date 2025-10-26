@@ -12,7 +12,7 @@ delib.module {
       enable = boolOption host.guiFeatured;
       extensions = {
         wakatime = boolOption myconfig.wakatime.enable;
-        alejandra = boolOption myconfig.programs.alejandra.enable;
+        nixfmt = boolOption myconfig.programs.nixfmt.enable;
       };
     };
   };
