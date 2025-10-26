@@ -7,7 +7,7 @@
 delib.host {
   name = "jakuzure";
 
-  rice = "marukutekurai";
+  rice = "shikakukutekurai";
   type = "desktop";
   features = [
     "wireless"
@@ -33,20 +33,24 @@ delib.host {
     }
   ];
 
-  myconfig = {name, ...}: {
-    bluetooth.enable = true;
+  myconfig =
+    { name, ... }:
+    {
+      bluetooth.enable = true;
 
-    programs = {
-      git.signingKey = "0x9D16EF5F68A5CEDF";
+      programs = {
+        git.signingKey = "0x9D16EF5F68A5CEDF";
+      };
 
+      services = {
+        wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
+        xray.client = {
+          id = decryptSecret "services/xray/clients/${name}/id";
+          shortId = decryptSecret "services/xray/clients/${name}/shortId";
+        };
+      };
     };
 
-    services = {
-      wireguard.privateKeyFile = decryptHostSecretFile name "services/wireguard/privateKey";
-      xray.client = {
-        id = decryptSecret "services/xray/clients/${name}/id";
-        shortId = decryptSecret "services/xray/clients/${name}/shortId";
-      };
     };
   };
 }
