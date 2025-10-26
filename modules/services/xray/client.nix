@@ -100,7 +100,7 @@ delib.module {
               security = "reality";
               realitySettings = {
                 fingerprint = "chrome";
-                serverName = "www.google.com";
+                serverName = "ya.ru";
                 publicKey = cfg.server.publicKey;
                 shortId = cfg.client.shortId;
               };
