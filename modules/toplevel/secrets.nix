@@ -15,20 +15,24 @@ delib.module {
   # };
 
   myconfig.always = {
-    args.shared = let
-      rootDecryptSecretFile = path: key: (ylib.sops-decrypt {
-        privateKeysFile = "${/${homeconfig.home.homeDirectory}/.config/sops/age/keys.txt}";
-        inherit path key;
-      });
-      rootDecryptSecret = path: key: builtins.readFile (rootDecryptSecretFile path key);
-    in {
-      decryptSecret = rootDecryptSecret ../../secrets.json;
-      decryptHostSecret = hostName: rootDecryptSecret ../../hosts/${hostName}/secrets.json;
-      decryptSecretFile = rootDecryptSecretFile ../../secrets.json;
-      decryptHostSecretFile = hostName: rootDecryptSecretFile ../../hosts/${hostName}/secrets.json;
-    };
+    args.shared =
+      let
+        rootDecryptSecretFile =
+          path: key:
+          (ylib.sops-decrypt {
+            privateKeysFile = "${/${homeconfig.home.homeDirectory}/.config/sops/age/keys.txt}";
+            inherit path key;
+          }).outPath;
+        rootDecryptSecret = path: key: builtins.readFile (rootDecryptSecretFile path key);
+      in
+      {
+        decryptSecret = rootDecryptSecret ../../secrets.json;
+        decryptHostSecret = hostName: rootDecryptSecret ../../hosts/${hostName}/secrets.json;
+        decryptSecretFile = rootDecryptSecretFile ../../secrets.json;
+        decryptHostSecretFile = hostName: rootDecryptSecretFile ../../hosts/${hostName}/secrets.json;
+      };
 
-    persist.user.files = [".config/sops/age/keys.txt"];
+    persist.user.files = [ ".config/sops/age/keys.txt" ];
   };
 
   # templates are not yet implemented in sops-nix for home-manager
@@ -43,5 +47,5 @@ delib.module {
   #   };
   # };
 
-  home.always.home.packages = [pkgs.sops];
+  home.always.home.packages = [ pkgs.sops ];
 }
