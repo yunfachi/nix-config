@@ -16,16 +16,17 @@ delib.module {
     publicKey = noDefault (strOption null);
 
     # xray uuid
-    clientIds = listOfOption str [];
+    clientIds = listOfOption str [ ];
     # openssl rand -hex 8
-    shortIds = listOfOption str [];
+    shortIds = listOfOption str [ ];
   };
 
-  nixos.ifEnabled = {cfg, ...}:
+  nixos.ifEnabled =
+    { cfg, ... }:
     lib.mkIf (cfg.type == "server") {
       networking.firewall = lib.mkIf cfg.server.openFirewall {
-        allowedTCPPorts = [cfg.server.port];
-        allowedUDPPorts = [cfg.server.port];
+        allowedTCPPorts = [ cfg.server.port ];
+        allowedUDPPorts = [ cfg.server.port ];
       };
 
       services.xray.settings = {
@@ -36,12 +37,10 @@ delib.module {
             protocol = "vless";
 
             settings = {
-              clients =
-                map (id: {
-                  inherit id;
-                  flow = "xtls-rprx-vision";
-                })
-                cfg.server.clientIds;
+              clients = map (id: {
+                inherit id;
+                flow = "xtls-rprx-vision";
+              }) cfg.server.clientIds;
               decryption = "none";
             };
 
@@ -50,10 +49,10 @@ delib.module {
               security = "reality";
               realitySettings = {
                 show = false;
-                dest = "www.google.com:443";
+                dest = "ya.ru:443";
                 xver = 0;
                 serverNames = [
-                  "www.google.com"
+                  "ya.ru"
                 ];
                 privateKey = cfg.server.privateKey;
                 shortIds = cfg.server.shortIds;
@@ -61,15 +60,15 @@ delib.module {
             };
 
             /*
-              sniffing = {
-              enabled = true;
-              destOverride = [
-                "http"
-                "tls"
-                "quic"
-              ];
-              routeOnly = true;
-            };
+                sniffing = {
+                enabled = true;
+                destOverride = [
+                  "http"
+                  "tls"
+                  "quic"
+                ];
+                routeOnly = true;
+              };
             */
           }
         ];
