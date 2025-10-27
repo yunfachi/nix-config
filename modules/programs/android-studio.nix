@@ -10,7 +10,6 @@ delib.module {
   options = delib.singleEnableOption host.guiFeatured;
 
   nixos.ifEnabled = {
-    services.udev.packages = [pkgs.android-udev-rules];
     users.groups.adbusers = {};
     user.extraGroups = ["kvm" "adbusers"];
   };
