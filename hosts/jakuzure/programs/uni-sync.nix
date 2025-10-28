@@ -6,7 +6,7 @@ delib.host {
     enable = true;
     devices = [
       {
-        device_id = "VID:3314/PID:41219/SN:6243168001";
+        device_id = "VID:3314/PID:41219/SN:6243168001/PATH:1-8.1:1.1";
         sync_rgb = true;
         channels =
           builtins.genList (_: {
