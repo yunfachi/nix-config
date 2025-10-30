@@ -28,11 +28,11 @@ delib.module {
 
     shadow = {
       enable = boolOption true;
-      range = intOption 4;
-      power = intOption 3;
+      range = intOption 10;
+      power = intOption 4;
       offset = strOption "0 0";
       scale = floatOption 1.0;
-      color = strOption "0xee1a1a1a";
+      color = strOption "0xff151010";
       inactive_color = allowNull (strOption null);
     };
   };
