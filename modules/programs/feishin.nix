@@ -9,7 +9,7 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  myconfig.ifEnabled.persist.user.directories = [".config/feishin"];
+  myconfig.ifEnabled.persist.user.directories = [ ".config/feishin" ];
 
-  home.ifEnabled.home.packages = [pkgs.feishin];
+  home.ifEnabled.home.packages = [ pkgs.feishin ];
 }
