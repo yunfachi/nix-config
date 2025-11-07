@@ -45,12 +45,10 @@ delib.module {
             };
 
             streamSettings = {
-              network = "tcp";
+              network = "raw";
               security = "reality";
               realitySettings = {
-                show = false;
                 dest = "ya.ru:443";
-                xver = 0;
                 serverNames = [
                   "ya.ru"
                 ];
@@ -59,17 +57,15 @@ delib.module {
               };
             };
 
-            /*
-                sniffing = {
-                enabled = true;
-                destOverride = [
-                  "http"
-                  "tls"
-                  "quic"
-                ];
-                routeOnly = true;
-              };
-            */
+            sniffing = {
+              enabled = true;
+              destOverride = [
+                "http"
+                "tls"
+                # "quic"
+              ];
+              # routeOnly = true;
+            };
           }
         ];
 
@@ -77,6 +73,10 @@ delib.module {
           {
             protocol = "freedom";
             tag = "direct";
+          }
+          {
+            protocol = "blackhole";
+            tag = "block";
           }
         ];
       };
