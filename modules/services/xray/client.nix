@@ -31,20 +31,6 @@ delib.module {
             listen = "127.0.0.1";
             port = 10808;
             protocol = "socks";
-
-            settings = {
-              udp = true;
-            };
-
-            sniffing = {
-              enabled = true;
-              destOverride = [
-                "http"
-                "tls"
-                "quic"
-              ];
-              routeOnly = true;
-            };
           }
           {
             tag = "http-proxy";
@@ -75,8 +61,8 @@ delib.module {
 
         outbounds = [
           {
-            tag = "proxy";
             protocol = "vless";
+            tag = "proxy";
 
             settings = {
               vnext = [
@@ -88,7 +74,6 @@ delib.module {
                       id = cfg.client.id;
                       encryption = "none";
                       flow = "xtls-rprx-vision";
-                      #flow = "";
                     }
                   ];
                 }
