@@ -58,7 +58,7 @@
           name = "hacking";
           packages = with nixpkgs.legacyPackages.x86_64-linux; [
             # Recon
-            assetfinder
+            findomain
             nmap
             python313Packages.dirsearch
             # Reverse
