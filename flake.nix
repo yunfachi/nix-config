@@ -59,6 +59,7 @@
           packages = with nixpkgs.legacyPackages.x86_64-linux; [
             # Recon
             findomain
+            assetfinder
             nmap
             python313Packages.dirsearch
             # Reverse
