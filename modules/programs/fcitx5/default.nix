@@ -22,9 +22,9 @@ delib.module {
       };
     };
     environment.variables = {
-      GTK_IM_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
-      XMODIFIERS = "@im=fcitx";
+      # GTK_IM_MODULE = "fcitx";
+      # QT_IM_MODULE = "fcitx";
+      # XMODIFIERS = "@im=fcitx";
     };
   };
 }
