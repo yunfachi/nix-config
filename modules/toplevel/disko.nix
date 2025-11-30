@@ -16,6 +16,6 @@ delib.module {
 
   nixos.ifEnabled = {cfg, ...}: {
     disko = cfg.configuration;
-    environment.systemPackages = [inputs.disko.packages.${pkgs.system}.disko];
+    environment.systemPackages = [inputs.disko.packages.${pkgs.stdenv.hostPlatform.system}.disko];
   };
 }
