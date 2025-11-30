@@ -5,8 +5,8 @@
   ...
 }: let
   args = {
-    ylib = inputs.nypkgs.lib.${pkgs.system};
-    ypkgs = inputs.nypkgs.legacyPackages.${pkgs.system};
+    ylib = inputs.nypkgs.lib.${pkgs.stdenv.hostPlatform.system};
+    ypkgs = inputs.nypkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   };
 in
   delib.module {
