@@ -10,7 +10,7 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  myconfig.always.args.shared.spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+  myconfig.always.args.shared.spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 
   myconfig.ifEnabled.persist.user.directories = [".config/spotify" ".cache/spotify"];
 
