@@ -15,5 +15,5 @@ delib.module {
     ".java/.userPrefs/burp/"
   ];
 
-  home.ifEnabled.home.packages = [inputs.burpsuitepro.packages.${pkgs.system}.default];
+  home.ifEnabled.home.packages = [inputs.burpsuitepro.packages.${pkgs.stdenv.hostPlatform.system}.default];
 }
