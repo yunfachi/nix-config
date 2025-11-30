@@ -11,7 +11,7 @@ delib.module {
   home.ifEnabled =
     { cfg, ... }:
     let
-      vscode-extensions = inputs.vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+      vscode-extensions = inputs.vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
     in
     {
       programs.vscode.profiles.default.extensions = with vscode-extensions; [
