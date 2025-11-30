@@ -35,10 +35,10 @@ delib.module {
     cfg,
     ...
   }: {
-    home.packages = [inputs.wallpaper-manager.packages.${pkgs.system}.default];
+    home.packages = [inputs.wallpaper-manager.packages.${pkgs.stdenv.hostPlatform.system}.default];
 
     systemd.user.services.wallpaper-manager = let
-      package = inputs.wallpaper-manager.packages.${pkgs.system}.default;
+      package = inputs.wallpaper-manager.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in {
       Install = {WantedBy = [cfg.wantedService];};
 
