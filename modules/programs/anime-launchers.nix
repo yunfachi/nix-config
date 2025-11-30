@@ -29,7 +29,7 @@ delib.module {
       nix.settings = inputs.anime-launcher.nixConfig;
 
       home.packages =
-        with inputs.anime-launcher.packages.${pkgs.system};
+        with inputs.anime-launcher.packages.${pkgs.stdenv.hostPlatform.system};
         (lib.optional cfg.enableAnimeGameLauncher anime-game-launcher)
         ++ (lib.optional cfg.enableSleepyLauncher sleepy-launcher)
         ++ (lib.optional cfg.enableHonkersRailwayLauncher honkers-railway-launcher);
