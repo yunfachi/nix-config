@@ -35,6 +35,7 @@ delib.host {
 
       services = {
         archisteamfarm.enable = true;
+        radicale.enable = true;
 
         postgresql = {
           enable = true;
