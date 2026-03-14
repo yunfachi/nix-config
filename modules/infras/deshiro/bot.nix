@@ -27,10 +27,6 @@ delib.module {
       deshiro-bot-update = {
         enable = true;
 
-        requires = ["network.target"];
-        after = ["network.target"];
-        wantedBy = ["multi-user.target"];
-
         serviceConfig = {
           Type = "oneshot";
           User = constants.username;
@@ -55,7 +51,7 @@ delib.module {
       deshiro-bot = {
         enable = true;
 
-        requires = ["network.target" "deshiro-bot-update.service"];
+        requires = ["network.target"];
         after = ["network.target" "deshiro-bot-update.service"];
         wantedBy = ["multi-user.target"];
 
@@ -64,6 +60,7 @@ delib.module {
           User = constants.username;
           WorkingDirectory = repo_path;
           Restart = "always";
+          PartOf = ["deshiro-bot-update.service"];
         };
 
         path = [pkgs.deno];
