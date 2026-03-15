@@ -19,10 +19,6 @@ delib.module {
       changelog-bot-update = {
         enable = true;
 
-        requires = ["network.target"];
-        after = ["network.target"];
-        wantedBy = ["multi-user.target"];
-
         serviceConfig = {
           Type = "oneshot";
           User = constants.username;
@@ -45,7 +41,7 @@ delib.module {
       changelog-bot = {
         enable = true;
 
-        requires = ["network.target" "changelog-bot-update.service"];
+        requires = ["network.target"];
         after = ["network.target" "changelog-bot-update.service"];
         wantedBy = ["multi-user.target"];
 
@@ -54,6 +50,7 @@ delib.module {
           User = constants.username;
           WorkingDirectory = repo_path;
           Restart = "always";
+          PartOf = ["changelog-bot-update.service"];
         };
 
         path = [
