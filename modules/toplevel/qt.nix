@@ -12,7 +12,7 @@ delib.module {
 
   home.ifEnabled.qt = {
     enable = true;
-    platformTheme.name = "gnome";
+    platformTheme.name = "adwaita";
     style.name = "adwaita${lib.optionalString (colorscheme.polarity == "dark") "-dark"}";
   };
 }
