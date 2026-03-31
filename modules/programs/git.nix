@@ -21,15 +21,17 @@ delib.module {
       enable = true;
       lfs.enable = true;
 
-      userName = myconfig.constants.username;
-      userEmail = myconfig.constants.useremail;
-
       signing = lib.mkIf (cfg.signingKey != null) {
         key = cfg.signingKey;
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
+        user = {
+          name = myconfig.constants.username;
+          email = myconfig.constants.useremail;
+        };
+
         init.defaultBranch = "master";
       };
     };
