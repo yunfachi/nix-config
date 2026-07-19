@@ -9,7 +9,9 @@ delib.module {
 
   options = delib.singleEnableOption host.guiFeatured;
 
-  myconfig.ifEnabled.persist.user.directories = [".local/share/AyuGramDesktop/tdata"];
+  myconfig.ifEnabled.persist.user.directories = [
+    ".local/share/TelegramDesktop/tdata"
+  ];
 
-  home.ifEnabled.home.packages = [pkgs.ayugram-desktop];
+  home.ifEnabled.home.packages = [ pkgs.telegram-desktop ];
 }
